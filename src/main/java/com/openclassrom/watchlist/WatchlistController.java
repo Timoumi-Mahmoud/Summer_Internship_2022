@@ -36,7 +36,8 @@ public class WatchlistController {
 
     private WatchlistItem findWatchlistItemById(Integer id) {
         for (WatchlistItem watchlistItem : watchlistItems) {
-            if (watchlistItem.getId()== id) {
+            System.out.println(id);
+            if (watchlistItem.getId()==id) {
                 return watchlistItem;
             }
         }
