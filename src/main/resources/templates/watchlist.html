@@ -52,7 +52,8 @@
 					<td th:text="${watchlistItem.rating}">7.8</td>
 					<td th:text="${watchlistItem.priority}">LOW</td>
 					<td th:text="${watchlistItem.comment}">Peter recommended</td>
-					<td><a th:href="@{/watchlistItemForm(id=${watchlistItem.id})}">Update</a></td>" class="btn btn-info" role="button">Update</a></td>
+					<td><a href="#" class="btn btn-info" role="button" th:href="@{/watchlistItemForm(id=${watchlistItem.id})}">Update</a></td>
+
 				</tr>
 			</tbody>
 		</table>

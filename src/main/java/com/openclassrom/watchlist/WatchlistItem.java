@@ -1,12 +1,12 @@
 package com.openclassrom.watchlist;
 
 import com.sun.istack.internal.NotNull;
-import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 public class WatchlistItem {
 
-    @NotNull
+    @NotBlank(message = "not blank man!!!!")
     private String title;
     private String rating;
     private String priority;

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,62 +23,50 @@ public class WatchlistController {
 
 
     @GetMapping("/watchlistItemForm")
-    public ModelAndView showWatchlistItemForm(@RequestParam(required=false) Integer id) {
-        Map<String, Object> model = new HashMap<String, Object>();
-
-        WatchlistItem watchlistItem = findWatchlistItemById(id);
-        if (watchlistItem == null) {
-            model.put("watchlistItem", new WatchlistItem());
-        } else {
-            model.put("watchlistItem", watchlistItem);
-        }
-        return new ModelAndView("watchlistItemForm" , model);
-    }
-
-    private WatchlistItem findWatchlistItemById(Integer id) {
-        for (WatchlistItem watchlistItem : watchlistItems) {
-            System.out.println(id);
-            if (watchlistItem.getId()==id) {
-                return watchlistItem;
-            }
-        }
-        return null;
-    }
-
-    @PostMapping("/watchlistItemForm")
-    public ModelAndView submitWatchlistForm( @Validated WatchlistItem watchlistItem , BindingResult bindingResult) {
-        WatchlistItem existingItem = findWatchlistItemById(watchlistItem.getId());
+    public ModelAndView showWatchlistItemForm(@Valid WatchlistItem watchlistItem, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return new ModelAndView("watchlistItemForm");
         }
-        if (existingItem == null) {
-            watchlistItem.setId(index++);
-            watchlistItems.add(watchlistItem);
+        String viewName = "watchlistItemForm";
 
-            RedirectView redirect = new RedirectView();
-            redirect.setUrl("/watchlistItem");
-            return new ModelAndView(redirect);
-        } else {
-            existingItem.setComment(watchlistItem.getComment());
-            existingItem.setPriority(watchlistItem.getPriority());
-            existingItem.setRating(watchlistItem.getRating());
-            existingItem.setTitle(watchlistItem.getTitle());
+        Map<String,Object> model = new HashMap<String,Object>();
 
-        }
-        RedirectView redirect = new RedirectView();
-        redirect.setUrl("/watchlistItem");
+        model.put("watchlistItem", new WatchlistItem());
 
-        return new ModelAndView(redirect);    }
+        return new ModelAndView(viewName,model);
+    }
+    @PostMapping("/watchlistItemForm")
+    public ModelAndView submitWatchlistItemForm(WatchlistItem watchlistItem) {
+
+        watchlistItem.setId(index++);
+        watchlistItems.add(watchlistItem);
+
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/watchlist");
+
+        return new ModelAndView(redirectView);
+    }
 
 
-    @GetMapping("/watchlistItem")
-    public ModelAndView getWahtchlist(){
-        String viewName="watchlist";
-    Map<String, Object> model=new HashMap<String, Object>();
-    model.put("watchlistItems",watchlistItems);
-    model.put("numberOfMovies", watchlistItems.size());
 
-        return new ModelAndView(viewName, model);
+    @GetMapping("/watchlist")
+    public ModelAndView getWatchlist() {
+
+        String viewName = "watchlist";
+        Map<String, Object> model = new HashMap<String, Object>();
+
+        watchlistItems.clear();
+        watchlistItems.add(new WatchlistItem( "Lion King","8.5","high","Hakuna matata!",1));
+        watchlistItems.add(new WatchlistItem( "Frozen","7.5","medium","Let it go!",2));
+        watchlistItems.add(new WatchlistItem( "Cars","7.1","low","Go go go!",3));
+        watchlistItems.add(new WatchlistItem( "Wall-E","8.4","high","You are crying!",4));
+
+
+
+        model.put("watchlistItems", watchlistItems);
+        model.put("numberOfMovies", watchlistItems.size());
+
+        return new ModelAndView(viewName , model);
     }
 }
