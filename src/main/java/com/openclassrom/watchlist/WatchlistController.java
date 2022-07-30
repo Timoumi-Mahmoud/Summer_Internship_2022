@@ -23,18 +23,19 @@ public class WatchlistController {
 
 
     @GetMapping("/watchlistItemForm")
-    public ModelAndView showWatchlistItemForm(@Valid WatchlistItem watchlistItem, BindingResult bindingResult) {
+        public ModelAndView showWatchlistItemForm(@Valid WatchlistItem watchlistItem, BindingResult bindingResult) {
 
+
+            String viewName = "watchlistItemForm";
+
+            Map<String,Object> model = new HashMap<String,Object>();
+
+            model.put("watchlistItem", new WatchlistItem());
         if (bindingResult.hasErrors()) {
             return new ModelAndView("watchlistItemForm");
         }
-        String viewName = "watchlistItemForm";
-
-        Map<String,Object> model = new HashMap<String,Object>();
-
-        model.put("watchlistItem", new WatchlistItem());
-
         return new ModelAndView(viewName,model);
+
     }
     @PostMapping("/watchlistItemForm")
     public ModelAndView submitWatchlistItemForm(WatchlistItem watchlistItem) {
