@@ -1,5 +1,8 @@
 package com.openclassrom.watchlist;
 
+import com.openclassrom.watchlist.AppUser.User;
+import com.openclassrom.watchlist.AppUser.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 @RestController
 public class adminController {
 
-
+@Autowired
+private UserRepository userRepository;
     @GetMapping("/admin")
     public String admin() {
 
@@ -37,11 +42,22 @@ public class adminController {
 
     }
 
-    @GetMapping("/abc/abc")
+    @GetMapping("/abc1")
     public String abc() {
 
-        return  "this api***abc!!!!!";
+        return  "\n acces_abcOne \n!";
 
     }
+
+    @GetMapping("/abc2")
+    public String abc2() {
+
+        return  "\n acces_abcTWO \n!";
+    }
+
+
+
+
+
 
 }
