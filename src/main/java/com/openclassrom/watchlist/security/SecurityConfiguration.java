@@ -1,12 +1,16 @@
 package com.openclassrom.watchlist.security;
 
 
+import com.openclassrom.watchlist.AppUser.UserPrensibleDetalsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -14,40 +18,46 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    private UserPrensibleDetalsService userPrensibleDetalsService;
+
+
+    public SecurityConfiguration (UserPrensibleDetalsService userPrensibleDetalsService){
+        this.userPrensibleDetalsService=userPrensibleDetalsService;
+    }
+    @Autowired
+    private UserDetailsService userDetailsService;
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth
-            .inMemoryAuthentication()
-            .withUser("admin").
-            password(passwordEncoder().encode("admin123"))
-            .roles("ADMIN").authorities("access_abc1", "access_abc2").
-            and().
-
-            withUser("mahmoud").
-            password(passwordEncoder().encode("mahmoud123"))
-            .roles("USER").
-
-            and()
-
-            .withUser("manager").
-            password(passwordEncoder().encode("manager123"))
-            .roles("MANAGER").authorities("access_abc1");
+    protected void configure(AuthenticationManagerBuilder auth) {
+        auth.authenticationProvider(authenticationProviderBean());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
             http.
+
+
                     authorizeRequests()
-                   /// .anyRequest().authenticated()
+                    /// .anyRequest().authenticated()
                     .antMatchers("/").permitAll()
-                    .antMatchers("/profile").authenticated()
+                    .antMatchers("/").authenticated()
                     .antMatchers("/admin").hasRole("ADMIN")
-                    .antMatchers("/manager/**").hasAuthority("access_abc1")
-                    .antMatchers("/abc1").hasAuthority("access_abc1")
-                    .antMatchers("/abc2").hasAuthority("access_abc2")
+
+                    .antMatchers("/users").hasRole("ADMIN")
 
                     .and().httpBasic();
     }
+
+
+
+@Bean
+    DaoAuthenticationProvider authenticationProviderBean(){
+        DaoAuthenticationProvider daoAuthenticationProvider=new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+    System.out.println("resssssssss"+passwordEncoder());
+        daoAuthenticationProvider.setUserDetailsService(this.userDetailsService);
+    return daoAuthenticationProvider;
+    }
+
 
 
     @Bean

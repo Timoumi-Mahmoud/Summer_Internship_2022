@@ -14,30 +14,29 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-
+@Entity
 public class User   {
-/*
+
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 private int id;
 private String username;
-private String lastName;
-private String email;
+
+
 private String password;
-private int age;
 
 private int active;
 
 private String roles="";
 
-private String permession="";
+private String permissions="";
 
 
-    public User(String username, String password, String roles, String permession) {
+    public User(String username, String password, String roles, String permissions) {
         this.username = username;
         this.password = password;
         this.roles = roles;
-        this.permession = permession;
+        this.permissions = permissions;
         this.active=1;
     }
 
@@ -48,16 +47,24 @@ private String permession="";
         return id;
     }
 
-    public String getLastName() {
-        return lastName;
+
+
+
+
+    public String getUsername() {
+        return username;
     }
 
-    public String getEmail() {
-        return email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public int getAge() {
-        return age;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getActive() {
@@ -68,9 +75,7 @@ private String permession="";
         return roles;
     }
 
-    public String getPermession() {
-        return permession;
-    }
+
 
     public List<String> getRoleList(){
         if(this.roles.length()>0){
@@ -80,11 +85,11 @@ private String permession="";
     }
 
     public List<String> getPermissionList(){
-        if(this.permession.length()>0){
-            return Arrays.asList(this.permession.split(","));
+        if(this.permissions.length()>0){
+            return Arrays.asList(this.permissions.split(","));
         }
         return new ArrayList<>();
     }
-*/
+
 
 }
