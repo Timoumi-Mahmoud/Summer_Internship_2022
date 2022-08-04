@@ -20,7 +20,7 @@ public class User   {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 private int id;
-private String username;
+private String email;
 
 
 private String password;
@@ -32,8 +32,8 @@ private String roles="";
 private String permissions="";
 
 
-    public User(String username, String password, String roles, String permissions) {
-        this.username = username;
+    public User(String email, String password, String roles, String permissions) {
+        this.email = email;
         this.password = password;
         this.roles = roles;
         this.permissions = permissions;
@@ -48,15 +48,12 @@ private String permissions="";
     }
 
 
-
-
-
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
