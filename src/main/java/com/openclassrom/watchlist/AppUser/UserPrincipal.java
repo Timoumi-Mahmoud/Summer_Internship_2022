@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public class UserPrincipal implements UserDetails  {
 private User user;
@@ -14,16 +15,28 @@ private User user;
 public UserPrincipal(User user){
     this.user=user;
 }
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities=new ArrayList<>();
+        Set<Role> roles = user.getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
-        this.user.getRoles().forEach(r->{
-            GrantedAuthority grantedAuthority =new SimpleGrantedAuthority("ROLE_"+r);
-            authorities.add(grantedAuthority);
-        });
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getName()));
+            System.out.println("result iss \n");
+            System.out.println(role.getName());
+            System.out.println("--------------------");
+        }
+
         return authorities;
     }
+
+
+
+
+
+
 
     @Override
     public String getPassword() {

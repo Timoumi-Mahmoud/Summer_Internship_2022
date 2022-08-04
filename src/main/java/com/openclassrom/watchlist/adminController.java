@@ -3,6 +3,7 @@ package com.openclassrom.watchlist;
 import com.openclassrom.watchlist.AppUser.User;
 import com.openclassrom.watchlist.AppUser.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ public class adminController {
 
 @Autowired
 private UserRepository userRepository;
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/admin")
     public String admin() {
 

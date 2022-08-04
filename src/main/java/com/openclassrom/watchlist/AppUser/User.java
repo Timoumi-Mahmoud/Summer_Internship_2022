@@ -42,14 +42,14 @@ private int active;
         this.password = password;
     }
 
-    private String permissions="";
 
 
-    public User(String email, String password, String roles, String permissions) {
+
+    public User(String email, String password, String roles) {
         this.email = email;
         this.password = password;
 
-        this.permissions = permissions;
+
         this.active=1;
     }
 
@@ -96,13 +96,6 @@ private int active;
         this.roles = roles;
     }
 
-    public String getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(String permissions) {
-        this.permissions = permissions;
-    }
 
 
     /*
