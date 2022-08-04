@@ -1,5 +1,7 @@
-package com.openclassrom.watchlist.AppUser;
+package com.internship.internship.security;
 
+import com.internship.internship.AppUser.Role;
+import com.internship.internship.AppUser.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,10 +11,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public class UserPrincipal implements UserDetails  {
+public class MyUserDetails implements UserDetails  {
 private User user;
 
-public UserPrincipal(User user){
+public MyUserDetails(User user){
     this.user=user;
 }
 

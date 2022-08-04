@@ -1,4 +1,4 @@
-package com.openclassrom.watchlist.AppUser;
+package com.internship.internship.AppUser;
 
 import javax.persistence.*;
 

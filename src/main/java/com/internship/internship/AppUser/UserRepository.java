@@ -1,4 +1,4 @@
-package com.openclassrom.watchlist.AppUser;
+package com.internship.internship.AppUser;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;

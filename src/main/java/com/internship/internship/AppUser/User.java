@@ -1,9 +1,5 @@
-package com.openclassrom.watchlist.AppUser;
+package com.internship.internship.AppUser;
 
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.*;

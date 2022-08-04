@@ -1,7 +1,6 @@
-package com.openclassrom.watchlist.security;
+package com.internship.internship.security;
 
 
-import com.openclassrom.watchlist.AppUser.UserPrensibleDetalsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,11 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private UserPrensibleDetalsService userPrensibleDetalsService;
+    private MyUserDetailsService myUserDetailsService;
 
 
-    public SecurityConfiguration (UserPrensibleDetalsService userPrensibleDetalsService){
-        this.userPrensibleDetalsService=userPrensibleDetalsService;
+    public SecurityConfiguration (MyUserDetailsService myUserDetailsService){
+        this.myUserDetailsService = myUserDetailsService;
     }
     @Autowired
     private UserDetailsService userDetailsService;

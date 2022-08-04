@@ -1,7 +1,7 @@
-package com.openclassrom.watchlist;
+package com.internship.internship;
 
-import com.openclassrom.watchlist.AppUser.User;
-import com.openclassrom.watchlist.AppUser.UserRepository;
+import com.internship.internship.AppUser.UserRepository;
+import com.internship.internship.AppUser.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
