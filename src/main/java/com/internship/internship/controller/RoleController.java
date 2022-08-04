@@ -1,9 +1,12 @@
 package com.internship.internship.controller;
 
 
+import com.internship.internship.AppUser.UserRepository;
 import com.internship.internship.entity.Role;
+import com.internship.internship.entity.User;
 import com.internship.internship.repository.RoleRepository;
 import com.internship.internship.services.RoleService;
+import com.internship.internship.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -11,14 +14,20 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value="/Role")
 public class RoleController {
 
 
+    @Autowired
+   private UserRepository userRepository;
 
-
+    @Autowired
+    private UserService userService;
     @Autowired
     private RoleService roleService;
 
@@ -96,5 +105,56 @@ public class RoleController {
         redirectView.setUrl("/Role/listRole");
         return new ModelAndView(redirectView);
     }
+
+
+
+    @RequestMapping("/security/role/assign/{userId}/{roleId}")
+    public String assignRole(@PathVariable Integer userId,
+                             @PathVariable Integer roleId){
+        roleService.assignUserRole(userId, roleId);
+        return "redirect:/user/Edit/"+userId;
+    }
+
+
+
+
+    @GetMapping("/AffectRole/{id}")
+    public ModelAndView AffectRole(@PathVariable   Integer id ) {
+        System.out.println("\n ---------");
+        System.out.println(roleRepository.findAll());
+        System.out.println("\n ---------");
+
+        User u =new User();
+        u=userService.findBy(id);
+        ModelAndView mav = new ModelAndView("role_user/giveRole");
+        mav.addObject("u", u);
+        Role role_user = new Role();
+        mav.addObject("role_user", role_user);
+        mav.addObject("roles", roleService.findAll());
+        return mav;
+    }
+
+
+    @RequestMapping(value = "/save/{id}", method = RequestMethod.POST)
+    public ModelAndView saveAffectedRole( Role role_user ,@PathVariable("id") int id) {
+     //   role_user.setId;    userService.findBy(id));
+        System.out.println(role_user);
+        roleRepository.save(role_user);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/User/userList");
+        return new ModelAndView(redirectView);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

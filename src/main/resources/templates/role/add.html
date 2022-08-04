@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org">
+<head th:insert="fragments/navBar.html :: head" >
+    <meta charset="ISO-8859-1">
+    <title></title>
+</head>
+<body  >
+
+<div th:insert="~{fragments/navBar.html::navbar}" ></div>
+
+</div>
+<br>
+<div class="com">
+    <form method="post" th:action="@{saveRole}" th:object="${role}">
+        <h2 class = "mt-4"> Add a new role::</h2>
+        <hr/>
+        <!-- Form levels error messages here -->
+        <div class = "form-group row ">
+            <div class="col-sm-8">
+                <span class="text-danger" > </span>
+            </div>
+        </div>
+        <div class = "form-group row ">
+            <label for = "Role name" class = "col-sm-8 col-form-label"> <b> Role name</b> <b class="redInput"> *</b></label>
+            <div class = "col-sm-5">
+                <input th:field="*{name}"  type = "text" class = "form-control" placeholder = "name of the Role..">
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger" th:errors="*{name}"> </span>
+            </div>
+        </div>
+        <div class = "form-group row">
+            <label for = "Description of the role" class = "col-sm-8 col-form-label"><b>Description of the role</b><b class="redInput"> *</b></label>
+            <div class = "col-sm-5">
+                <textarea   th:field="*{descriptionOfTheRole}" class = "form-control" rows ="20"cols="20"   placeholder = "short description of the role.."
+                style="height:100%"></textarea>
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger" th:errors="*{descriptionOfTheRole}"> </span>
+            </div>
+        </div>
+
+<br>
+
+
+        <div class = "form-group row">
+            <div class = "col-sm-10">
+                <button type = "submit" class = "btn btn-primary btnStyle">Add</button>
+                <input type="hidden" />
+            </div>
+        </div>
+
+    </form>
+</div>
+<div th:insert="fragments/navBar.html ::js"></div>
+</body>
+</html>

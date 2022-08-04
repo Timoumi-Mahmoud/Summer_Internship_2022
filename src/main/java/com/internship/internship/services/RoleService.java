@@ -1,18 +1,23 @@
 package com.internship.internship.services;
 
 
+import com.internship.internship.AppUser.UserRepository;
 import com.internship.internship.entity.Role;
+import com.internship.internship.entity.User;
 import com.internship.internship.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class RoleService {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    private UserRepository userRepository;
 
     public List<Role> findAll(){return roleRepository.findAll();}
     public void delete(int id){
@@ -34,6 +39,14 @@ public class RoleService {
     }
 
 
+    public void assignUserRole(Integer userId, Integer roleId) {
+        User user = userRepository.findById(userId).orElse(null);
+        Role role = roleRepository.findById(roleId).orElse(null);
+        Set<Role> userRoles = user.getRoles();
+        userRoles.add(role);
+        user.setRoles(userRoles);
+        userRepository.save(user);
+    }
 
 
 

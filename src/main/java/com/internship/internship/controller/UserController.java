@@ -4,6 +4,7 @@ package com.internship.internship.controller;
 import com.internship.internship.entity.Department;
 import com.internship.internship.entity.User;
 import com.internship.internship.services.DepartmentService;
+import com.internship.internship.services.RoleService;
 import com.internship.internship.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class UserController {
 
   @Autowired
   private DepartmentService departmentService;
+
 /*
 public UserController(UserService UserService){  same as autowired
 }*/
@@ -94,5 +96,9 @@ public UserController(UserService UserService){  same as autowired
         redirectView.setUrl("/");
         return new ModelAndView(redirectView);
     }
+
+
+
+
 
 }

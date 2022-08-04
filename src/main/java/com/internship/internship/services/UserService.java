@@ -2,7 +2,9 @@ package com.internship.internship.services;
 
 
 import com.internship.internship.AppUser.UserRepository;
+import com.internship.internship.entity.Role;
 import com.internship.internship.entity.User;
+import com.internship.internship.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 
@@ -11,18 +13,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
-public class UserService  {
+public class UserService {
     @Autowired
     private UserRepository userRepository;
+
+
 
     /**
      * Get All todos
      *
      * @return List<Todo>
      */
-
 
 
     public List<User> findAll() {
@@ -46,11 +50,9 @@ public class UserService  {
         /////user.setPassword(passwordEncoder().encode(user.getPassword()));
 
 
-
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
-
 
 
         return userRepository.save(user);
@@ -60,7 +62,8 @@ public class UserService  {
         User oldUser = userRepository.findById(idUser).get();
         System.out.println(" the old one::::" + oldUser);
         oldUser.setIdUser(user.getIdUser());
-    return null;} }
+        return null;
+    }
       /*  oldUser.setFirstName(user.getFirstName());
         oldUser.setLastName(user.getLastName());
         oldUser.setHireDate(user.getHireDate());
@@ -112,4 +115,4 @@ public class UserService  {
 
 
 
-
+}
