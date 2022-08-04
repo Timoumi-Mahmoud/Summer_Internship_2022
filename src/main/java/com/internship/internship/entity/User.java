@@ -1,9 +1,10 @@
 package com.internship.internship.entity;
 
 
-import com.internship.internship.AppUser.Role;
+import com.internship.internship.entity.Role;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +20,17 @@ private String email;
 
 private String password;
 
-private int active;
+
+    private  String firstName;
+    private  String lastName;
+    private  String sex;
+    private Date birthDate;
+    private  Date hireDate;
+    private  int tel;
+    private  String address;
+
+
+
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -28,6 +39,24 @@ private int active;
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+
+
+
+
+
+
+
+
+
+
+    @ManyToOne( fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_department", nullable = false)
+    private Department department;
+
+
+
+
+
 
 
     public User(String email, String password, Set<Role> roles) {
@@ -49,7 +78,7 @@ private int active;
         this.password = password;
 
 
-        this.active=1;
+
     }
 
     public User() {
@@ -79,13 +108,9 @@ private int active;
         this.password = password;
     }
 
-    public int getActive() {
-        return active;
-    }
 
-    public void setActive(int active) {
-        this.active = active;
-    }
+
+
 
     public Set<Role> getRoles() {
         return roles;

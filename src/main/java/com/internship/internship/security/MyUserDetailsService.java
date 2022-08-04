@@ -1,7 +1,8 @@
 package com.internship.internship.security;
 
 import com.internship.internship.AppUser.UserRepository;
-import com.internship.internship.AppUser.User;
+
+import com.internship.internship.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org">
+<head th:insert="fragments/navBar.html:: head" >
+  <meta charset="ISO-8859-1">
+  <title></title>
+</head>
+<body  >
+
+<div th:insert="~{fragments/navBar.html ::navbar}" >jjjjjjj</div>
+
+
+
+<div class="container-lg">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-8"><h2>Departments <b>Details</b></h2></div>
+          <div class="col-sm-4">
+            <button id="Mybtn" class="btn btn-primary">Add new </button>
+            <button id="#" class="btn btn-primary">do other things</button>
+
+
+          </div>
+
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Phone</th>
+
+          <th>Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="i : ${departs}">
+          <td th:text="${i.departmentName}">Avatar</td>
+          <td th:text="${i.responsibleEmail}">Email of the responsable </td>
+          <td th:text="${i.responsiblePhone}">Phone number </td>
+
+
+          <td>
+
+            <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idDepartment})}"  ><i class="material-icons">&#xE254;</i></a>
+            <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idDepartment})}"    ><i class="material-icons">&#xE872;</i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+$(document).ready(function(){
+	$('#Mybtn').click(function(){
+  		$('#MyForm').toggle(500);
+  });
+});
+</script>
+<form id="MyForm"  method="post" th:action="@{save}" th:object="${department}" class="com">
+
+<br><br> <br>
+
+  <h2 class = "mt-4"><center>Add a new Department::</center></h2>
+  <hr/>
+  <!-- Form levels error messages here -->
+
+<div class="com">
+          <div class = "form-group row ">
+            <label for = "DepartmentName" class = "col-sm-8 col-form-label"> <b>Department name </b><b class="redInput">*</b></label>
+            <div class = "col-sm-5" >
+              <input th:field="*{departmentName}"  type = "text" class = "form-control" placeholder = "Add a new department">
+            </div>
+            <div class="col-sm-4">
+              <span class="text-danger"  th:errors="*{departmentName}"> </span>
+            </div>
+          </div>
+
+          <div class = "form-group row ">
+            <label for = "EmailResponsible"  class = "col-sm-8 col-form-label"><b>Email of the Responsible </b><b class="redInput">*</b></label>
+            <div class = "col-sm-5">
+              <input th:field="*{responsibleEmail}"  type = "text" class = "form-control" placeholder = "The responsible Email ...">
+            </div>
+            <div class="col-sm-4">
+              <span class="text-danger"  th:errors="*{responsibleEmail}" > </span>
+            </div>
+          </div>
+
+          <div class = "form-group row ">
+            <label for = "phone" class = "col-sm-8 col-form-label"> <b>Phone number of the responsible </b> <b class="redInput">*</b></label>
+            <div class = "col-sm-5">
+              <input th:field="*{responsiblePhone}"  type = "text" class = "form-control" placeholder = "The responsible phone number ... ">
+            </div>
+            <div class="col-sm-4">
+              <span class="text-danger"  th:errors="*{responsiblePhone}" > </span>
+            </div>
+          </div>
+
+  <div class = "form-group row">
+    <div class = "col-sm-10">
+      <button type = "submit" class = "btn btn-primary btnStyle" >Submit</button>
+      <input type="hidden" />
+    </div>
+  </div>
+</div>
+<div th:insert="fragments/navBar.html :: js"></div>
+  </div>
+</form>
+<br>
+</body>
+</html>

@@ -1,7 +1,7 @@
 package com.internship.internship.security;
 
-import com.internship.internship.AppUser.Role;
-import com.internship.internship.AppUser.User;
+import com.internship.internship.entity.Role;
+import com.internship.internship.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -67,6 +67,6 @@ public MyUserDetails(User user){
 
     @Override
     public boolean isEnabled() {
-        return this.user.getActive() ==1;
+        return true;
     }
 }

@@ -1,0 +1,46 @@
+
+</body>
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org">
+<head th:insert="fragments/navBar.html:: head" >
+    <meta charset="ISO-8859-1">
+    <title></title>
+</head>
+<body  >
+
+<div th:insert="~{fragments/navBar.html ::navbar}" >jjjjjjj</div>
+
+
+<div id="content" class="p-4 p-md-5">   <h1>test</h1></div>
+
+<br>
+<br>
+<form method="POST" th:action="@{/Function/update/{id}(id=${function.idFunction})}" th:object="${function}">
+    <h2 class = "mt-4"> update a  Function ::</h2>
+    <hr/>
+    <!-- Form levels error messages here -->
+
+
+    <div class = "form-group row ">
+        <label for = "RoleName" class = "col-sm-2 col-form-label"> Role name</label>
+        <div class = "col-sm-4">
+            <input th:field="*{nameFunction}"  type = "text" class = "form-control" placeholder = "Mandatory">
+        </div>
+        <div class="col-sm-4">
+            <span class="text-danger"  > </span>
+        </div>
+    </div>
+    <input type="hidden" th:field="*{idFunction}">
+
+
+    <div class = "form-group row">
+        <div class = "col-sm-10">
+            <button type = "submit" class = "btn btn-primary">Update</button>
+        </div>
+    </div>
+</form>
+<div th:insert="fragments/navBar.html :: js"></div>
+
+
+</body>
+</html>

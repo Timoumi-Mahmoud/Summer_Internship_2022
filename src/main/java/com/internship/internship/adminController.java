@@ -1,7 +1,7 @@
 package com.internship.internship;
 
 import com.internship.internship.AppUser.UserRepository;
-import com.internship.internship.AppUser.User;
+import com.internship.internship.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
