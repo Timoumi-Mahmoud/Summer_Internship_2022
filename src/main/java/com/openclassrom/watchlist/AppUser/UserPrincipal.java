@@ -18,7 +18,7 @@ public UserPrincipal(User user){
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities=new ArrayList<>();
 
-        this.user.getRoleList().forEach(r->{
+        this.user.getRoles().forEach(r->{
             GrantedAuthority grantedAuthority =new SimpleGrantedAuthority("ROLE_"+r);
             authorities.add(grantedAuthority);
         });

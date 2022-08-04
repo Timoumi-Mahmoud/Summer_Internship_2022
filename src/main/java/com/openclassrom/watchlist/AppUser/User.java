@@ -5,21 +5,16 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import javax.persistence.*;
+import java.util.*;
 
 @Entity
 public class User   {
 
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
-private int id;
+@Column(name = "id_user")
+private int idUser;
 private String email;
 
 
@@ -27,15 +22,33 @@ private String password;
 
 private int active;
 
-private String roles="";
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = ""),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 
-private String permissions="";
+
+    public User(String email, String password, Set<Role> roles) {
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    private String permissions="";
 
 
     public User(String email, String password, String roles, String permissions) {
         this.email = email;
         this.password = password;
-        this.roles = roles;
+
         this.permissions = permissions;
         this.active=1;
     }
@@ -43,10 +56,13 @@ private String permissions="";
     public User() {
     }
 
-    public int getId() {
-        return id;
+    public int getIdUser() {
+        return idUser;
     }
 
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
     public String getEmail() {
         return email;
@@ -68,25 +84,35 @@ private String permissions="";
         return active;
     }
 
-    public String getRoles() {
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public Set<Role> getRoles() {
         return roles;
     }
 
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
 
 
+    /*
     public List<String> getRoleList(){
         if(this.roles.length()>0){
             return Arrays.asList(this.roles.split(","));
         }
         return new ArrayList<>();
     }
-
-    public List<String> getPermissionList(){
-        if(this.permissions.length()>0){
-            return Arrays.asList(this.permissions.split(","));
-        }
-        return new ArrayList<>();
-    }
+*/
 
 
 }
