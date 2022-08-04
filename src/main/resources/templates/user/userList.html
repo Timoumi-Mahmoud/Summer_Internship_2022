@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeleaf.org">
+<head th:insert="fragments/navBar.html :: head" >
+    <meta charset="ISO-8859-1">
+    <title></title>
+</head>
+<body >
+<div th:insert="~{fragments/navBar.html::navbar}" ></div>
+
+<body>
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>User <b>Details</b></h2>
+
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fa fa-plus" ></i>  <a th:href="@{/Role/addRole}" class="link_green">test</a>    </button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fa fa-plus" ></i>  <a>Other things</a>    </button>
+
+
+                    </div>
+                    <form class="form-inline" th:action="@{search}" method="get">
+                        <input class="form-control mr-sm-2" type="text" name="keyword" th:value="${keyword}" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" ><a th:href="@{/User/userList}"  class="link_green">Reset </a> </button>
+                    </form>
+
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Full name   </th>
+                    <th>Email</th>
+                    <th width="8%">phone</th>
+                    <th>department</th>
+                    <th>hiring date </th>
+                    <th>age</th>
+                    <th>address </th>
+                    <Action></Action>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="i : ${Users}">
+                    <td th:text="${i.firstName} +' ' + ${i.firstName}" ></td>
+                    <td th:text="${i.email}"> </td>
+                    <td th:text="${i.tel}"> </td>
+                    <td th:text="${i.department.departmentName}"></td>
+
+                    <td th:text="${i.hireDate}"></td>
+                    <td th:text="${i.birthDate}"></td>
+                    <td th:text="${i.address}"></td>
+
+
+                    <td>
+                        <a th:href="@{delete/{id}(id=${i.idUser})}"  class="btn btn-danger btn btn-outline-success my-2 my-sm-0" role="button" style="color:black;" > Delete</a></td>
+
+                    <td> <a th:href="@{/Role_user/add/{id}(id=${i.idUser})}" class="btn btn-info btn btn-outline-success my-2 my-sm-0" role="button" style="color:black;" >Give a role</a></td>
+
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<div th:insert="fragments/navBar.html :: js"></div>
+
+
+</body>
+</html>

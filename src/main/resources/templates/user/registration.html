@@ -1,0 +1,199 @@
+<html >
+<head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
+    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Internship Application</title>
+</head>
+<body>
+<div class = "container " >
+    <nav class = "navbar navbar-expand-sm navbar-dark bg-secondary">
+        <a class = "navbar-brand" href = "homepage-static.html"></a>
+        <button class = "navbar-toggler" type = "button" data-toggle = "collapse"
+                data-target = "#navbarSupportedContent"
+                aria-controls = "navbarSupportedContent" aria-expanded = "false"
+                aria-label = "Toggle navigation">
+
+            <span class = "navbar-toggler-icon"></span>
+        </button>
+
+        <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
+
+            </ul>
+
+        </div>
+    </nav>
+    <form method="post" th:action="@{saveUser}" th:object="${user}">
+        <h2 class = "mt-4">Submit an item</h2>
+        <hr/>
+        <!-- Form levels error messages here -->
+        <div class = "form-group row ">
+            <div class="col-sm-8">
+                <span class="text-danger" > </span>
+            </div>
+        </div>
+        <div class = "form-group row ">
+            <label for = "First Name" class = "col-sm-2 col-form-label">First Name</label>
+            <div class = "col-sm-4">
+                <input th:field="*{firstName}"  type = "text" class = "form-control" placeholder = "Your first name ...">
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger"> </span>
+            </div>
+        </div>
+
+        <div class = "form-group row ">
+            <label for = "Last Name" class = "col-sm-2 col-form-label">Last Name</label>
+            <div class = "col-sm-4">
+                <input th:field="*{lastName}"  type = "text" class = "form-control" placeholder = "Your last name ...">
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger" > </span>
+            </div>
+        </div>
+
+
+
+        <div class = "form-group row ">
+            <label for = "email" class = "col-sm-2 col-form-label mr-0">Email ....</label>
+            <div class = "col-sm-4">
+                <input th:field="*{email}"  type = "text" class = "form-control" placeholder = "Your email ...">
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger"> </span>
+            </div>
+        </div>
+        <div class = "form-group row ">
+            <label for = "password" class = "col-sm-2 col-form-label mr-0">password ....</label>
+            <div class = "col-sm-4">
+                <input th:field="*{password}"  type = "password" class = "form-control" placeholder = "A solid passwor ...">
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger"> </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-4 control-label">Your Gender?</label>
+            <div class="col-md-4">
+                <div class="radio">
+                    <label>
+                        <input  th:field="*{sex}"  type="radio" name="hosting" value="Male" /> male
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input th:field="*{sex}"  type="radio" name="hosting" value="Female" /> female
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class = "form-group row ">
+            <label for = "tel" class = "col-sm-2 col-form-label">tel</label>
+            <div class = "col-sm-4">
+                <input th:field="*{tel}"  type = "text" class = "form-control" placeholder = "Your phone number ...">
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger"> </span>
+            </div>
+        </div>
+
+
+        <div class = "form-group row ">
+            <label for = "birthDate" class = "col-sm-2 col-form-label">birthDate date</label>
+            <div class = "col-sm-4">
+                <input type="date" th:field="${user.birthDate}" id="student-birtvh-date"/>
+
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger"> </span>
+            </div>
+        </div>
+        <div class = "form-group row ">
+            <label for = "hireDae" class = "col-sm-2 col-form-label">hire Date date</label>
+            <div class = "col-sm-4">
+                <input type="date" th:field="${user.hireDate}" id="student-birtvh-date"/>
+
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger"> </span>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class = "form-group row">
+            <label for = "Adresse" class = "col-sm-2 col-form-label">Adresse</label>
+            <div class = "col-sm-4">
+                <textarea   th:field="*{address}" class = "form-control" rows = "3" placeholder = "Your address ..."></textarea>
+            </div>
+            <div class="col-sm-4">
+                <span class="text-danger"> </span>
+            </div>
+        </div>
+
+
+
+
+        <div class = "form-group row ">
+            <label for = "departemnt" class = "col-sm-2 col-form-label">departemnt </label>
+            <div class = "col-sm-4">
+                <select th:field="*{department}">
+                    <c:forEach th:each="i : ${departs}">
+                        <option th:value="${i.idDepartment}"  th:text="${i.departmentName}" > </option>
+                    </c:forEach>
+                </select>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class = "form-group row">
+            <div class = "col-sm-10">
+                <button type = "submit" class = "btn btn-primary">Submit</button>
+                <input type="hidden" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src = "https://code.jquery.com/jquery-3.3.1.slim.min.js"> </script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" > </script>
+<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" > </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
