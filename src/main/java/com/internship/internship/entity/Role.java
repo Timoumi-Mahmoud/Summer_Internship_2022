@@ -5,21 +5,21 @@ import javax.persistence.*;
 @Entity
 @Table(name = "roles")
 public class Role {
+    @Id
+    @Column(name = "id_role")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name;
+    private String descriptionOfTheRole;
 
 
+    public Role(Integer id, String name, String descriptionOfTheRole) {
+        this.id = id;
+        this.name = name;
+        this.descriptionOfTheRole = descriptionOfTheRole;
+    }
 
-
-        @Id
-        @Column(name = "id_role")
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
-
-        private String name;
-        private String descriptionOfTheRole;
-
-
-
-        public Integer getId() {
+    public Integer getId() {
             return id;
         }
 

@@ -19,7 +19,8 @@ import java.util.Set;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-
+@Autowired
+private RoleRepository roleRepository;
 
 
     /**

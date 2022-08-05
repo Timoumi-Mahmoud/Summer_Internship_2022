@@ -14,13 +14,9 @@ public class User {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 @Column(name = "id_user")
-private int idUser;
-private String email;
-
-
-private String password;
-
-
+    private int idUser;
+    private String email;
+    private String password;
     private  String firstName;
     private  String lastName;
     private  String sex;
@@ -29,24 +25,16 @@ private String password;
     private  int tel;
     private  String address;
 
-
-
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(  cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(
             name = "users_roles",
-            joinColumns = @JoinColumn(name = ""),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
+            joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_role")
     )
     private Set<Role> roles = new HashSet<>();
-
-
-
-
-
-
-
-
 
 
     @ManyToOne( fetch = FetchType.LAZY, optional = false)
