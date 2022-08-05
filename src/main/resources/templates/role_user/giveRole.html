@@ -132,7 +132,7 @@
             <p th:utext="${u.idUser}"></p>
 
 
-            <form method="POST" th:action="@{/Role_user/save/{id}(id=${u.idUser})}"} th:object="${role_user}">
+            <form method="POST" th:action="@{/Role_user/save/{id}(id=${u.idUser})}"} th:object="${userR}">
                 <h3 class = "mt-4"> give a role :</h3>
                 <hr/>
                 <!-- Form levels error messages here -->

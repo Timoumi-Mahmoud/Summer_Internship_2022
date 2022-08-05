@@ -1,6 +1,7 @@
 package com.internship.internship.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "roles")
@@ -19,12 +20,24 @@ public class Role {
         this.descriptionOfTheRole = descriptionOfTheRole;
     }
 
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
+
+
     public Integer getId() {
             return id;
         }
 
 
+    public Set<User> getUsers() {
+        return users;
+    }
 
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -56,12 +69,13 @@ public class Role {
         this.name = name;
     }
 
-
     @Override
     public String toString() {
         return "Role{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", descriptionOfTheRole='" + descriptionOfTheRole + '\'' +
+                ", users=" + users +
                 '}';
     }
 }
