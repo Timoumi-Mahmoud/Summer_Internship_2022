@@ -1,230 +1,35 @@
 
-<html xmlns:th="http:www.thymeleaf.org">
-<head th:insert="fragments/navBar.html :: head" >
-    <meta charset="ISO-8859-1">
-    <title> index page</title>
-</head>
-<body>
-
-<div th:insert="~{fragments/navBar.html::navbar}" >jjjjjjj</div>
 
 
-<h3> Affect Roles to users::</h3>
+<form th:action="@{/User/save/{id}(id=${user.idUser})}"  th:object="${user}"
+      method="post" style="max-width: 600px; margin: 0 auto;">
+    <input type="hidden" th:field="*{idUser}" />
+    <input type="hidden" th:field="*{department}" />
+    <input type="hidden" th:field="*{firstName}" />
+    <input type="hidden" th:field="*{lastName}" />
+    <input type="hidden" th:field="*{password}" />
+    <input type="hidden" th:field="*{sex}" />
+    <input type="hidden" th:field="*{email}" />
+    <input type="hidden" th:field="*{hireDate}" />
+    <input type="hidden" th:field="*{birthDate}" />
+    <input type="hidden" th:field="*{tel}" />
 
-<a th:href="@{/User/userList}" >Back to users List</a>
-
-<br/><br/>
 
 
-<!--
-<div id="page-content-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Simple Sidebar</h1>
 
-             dddddddddddddddd
-                <div th:switch="${u.sex}">
-                    <span th:case="'Female'"> Madame </span>
-                    <span th:case="'Male'">Monsieur</span>
-                    <span th:case="*">User is some other thing</span>
-                    <span th:utext="${u.firstName} +' ' + ${u.firstName}" ></span>
 
-                </div>
-
-                <td th:text="${u.birthDate}"></td>
-                <h3 th:text="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd ')}"></h3>
-                <br>
-
-<span th:text="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd ' )} + ' ' + ${u.birthDate}"></span>
-
-               working in the department <span th:utext="${u.department.departmentName}"></span> , He have     Month of expierience .</p>
-                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+    <div class="form-group row">
+            <label class="col-4 col-form-label">Roles: </label>
+            <div class="col-8">
+                <th:block th:each="role: ${listRoles}">
+                    <input type="checkbox" th:field="*{roles}"
+                           th:text="${role.name}" th:value="${role.id}" class="m-2" />
+                </th:block>
             </div>
         </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
     </div>
-</div>
-
-<div style="margin-left: 10%;">
-
-
-    <br/><br/>
-
-
-
-</div>
-
-<div />
--->
-
-<div style="margin-left: 10%;">
-
-
-
-
-
-<div class="row">
-    <div class="col-sm-4">
-<br>
-        <br>
-        <table border="0" style="margin_top:5px; font:monospace;" class="title " >
-
-            <tr >
-
-                <td  >
-                    <div th:switch="${u.sex}">
-                        <span th:case="'Female'"> Madame </span>
-                        <span th:case="'Male'">Monsieur</span>
-                        <span th:case="*">User is some other thing</span>
-                        <span th:utext="${u.firstName} +' ' + ${u.firstName}" ></span>
-
-                    </div></td>
-
-            </tr>
-
-                <td>Phone</td>
-                <td>:</td>
-                <td th:utext="${u.tel}">:</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>:</td>
-                <td th:utext="${u.email}">:</td>
-            </tr>
-            <tr>
-                <td>Address</td>
-                <td>:</td>
-                <td th:utext="${u.address}">:</td>
-            </tr>
-            <tr>
-                <td>Department</td>
-                <td></td>
-                <<td th:utext="${u.department.departmentName}">:</td>
-            </tr>
-            <br>
-            <tr>
-                <td>Post </td>
-                <td></td>
-                <td >...</td>
-            </tr>
-            <tr>
-                <td>Age</td>
-                <td></td>
-                <td >...</td>
-            </tr>
-            <tr>
-                <td>Experience level </td>
-                <td></td>
-                <td >...</td>
-            </tr>
-
-
-        </table>
-    </div>
-    <div class="col-sm-8" >
-
-
-        <form method="POST" action="">
-            <h3 class = "mt-4"> give a role :</h3>
-            <hr/>
-            <!-- Form levels error messages here -->
-
-            <p th:utext="${u.idUser}"></p>
-
-
-            <form method="POST" th:action="@{/Role_user/save/{id}(id=${u.idUser})}"} th:object="${userR}">
-                <h3 class = "mt-4"> give a role :</h3>
-                <hr/>
-                <!-- Form levels error messages here -->
-
-                <p th:utext="${u.idUser}"></p>
-
-
-
-
-                <div class = "form-group row ">
-                    <label for = "Role" class = "col-sm-2 col-form-label">Role </label>
-                    <div class = "col-sm-4"  style="width:100%;" >
-                        <select style="width:100%; height:100%;"   >
-
-                            <c:forEach th:each="i : ${roles}">
-                                <option th:value="${i.id}"  th:text="${i.name}" > </option>
-                            </c:forEach>
-                        </select>
-
-                    </div>
-                </div>
-
-
-
-
-
-                <div class = "form-group row">
-                    <div class = "col-sm-10">
-                        <button type = "submit" class = "btn btn-primary" style="position:center;">Affect Role</button>
-                    </div>
-                </div>
-            </form>
-
-    </div>
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class = "form-group row">
-                <div class = "col-sm-10">
-                    <button type = "submit" class = "btn btn-primary" style="position:center;">Affect Role</button>
-                </div>
-            </div>
-        </form>
-
-    </div>
-
-    </div>
-
-</div>
-<br>
-<br>
-<div th:insert="fragments/navBar.html ::js"></div>
-</body>
-</html>
+</form>

@@ -21,11 +21,7 @@ import java.util.*;
 public class RoleController {
 
 
-    @Autowired
-   private UserRepository userRepository;
 
-    @Autowired
-    private UserService userService;
     @Autowired
     private RoleService roleService;
 
@@ -114,46 +110,6 @@ public class RoleController {
     }
 
 
-
-
-    @GetMapping("/AffectRole/{id}")
-    public ModelAndView AffectRole(@PathVariable   Integer id ) {
-       User userR =new User();
-        userR=userService.findBy(id);   //to find user id affter clicking on "Affect role button"
-        /*    the code below is only for testing which works but the problem is in the post method which do not work
-         Role role_user = new Role();
-        System.out.println("\n --the role found -------");
-        role_user= roleService.findBy(1);          //get the role by id [{1 , "manager"}, {2, "admin"}...]
-        System.out.println("\n ---------     "+role_user);
-        Set<Role> testR =new HashSet<>();        //transform the Role to a Set's of Role which is a fild in user enitiy see the entity user
-        testR.add(role_user);                    //insert into the sets of role the role that i found
-        userR.setRoles(testR);                   //now affect to userR (instance of user ) the sets of role (testR)
-        userRepository.save(userR);*/              // finaly save
-        ModelAndView mav = new ModelAndView("role_user/giveRole");
-        mav.addObject("u", userR);
-        mav.addObject("roles", roleService.findAll());
-
-
-        return mav;
-    }
-
-
-    @RequestMapping(value = "/save/{id}/{id2}", method = RequestMethod.POST)
-    public ModelAndView saveAffectedRole( User userR ,@PathVariable("id") int id , @PathVariable("id2") int id2) {
-     //   role_user.setId;    userService.findBy(id));
-        userR=userService.findBy(id);
-        Role role_user =new Role();
-        role_user= roleService.findBy(id2);
-        Set<Role> testR =new HashSet<>();
-        testR.add(role_user);
-        userR.setRoles(testR);
-        userRepository.save(userR);
-
-
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/User/userList");
-        return new ModelAndView(redirectView);
-    }
 
 
 

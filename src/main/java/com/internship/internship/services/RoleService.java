@@ -48,6 +48,11 @@ public class RoleService {
         userRepository.save(user);
     }
 
-
+    public Set<Role> getUserRoles(User user){
+        return user.getRoles();
+    }
+    public List<Role> getUserNotRoles(User user){
+        return roleRepository.getUserNotRoles(user.getIdUser());
+    }
 
 }

@@ -59,13 +59,14 @@ private RoleRepository roleRepository;
         return userRepository.save(user);
     }
 
+
+
+
     public User update(User user, int idUser) {
         User oldUser = userRepository.findById(idUser).get();
         System.out.println(" the old one::::" + oldUser);
         oldUser.setIdUser(user.getIdUser());
-        return null;
-    }
-      /*  oldUser.setFirstName(user.getFirstName());
+        oldUser.setFirstName(user.getFirstName());
         oldUser.setLastName(user.getLastName());
         oldUser.setHireDate(user.getHireDate());
         oldUser.setAddress(user.getAddress());
@@ -73,11 +74,14 @@ private RoleRepository roleRepository;
         oldUser.setPassword(user.getPassword());
         oldUser.setTel(user.getTel());
         oldUser.setBirthDate(user.getBirthDate());
+        oldUser.setRoles(user.getRoles());
+        oldUser.setEmail(user.getEmail());
         oldUser.setDepartment(user.getDepartment());
         System.out.println("the new Titile is::::" + user.getFirstName());
         System.out.println("the new to user" + user);
         userRepository.save(user);
-        return user;*/
+        return user;
+    }
 
 
 
@@ -91,28 +95,6 @@ private RoleRepository roleRepository;
 
 
 
-    /*@Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return new User("bara", passwordEncoder().encode("000000"));
-    }*/
-
-/*
-    public void login(String email, String password) {
-       if( userRepository.findByEmail("gmail@gmail.com") == null){
-           System.out.println("\n there is no user with this email \n");
-       }else{
-           System.out.println("\n ok there is a user \n");
-         User k=  userRepository.findByEmail(email);
-
-           if (k.getPassword() == passwordEncoder().encode("gmail")  ){
-               System.out.println("\n password coorect \n");
-           }else {
-               System.out.println("not okkkkkkkk\n");
-           }
-
-       }
-
-    }*/
 
 
 

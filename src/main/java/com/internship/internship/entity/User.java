@@ -25,10 +25,7 @@ public class User {
     private  int tel;
     private  String address;
 
-    @ManyToMany(  cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany( fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "id_user"),
