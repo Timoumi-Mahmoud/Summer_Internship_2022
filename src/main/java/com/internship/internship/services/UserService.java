@@ -65,7 +65,7 @@ private RoleRepository roleRepository;
     public User update(User user, int idUser) {
         User oldUser = userRepository.findById(idUser).get();
         System.out.println(" the old one::::" + oldUser);
-        oldUser.setIdUser(user.getIdUser());
+        //oldUser.setIdUser(user.getIdUser());
         oldUser.setFirstName(user.getFirstName());
         oldUser.setLastName(user.getLastName());
         oldUser.setHireDate(user.getHireDate());

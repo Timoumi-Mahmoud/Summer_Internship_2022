@@ -117,6 +117,7 @@ public UserController(UserService UserService){  same as autowired
     }
     @RequestMapping(value ="/save/{id}" , method = RequestMethod.POST)
     public ModelAndView saveUser(@Valid @ModelAttribute("user") User user, @PathVariable("id") int id) {
+
         userService.update(user, id);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/");
