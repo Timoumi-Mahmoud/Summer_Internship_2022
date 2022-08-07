@@ -111,6 +111,7 @@ public UserController(UserService UserService){  same as autowired
 
         ModelAndView mav = new ModelAndView("role_user/giveRole");
         mav.addObject("user", user);
+        mav.addObject("u", userService.findBy(id));
         List<Role> listRoles = roleService.findAll();
         mav.addObject("listRoles", listRoles);
         return mav;
@@ -122,6 +123,12 @@ public UserController(UserService UserService){  same as autowired
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/");
         return new ModelAndView(redirectView);
+    }
+
+    @GetMapping("/login")
+    public ModelAndView  loginPage() {
+        ModelAndView mav = new ModelAndView("user/login");
+        return mav;
     }
 
 
