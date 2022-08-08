@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name = "department")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","users"})
-public class Department {
+public class Department extends Auditable<String> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

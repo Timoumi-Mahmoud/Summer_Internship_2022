@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User extends Auditable<String> {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)

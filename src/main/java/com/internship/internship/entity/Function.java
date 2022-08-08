@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Function {
+public class Function  extends Auditable<String> {
 
     @Id
     @Column(name = "id_function")
