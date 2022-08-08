@@ -4,12 +4,13 @@ import com.internship.internship.AppUser.UserRepository;
 import com.internship.internship.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class adminController {
 
 @Autowired
@@ -56,5 +57,12 @@ private UserRepository userRepository;
 public List<User> users(){
         return userRepository.findAll();}
 
+
+    class LoginController {
+        @GetMapping("/login")
+        String login() {
+            return "login";
+        }
+    }
 
 }
