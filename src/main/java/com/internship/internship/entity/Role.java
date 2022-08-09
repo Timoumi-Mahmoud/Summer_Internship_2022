@@ -1,6 +1,7 @@
 package com.internship.internship.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "roles")
@@ -11,6 +12,9 @@ public class Role  extends Auditable<String> {
     private Integer id;
     private String name;
     private String descriptionOfTheRole;
+
+
+
 
 
     public Role(Integer id, String name, String descriptionOfTheRole) {

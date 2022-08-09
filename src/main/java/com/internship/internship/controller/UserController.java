@@ -60,10 +60,9 @@ public UserController(UserService UserService){  same as autowired
 
 
     @GetMapping("delete/{id}")
-    public String  remove( @PathVariable int id){
+    public RedirectView  remove( @PathVariable int id){
         userService.delete(id);
-        return "redirect:/";
-    }
+        return new RedirectView("/User/userList");    }
 
 
 

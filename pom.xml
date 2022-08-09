@@ -68,11 +68,12 @@
 
 		<!--for chowing changes without restart my server-->
 
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
 			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
 
 		<dependency>

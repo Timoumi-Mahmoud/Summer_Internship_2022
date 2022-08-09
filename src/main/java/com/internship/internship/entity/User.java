@@ -26,7 +26,7 @@ public class User extends Auditable<String> {
     private  int tel;
     private  String address;
 
-    @ManyToMany( fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "id_user"),

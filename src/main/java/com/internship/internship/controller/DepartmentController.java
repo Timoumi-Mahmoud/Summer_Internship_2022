@@ -96,7 +96,7 @@ public class DepartmentController {
         departmentRepository.save(department);
         ModelAndView mav = new ModelAndView("department/update");
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/Department/list");
+        redirectView.setUrl("/Department/add");
         return new ModelAndView(redirectView);
         }
 

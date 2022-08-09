@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class adminController {
 
 @Autowired
@@ -56,13 +56,13 @@ private UserRepository userRepository;
 @GetMapping("/users")
 public List<User> users(){
         return userRepository.findAll();}
-
+/*
 
     class LoginController {
         @GetMapping("/login")
         String login() {
             return "login";
         }
-    }
+    }*/
 
 }
