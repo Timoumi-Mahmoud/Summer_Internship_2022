@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="test.html">
+<head  th:insert="test.html :: headfragment">
+
+</head>
+<body>
+<th:block th:insert="test.html ::navv">
+
+    <div layout:fragment="content">
+        <!-- page content -->
+
+        <!--end page content --->
+    </div>
+</th:block>
+<div th:insert="test.html ::js"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

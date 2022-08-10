@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html xmlns:th="http:www.thymeleaf.org">
-<head th:insert="fragments/navBar.html :: head" >
-    <meta charset="ISO-8859-1">
-    <title></title>
-</head>
-<body >
-<div th:insert="~{fragments/navBar.html::navbar}" ></div>
 
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="test.html">
+<head  th:insert="test.html :: headfragment">
+
+</head>
 <body>
+<th:block th:insert="test.html ::navv">
+
+    <div layout:fragment="content">
 <div class="container-lg">
     <div class="table-responsive">
         <div class="table-wrapper">
@@ -71,10 +73,17 @@
     </div>
 </div>
 
+    </div>
+</th:block>
+<div th:insert="test.html ::js"></div>
+
 </body>
 
-<div th:insert="fragments/navBar.html :: js"></div>
 
 
-</body>
+
+
+
+
+
 </html>

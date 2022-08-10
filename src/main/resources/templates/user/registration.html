@@ -34,7 +34,7 @@
         </div>
         <div class = "form-group row ">
             <label for = "First Name" class = "col-sm-2 col-form-label">First Name</label>
-            <div class = "col-sm-4">
+            <div class = "col-sm-6">
                 <input th:field="*{firstName}"  type = "text" class = "form-control" placeholder = "Your first name ...">
             </div>
             <div class="col-sm-4">
@@ -44,7 +44,7 @@
 
         <div class = "form-group row ">
             <label for = "Last Name" class = "col-sm-2 col-form-label">Last Name</label>
-            <div class = "col-sm-4">
+            <div class = "col-sm-6">
                 <input th:field="*{lastName}"  type = "text" class = "form-control" placeholder = "Your last name ...">
             </div>
             <div class="col-sm-4">
@@ -56,7 +56,7 @@
 
         <div class = "form-group row ">
             <label for = "email" class = "col-sm-2 col-form-label mr-0">Email ....</label>
-            <div class = "col-sm-4">
+            <div class = "col-sm-6">
                 <input th:field="*{email}"  type = "text" class = "form-control" placeholder = "Your email ...">
             </div>
             <div class="col-sm-4">
@@ -65,7 +65,7 @@
         </div>
         <div class = "form-group row ">
             <label for = "password" class = "col-sm-2 col-form-label mr-0">password ....</label>
-            <div class = "col-sm-4">
+            <div class = "col-sm-6">
                 <input th:field="*{password}"  type = "password" class = "form-control" placeholder = "A solid passwor ...">
             </div>
             <div class="col-sm-4">
@@ -74,7 +74,7 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-md-4 control-label">Your Gender?</label>
+            <label class="col-md-5 control-label">Your Gender?</label>
             <div class="col-md-4">
                 <div class="radio">
                     <label>
@@ -103,7 +103,7 @@
 
         <div class = "form-group row ">
             <label for = "tel" class = "col-sm-2 col-form-label">tel</label>
-            <div class = "col-sm-4">
+            <div class = "col-sm-6">
                 <input th:field="*{tel}"  type = "text" class = "form-control" placeholder = "Your phone number ...">
             </div>
             <div class="col-sm-4">
@@ -114,8 +114,8 @@
 
         <div class = "form-group row ">
             <label for = "birthDate" class = "col-sm-2 col-form-label">birthDate date</label>
-            <div class = "col-sm-4">
-                <input type="date" th:field="${user.birthDate}" id="student-birtvh-date"/>
+            <div class = "col-sm-6">
+                <input type="date" th:field="${user.birthDate}" id="student-birtvh-date"   style="width: 200px"/>
 
             </div>
             <div class="col-sm-4">
@@ -124,26 +124,17 @@
         </div>
         <div class = "form-group row ">
             <label for = "hireDae" class = "col-sm-2 col-form-label">hire Date date</label>
-            <div class = "col-sm-4">
-                <input type="date" th:field="${user.hireDate}" id="student-birtvh-date"/>
+            <div class = "col-sm-6">
+                <input type="date" th:field="${user.hireDate}" id="student-birtvh-date"  style="width: 200px"/>
 
             </div>
             <div class="col-sm-4">
                 <span class="text-danger"> </span>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
         <div class = "form-group row">
             <label for = "Adresse" class = "col-sm-2 col-form-label">Adresse</label>
-            <div class = "col-sm-4">
+            <div class = "col-sm-6">
                 <textarea   th:field="*{address}" class = "form-control" rows = "3" placeholder = "Your address ..."></textarea>
             </div>
             <div class="col-sm-4">
@@ -156,8 +147,8 @@
 
         <div class = "form-group row ">
             <label for = "departemnt" class = "col-sm-2 col-form-label">departemnt </label>
-            <div class = "col-sm-4">
-                <select th:field="*{department}">
+            <div class = "col-sm-6">
+                <select th:field="*{department}"  style="width: 200px">
                     <c:forEach th:each="i : ${departs}">
                         <option th:value="${i.idDepartment}"  th:text="${i.departmentName}" > </option>
                     </c:forEach>

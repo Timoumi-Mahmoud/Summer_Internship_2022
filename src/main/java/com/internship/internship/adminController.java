@@ -1,12 +1,14 @@
 package com.internship.internship;
 
 import com.internship.internship.AppUser.UserRepository;
+import com.internship.internship.entity.Department;
 import com.internship.internship.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -64,5 +66,20 @@ public List<User> users(){
             return "login";
         }
     }*/
+
+
+
+    @GetMapping("/test")
+    public ModelAndView addDepForm() {
+        ModelAndView mav = new ModelAndView("test");
+        return mav;
+    }
+
+    @GetMapping("/testTwo")
+    public ModelAndView addDepFormTwo() {
+        ModelAndView mav = new ModelAndView("testTwo");
+        return mav;
+    }
+
 
 }

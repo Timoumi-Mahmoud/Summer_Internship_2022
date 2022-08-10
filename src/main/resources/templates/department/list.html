@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="test.html">
+<head  th:insert="test.html :: headfragment">
+
+</head>
+<body>
+<th:block th:insert="test.html ::navv">
+
+    <div layout:fragment="content">
+        <!-- page content -->
+
+
+        <div class="container-lg">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-8"><h2>Departments <b>Details</b></h2></div>
+
+                        </div>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Phone </th>
+
+                            <th>Actions:::::::</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr th:each="i : ${departs}">
+                            <td th:text="${i.departmentName}">Avatar</td>
+                            <td th:text="${i.responsibleEmail}">Email of the responsable </td>
+                            <td th:text="${i.responsiblePhone}">Phone number </td>
+
+
+                            <td>
+
+                                <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idDepartment})}"  ><i class="material-icons">&#xE254;</i></a>
+                                <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idDepartment})}"    ><i class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--end page content --->
+
+
+    </div>
+</th:block>
+<div th:insert="test.html ::js"></div>
+
+</body>
+
+
+
+
+
+
+

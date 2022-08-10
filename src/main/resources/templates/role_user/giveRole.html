@@ -1,72 +1,30 @@
 
 
 
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="test.html">
+<head  th:insert="test.html :: headfragment">
 
-<html xmlns:th="http:www.thymeleaf.org">
-<head th:insert="fragments/navBar.html :: head" >
-    <meta charset="ISO-8859-1">
-    <title> index page</title>
 </head>
 <body>
+<th:block th:insert="test.html ::navv">
 
-<div th:insert="~{fragments/navBar.html::navbar}" >jjjjjjj</div>
+    <div layout:fragment="content">
+        <!-- page content -->
 
 
 <h3> Affect Roles to users::</h3>
 
 <a th:href="@{/User/userList}" >Back to users List</a>
 
-<br/><br/>
-
-
-<!--
-<div id="page-content-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Simple Sidebar</h1>
-
-             dddddddddddddddd
-                <div th:switch="${u.sex}">
-                    <span th:case="'Female'"> Madame </span>
-                    <span th:case="'Male'">Monsieur</span>
-                    <span th:case="*">User is some other thing</span>
-                    <span th:utext="${u.firstName} +' ' + ${u.firstName}" ></span>
-
-                </div>
-
-                <td th:text="${u.birthDate}"></td>
-                <h3 th:text="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd ')}"></h3>
-                <br>
-
-<span th:text="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd ' )} + ' ' + ${u.birthDate}"></span>
-
-               working in the department <span th:utext="${u.department.departmentName}"></span> , He have     Month of expierience .</p>
-                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div style="margin-left: 10%;">
-
-
-    <br/><br/>
-
-
-
-</div>
-
-<div />
--->
-
-<div style="margin-left: 10%; font: monospace; color:red;" >
+<div style="margin-left: 10%; font-family: monospace; color:darksalmon;" >
 
     <div class="row">
         <div class="col-sm-4">
             <br>
             <br>
-            <table border="0" style="margin_top:5px; font:monospace; font-size:20px" class="title "  >
+            <table border="0" style="margin_top:5px; font-family:monospace; font-size:20px" class="title "  >
 
                 <tr >
 
@@ -100,21 +58,17 @@
                 </tr>
                 <tr>
                     <td> <mark> Department</mark> </td>
-                    <td></td>
+                    <td>:</td>
                     <td th:utext="${u.department.departmentName}">:</td>
                 </tr>
                 <br>
 
                 <tr>
                     <td><mark>Age</mark></td>
-                    <td></td>
+                    <td>:</td>
                     <td >...</td>
                 </tr>
-                <tr>
-                    <td>Experience level </td>
-                    <td></td>
-                    <td >...</td>
-                </tr>
+
 
 
             </table>
@@ -144,7 +98,7 @@
 
 
                 <div class="form-group row">
-                    <label class="col-4 col-form-label">Roles: </label>
+                    <label class="col-4 col-form-label" style="font-family: 'Elephant' ; font-size: 50px; color: #491217" >Roles: </label>
                     <div class="col-8">
                         <th:block th:each="role: ${listRoles}">
                             <input type="checkbox" th:field="*{roles}"
@@ -161,17 +115,12 @@
 
         </form>
 
+            <!--end page content --->
         </div>
-
-    </div>
-
-</div>
-<br>
-<br>
-<div th:insert="fragments/navBar.html ::js"></div>
+</th:block>
+<div th:insert="test.html ::js"></div>
 </body>
 </html>
-
 
 
 

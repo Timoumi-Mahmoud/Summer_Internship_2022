@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html xmlns:th="http:www.thymeleaf.org">
-<head th:insert="fragments/navBar.html :: head" >
-    <meta charset="ISO-8859-1">
-    <title></title>
-</head>
-<body >
-<div th:insert="~{fragments/navBar.html::navbar}" >jjjjjjj</div>
 
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="test.html">
+<head  th:insert="test.html :: headfragment">
+
+</head>
 <body>
+<th:block th:insert="test.html ::navv">
+
+    <div layout:fragment="content">
+        <!-- page content -->
 <div class="container-lg">
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2>Roles <b>Details</b></h2></div>
-                    <div class="col-sm-4">
-                        <button type="button"class="btn btn-info " style="color:red"><i class="fa fa-plus" ></i>   <a th:href="@{/Role/addRole}" style="color:red;">Add New</a></button>
-                        <button type="button"class="btn btn-info " style="color:red"><i class="fa fa-plus" ></i>   <a href="#" style="color:red;">See other things</a></button>
 
-
-                    </div>
 
                 </div>
             </div>
@@ -49,9 +47,11 @@
     </div>
 </div>
 
-</body>
+        <!--end page content --->
 
-<div th:insert="fragments/navBar.html :: js"></div>
+
+    </div>
+</th:block>
+<div th:insert="test.html ::js"></div>
 
 </body>
-</html>

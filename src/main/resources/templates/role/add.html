@@ -1,17 +1,18 @@
 
+
 <!DOCTYPE html>
-<html xmlns:th="http:www.thymeleaf.org">
-<head th:insert="fragments/navBar.html :: head" >
-    <meta charset="ISO-8859-1">
-    <title></title>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="test.html">
+<head  th:insert="test.html :: headfragment">
+
 </head>
-<body  >
+<body>
+<th:block th:insert="test.html ::navv">
 
-<div th:insert="~{fragments/navBar.html::navbar}" ></div>
+    <div layout:fragment="content">
+        <!-- page content -->
 
-</div>
-<br>
-<div class="com">
     <form method="post" th:action="@{saveRole}" th:object="${role}">
         <h2 class = "mt-4"> Add a new role::</h2>
         <hr/>
@@ -52,7 +53,12 @@
         </div>
 
     </form>
-</div>
-<div th:insert="fragments/navBar.html ::js"></div>
+
+        <!--end page content --->
+
+
+    </div>
+</th:block>
+<div th:insert="test.html ::js"></div>
+
 </body>
-</html>
