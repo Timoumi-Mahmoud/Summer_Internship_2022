@@ -23,17 +23,17 @@
 
         </div>
     </nav>
-    <form method="post" th:action="@{saveUser}" th:object="${user}">
-        <h2 class = "mt-4">Submit an item</h2>
+    <form method="post" th:action="@{saveUser}" th:object="${user}" style="margin-left: 70px">
+        <h2 class = "mt-4">Please provide correct information :</h2>
         <hr/>
         <!-- Form levels error messages here -->
-        <div class = "form-group row ">
+        <div class = "form-group row  ">
             <div class="col-sm-8">
                 <span class="text-danger" > </span>
             </div>
         </div>
         <div class = "form-group row ">
-            <label for = "First Name" class = "col-sm-2 col-form-label">First Name</label>
+            <label for = "First Name" class = "col-sm-2 col-form-label">First Name :</label>
             <div class = "col-sm-6">
                 <input th:field="*{firstName}"  type = "text" class = "form-control" placeholder = "Your first name ...">
             </div>
@@ -43,7 +43,7 @@
         </div>
 
         <div class = "form-group row ">
-            <label for = "Last Name" class = "col-sm-2 col-form-label">Last Name</label>
+            <label for = "Last Name" class = "col-sm-2 col-form-label">Last Name :</label>
             <div class = "col-sm-6">
                 <input th:field="*{lastName}"  type = "text" class = "form-control" placeholder = "Your last name ...">
             </div>
@@ -55,7 +55,7 @@
 
 
         <div class = "form-group row ">
-            <label for = "email" class = "col-sm-2 col-form-label mr-0">Email ....</label>
+            <label for = "email" class = "col-sm-2 col-form-label mr-0">Email :</label>
             <div class = "col-sm-6">
                 <input th:field="*{email}"  type = "text" class = "form-control" placeholder = "Your email ...">
             </div>
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class = "form-group row ">
-            <label for = "password" class = "col-sm-2 col-form-label mr-0">password ....</label>
+            <label for = "password" class = "col-sm-2 col-form-label mr-0">Password :</label>
             <div class = "col-sm-6">
                 <input th:field="*{password}"  type = "password" class = "form-control" placeholder = "A solid passwor ...">
             </div>
@@ -74,7 +74,7 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-md-5 control-label">Your Gender?</label>
+            <label class="col-md-5 control-label">Your Gender :</label>
             <div class="col-md-4">
                 <div class="radio">
                     <label>
@@ -88,21 +88,8 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class = "form-group row ">
-            <label for = "tel" class = "col-sm-2 col-form-label">tel</label>
+            <label for = "tel" class = "col-sm-2 col-form-label">Phone number :</label>
             <div class = "col-sm-6">
                 <input th:field="*{tel}"  type = "text" class = "form-control" placeholder = "Your phone number ...">
             </div>
@@ -113,7 +100,7 @@
 
 
         <div class = "form-group row ">
-            <label for = "birthDate" class = "col-sm-2 col-form-label">birthDate date</label>
+            <label for = "birthDate" class = "col-sm-2 col-form-label">BirthDate date :</label>
             <div class = "col-sm-6">
                 <input type="date" th:field="${user.birthDate}" id="student-birtvh-date"   style="width: 200px"/>
 
@@ -123,7 +110,7 @@
             </div>
         </div>
         <div class = "form-group row ">
-            <label for = "hireDae" class = "col-sm-2 col-form-label">hire Date date</label>
+            <label for = "hireDae" class = "col-sm-2 col-form-label">Hire Date date :</label>
             <div class = "col-sm-6">
                 <input type="date" th:field="${user.hireDate}" id="student-birtvh-date"  style="width: 200px"/>
 
@@ -133,7 +120,7 @@
             </div>
         </div>
         <div class = "form-group row">
-            <label for = "Adresse" class = "col-sm-2 col-form-label">Adresse</label>
+            <label for = "Adresse" class = "col-sm-2 col-form-label">Adresse :</label>
             <div class = "col-sm-6">
                 <textarea   th:field="*{address}" class = "form-control" rows = "3" placeholder = "Your address ..."></textarea>
             </div>
@@ -146,9 +133,10 @@
 
 
         <div class = "form-group row ">
-            <label for = "departemnt" class = "col-sm-2 col-form-label">departemnt </label>
+            <label for = "departemnt" class = "col-sm-2 col-form-label">Departemnt :</label>
             <div class = "col-sm-6">
-                <select th:field="*{department}"  style="width: 200px">
+                <select th:field="*{department}"  style="width: 200px ; height: 45px">
+                    <option value="">--------------------------</option>
                     <c:forEach th:each="i : ${departs}">
                         <option th:value="${i.idDepartment}"  th:text="${i.departmentName}" > </option>
                     </c:forEach>
@@ -156,13 +144,15 @@
 
             </div>
         </div>
+        <br><br>
+
         <div class = "form-group row">
             <div class = "col-sm-10">
-                <button type = "submit" class = "btn btn-primary">Submit</button>
+                <button type = "submit" class = "btn btn-primary" style="position: center;">Submit</button>
                 <input type="hidden" />
             </div>
         </div>
-
+        <br><br> <br><br>
     </form>
 </div>
 

@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value="/Function")
@@ -59,13 +60,13 @@ public class FunctionController {
         return new ModelAndView(viewName , model);
     }
 
-
     ////////////////////////
     @GetMapping("/addFunction")
     public ModelAndView addForm() {
         ModelAndView mav = new ModelAndView("function/add");
         Function function = new Function();
         mav.addObject("function", function);
+        mav.addObject("functionMother", functionService.findAll());
         mav.addObject("fun", functionService.findAll());
         return mav;
     }
@@ -77,17 +78,15 @@ public class FunctionController {
         }
         functionService.save(function);
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/Function/addFunction");
+        redirectView.setUrl("/Function/list");
         return new ModelAndView(redirectView);
     }
-
-
-
-
     @GetMapping("/edit/{id}")
     public ModelAndView showFormForUpdate(@PathVariable("id") int id) {
         Function function = functionService.findBy(id);
         ModelAndView mav = new ModelAndView("function/update");
+        mav.addObject("functionMother", functionService.findAll());
+
         mav.addObject("function", function);
         return mav;
     }

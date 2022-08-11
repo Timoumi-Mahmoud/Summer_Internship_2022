@@ -81,5 +81,9 @@ public List<User> users(){
         return mav;
     }
 
-
+    @GetMapping("/login")
+    public ModelAndView login() {
+        ModelAndView mav = new ModelAndView("login");
+        return mav;
+    }
 }

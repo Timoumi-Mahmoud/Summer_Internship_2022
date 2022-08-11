@@ -1,11 +1,11 @@
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="test.html">
-<head  th:insert="test.html :: headfragment">
+      layout:decorate="fragments/adminTemplate.html ">
+<head  th:insert="fragments/adminTemplate.html  :: headfragment">
 
 </head>
 <body>
-<th:block th:insert="test.html ::navv">
+<th:block th:insert="fragments/adminTemplate.html  ::nav">
 
     <div layout:fragment="content">
         <!-- page content -->
@@ -50,6 +50,6 @@
         <!--end page content --->
     </div>
 </th:block>
-<div th:insert="test.html ::js"></div>
+<div th:insert="fragments/adminTemplate.html ::js"></div>
 </body>
 </html>

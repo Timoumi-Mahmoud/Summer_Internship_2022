@@ -1,12 +1,12 @@
 
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="test.html">
-<head  th:insert="test.html :: headfragment">
+      layout:decorate="fragments/adminTemplate.html ">
+<head  th:insert="fragments/adminTemplate.html :: headfragment">
 
 </head>
 <body>
-<th:block th:insert="test.html ::navv">
+<th:block th:insert="fragments/adminTemplate.html  ::nav">
 
     <div layout:fragment="content">
         <!-- page content -->
@@ -32,6 +32,24 @@
         </div>
 
 
+
+
+        <div class = "form-group row ">
+            <label for = "departemnt" class = "col-sm-2 col-form-label">Departemnt :</label>
+            <div class = "col-sm-6">
+                <select th:field="*{parent}"  style="width: 200px ; height: 45px">
+                    <option value="">--------------------------</option>
+                    <c:forEach th:each="i : ${functionMother}">
+                        <option th:value="${i.idFunction}"  th:text="${i.nameFunction}" > </option>
+                    </c:forEach>
+                </select>
+
+            </div>
+        </div>
+        <br><br>
+
+
+
         <div class = "form-group row">
             <div class = "col-sm-10">
                 <button type = "submit" class = "btn btn-primary">Submit</button>
@@ -39,10 +57,12 @@
             </div>
         </div>
 
+
+
     </form>
         <!--end page content --->
     </div>
 </th:block>
-<div th:insert="test.html ::js"></div>
+<div th:insert="fragments/adminTemplate.html ::js"></div>
 </body>
 </html>

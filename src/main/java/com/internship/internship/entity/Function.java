@@ -15,6 +15,7 @@ public class Function  extends Auditable<String> {
     private String nameFunction;
 
 
+
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
@@ -26,8 +27,7 @@ public class Function  extends Auditable<String> {
     )
     private Set<Role> RolesF = new HashSet<>();
 
-
-    @OneToOne
+    @ManyToOne
     private Function parent;
 
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
@@ -42,6 +42,12 @@ public class Function  extends Auditable<String> {
         this.parent = parent;
     }
 
+    public Function(int idFunction, String nameFunction, Function parent, Set<Function> children) {
+        this.idFunction = idFunction;
+        this.nameFunction = nameFunction;
+        this.parent = parent;
+        this.children = children;
+    }
 
     public int getIdFunction() {
         return idFunction;
