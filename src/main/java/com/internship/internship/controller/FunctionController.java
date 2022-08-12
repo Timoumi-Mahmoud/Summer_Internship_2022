@@ -21,32 +21,12 @@ import java.util.Set;
 @RequestMapping(value="/Function")
 public class FunctionController {
 
-
-
     @Autowired
     private FunctionService functionService;
 
     @Autowired
     private FunctionRepository functionRepository;
-    /*
-        @RequestMapping(value = "/list")
-        public List<Role> userList() {return roleService.findAll();}
 
-        @RequestMapping(value = "/list/{id}")
-        public Role findById(@PathVariable int id) {
-            return roleService.findBy(id);
-        }
-
-        @PostMapping(value = "/list/new")
-        public Role createNew(@RequestBody Role role){
-            return   roleService.save(role);
-        }
-
-        @PostMapping(value = "/update/{id}")
-        public Role update(@RequestBody Role role, @PathVariable int id){
-            return   roleService.update(role, id);}
-
-    */
     @GetMapping("delete/{id}")
     public RedirectView remove(@PathVariable int id){
         functionService.delete(id);
@@ -84,6 +64,7 @@ public class FunctionController {
         redirectView.setUrl("/Function/list");
         return new ModelAndView(redirectView);
     }
+    //update
     @GetMapping("/edit/{id}")
     public ModelAndView showFormForUpdate(@PathVariable("id") int id) {
         Function function = functionService.findBy(id);

@@ -25,7 +25,6 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-
   @Autowired
   private  RoleService roleService;
   @Autowired
@@ -34,12 +33,6 @@ public class UserController {
 /*
 public UserController(UserService UserService){  same as autowired
 }*/
-
-
-
-
-
-
 
     @RequestMapping(value = "/list/{id}")
     public User findById(@PathVariable int id) {
@@ -99,9 +92,6 @@ public UserController(UserService UserService){  same as autowired
         redirectView.setUrl("/");
         return new ModelAndView(redirectView);
     }
-
-
-
     @GetMapping("/users/edit/{id}")
     public ModelAndView editUser(@PathVariable("id") int id) {
         User user = userService.findBy(id);

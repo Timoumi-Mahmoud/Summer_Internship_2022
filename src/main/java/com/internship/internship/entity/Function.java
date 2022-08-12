@@ -20,17 +20,17 @@ public class Function  extends Auditable<String> {
     private String nameFunction;
 
 
-
+/*
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
     @JoinTable(
             name = "Functions_roles",
-            joinColumns = @JoinColumn(name = "id_function"),
-            inverseJoinColumns = @JoinColumn(name = "id_role")
+            joinColumns = @JoinColumn(name = "id_role"),
+            inverseJoinColumns = @JoinColumn(name = "id_function")
     )
-    private Set<Role> RolesF = new HashSet<>();
+    private Set<Role> RolesF = new HashSet<>();*/
 
     @ManyToOne
     private Function parent;
@@ -75,13 +75,6 @@ public class Function  extends Auditable<String> {
         this.nameFunction = nameFunction;
     }
 
-    public Set<Role> getRolesF() {
-        return RolesF;
-    }
-
-    public void setRolesF(Set<Role> rolesF) {
-        RolesF = rolesF;
-    }
 
     public com.internship.internship.entity.Function getParent() {
         return parent;

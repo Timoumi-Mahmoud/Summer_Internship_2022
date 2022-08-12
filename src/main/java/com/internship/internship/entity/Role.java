@@ -3,6 +3,7 @@ package com.internship.internship.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,6 +18,21 @@ public class Role  extends Auditable<String> {
     @Size(min = 10, max = 200, message
             = "Description must be between 10 and 200 characters")
     private String descriptionOfTheRole;
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(
+            name = "Functions_roles",
+            joinColumns = @JoinColumn(name = "id_function"),
+            inverseJoinColumns = @JoinColumn(name = "id_role")
+    )
+    private Set<Function> RolesFunction = new HashSet<>();
+
+
+
+
 
 
 
@@ -65,6 +81,13 @@ public class Role  extends Auditable<String> {
         this.name = name;
     }
 
+    public Set<Function> getRolesFunction() {
+        return RolesFunction;
+    }
+
+    public void setRolesFunction(Set<Function> rolesFunction) {
+        RolesFunction = rolesFunction;
+    }
 
     @Override
     public String toString() {

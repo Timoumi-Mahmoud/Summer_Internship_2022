@@ -23,31 +23,13 @@ public class DepartmentController {
     @Autowired
     private DepartmentRepository departmentRepository;
 
-
-
-
     @GetMapping("/list")
     public ModelAndView deptList() {
         ModelAndView mav = new ModelAndView("department/list");
         mav.addObject("departs",departmentService.findAll() );
         return mav;
     }
-/*
-        @GetMapping("/list/{id}")
-        public ModelAndView  listUserDepartment(@PathVariable Integer id) {
-            String viewName = "department/listUser";
 
-            System.out.println(departmentRepository.listUser(id));
-            List a= departmentRepository.listUser(id);
-            for (int i = 0; i < a.size(); i++) {
-                System.out.println(a.get(i));
-            }
-            Map<String, List<String>> model = new HashMap<String, List<String>>();
-            model.put("departs", departmentRepository.listUser(id));
-            return new ModelAndView(viewName, model);
-    }
-
-*/
     @GetMapping("delete/{id}")
     public RedirectView remove(@PathVariable int id) {
         departmentService.delete(id);
@@ -73,7 +55,7 @@ public class DepartmentController {
         }
             departmentService.save(department);
             RedirectView redirectView = new RedirectView();
-            redirectView.setUrl("/Department/add");
+            redirectView.setUrl("/Department/list");
 
             return new ModelAndView(redirectView);
         }
