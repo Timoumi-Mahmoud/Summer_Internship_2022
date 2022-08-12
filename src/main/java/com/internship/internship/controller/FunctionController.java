@@ -1,6 +1,7 @@
 package com.internship.internship.controller;
 
 
+import com.internship.internship.entity.Department;
 import com.internship.internship.entity.Function;
 import com.internship.internship.repository.FunctionRepository;
 import com.internship.internship.services.FunctionService;
@@ -54,10 +55,12 @@ public class FunctionController {
 
     @GetMapping("/list")
     public ModelAndView RoleList()  {
-        Map<String, List<Function>> model = new HashMap<String, List<Function>>();
-        String viewName = "function/list";
-        model.put("function",  functionService.findAll());
-        return new ModelAndView(viewName , model);
+        ModelAndView mav = new ModelAndView("function/list");
+        mav.addObject("function",  functionService.findAll());
+     //  mav.addObject("ff",functionService.findBy(3).getNameFunction()     );
+
+
+        return mav;
     }
 
     ////////////////////////

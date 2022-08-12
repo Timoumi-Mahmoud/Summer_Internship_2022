@@ -1,6 +1,8 @@
 package com.internship.internship.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -10,7 +12,10 @@ public class Role  extends Auditable<String> {
     @Column(name = "id_role")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank(message = "this field can't be empty")
     private String name;
+    @Size(min = 10, max = 200, message
+            = "Description must be between 10 and 200 characters")
     private String descriptionOfTheRole;
 
 

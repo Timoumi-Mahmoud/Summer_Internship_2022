@@ -9,6 +9,7 @@ import com.internship.internship.services.RoleService;
 import com.internship.internship.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -39,11 +40,6 @@ public UserController(UserService UserService){  same as autowired
 
 
 
-    @RequestMapping(value = "/list")
-    public List<User> userList() {
-
-        return userService.findAll();
-    }
 
     @RequestMapping(value = "/list/{id}")
     public User findById(@PathVariable int id) {
@@ -52,18 +48,10 @@ public UserController(UserService UserService){  same as autowired
 
 
 
-
-    @PostMapping(value = "/update/{id}")
-    public User update(@RequestBody User user, @PathVariable int id){
-        return   userService.update(user, id);
-    }
-
-
     @GetMapping("delete/{id}")
     public RedirectView  remove( @PathVariable int id){
         userService.delete(id);
         return new RedirectView("/User/userList");    }
-
 
 
 
@@ -87,15 +75,25 @@ public UserController(UserService UserService){  same as autowired
     @GetMapping("/addUser")
     public ModelAndView addForm() {
         ModelAndView mav = new ModelAndView("user/registration");
+        mav.addObject("departs", departmentService.findAll());
+        mav.addObject("listRoles", roleService.findAll());
         User user = new User();
         mav.addObject("user", user);
         Map<String, List<Department>> departs = new HashMap<String, List<Department>>();
-        mav.addObject("departs", departmentService.findAll());
+
         return mav;
     }
 
     @RequestMapping(value = "/saveUser",method = RequestMethod.POST)
-    public ModelAndView  saveDept( User user) {
+    public ModelAndView  saveUser(@Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            ModelAndView mav = new ModelAndView("user/registration");
+
+            mav.addObject("departs", departmentService.findAll());
+            mav.addObject("listRoles", roleService.findAll());
+          //  return new ModelAndView("/user/registration");
+            return mav;
+        }
         userService.save(user);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/");

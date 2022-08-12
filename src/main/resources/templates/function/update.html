@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<th:block th:insert="fragments/adminTemplate.html  ::navv">
+<th:block th:insert="fragments/adminTemplate.html  ::nav">
 
     <div layout:fragment="content">
         <!-- page content -->
@@ -24,7 +24,7 @@
 
 
     <div class = "form-group row ">
-        <label for = "RoleName" class = "col-sm-2 col-form-label"> Role name</label>
+        <label for = "RoleName" class = "col-sm-2 col-form-label"> Function name</label>
         <div class = "col-sm-4">
             <input th:field="*{nameFunction}"  type = "text" class = "form-control" placeholder = "Mandatory">
         </div>
@@ -38,7 +38,7 @@
 
 
     <div class = "form-group row ">
-        <label for = "departemnt" class = "col-sm-2 col-form-label">Departemnt :</label>
+        <label for = "departemnt" class = "col-sm-2 col-form-label">Under :</label>
         <div class = "col-sm-6">
             <select th:field="*{parent}"  style="width: 200px ; height: 45px">
                 <option value="">--------------------------</option>

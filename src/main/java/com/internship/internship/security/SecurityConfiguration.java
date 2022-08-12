@@ -1,6 +1,8 @@
 package com.internship.internship.security;
 
 
+import com.internship.internship.entity.Role;
+import com.internship.internship.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +22,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private MyUserDetailsService myUserDetailsService;
 
+    private MyUserDetails myUserDetails;
+
+
 
     public SecurityConfiguration (MyUserDetailsService myUserDetailsService){
         this.myUserDetailsService = myUserDetailsService;
@@ -31,14 +36,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProviderBean());
     }
 
+    Role role;
+  // String test= myUserDetails.getAuthorities().toString();
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
             http.authorizeRequests()
                     /// .anyRequest().authenticated()
                     .antMatchers("/").permitAll()
-                        .antMatchers("/admin").hasRole("ADMIN")
+//                    // .antMatchers("/admin/**").hasRole("ADMIN")
                     .antMatchers("/manager").hasRole("MANAGER")
-                  //  .antMatchers("/profile").hasAnyRole("MANAGER","USER")
+               //    .antMatchers("/profile").hasAnyAuthority()
+
+
                     .and().formLogin()
                     .loginProcessingUrl("/signin")
                     .loginPage("/login").permitAll()

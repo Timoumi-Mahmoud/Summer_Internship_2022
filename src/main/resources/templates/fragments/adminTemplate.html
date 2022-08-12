@@ -9,16 +9,11 @@
             <title>Sidebar 01</title>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
             <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" th:href="@{/css/style.css}">
-
        <!--  -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
     </head>
     <body>
     <th:block th:fragment="nav">
@@ -26,16 +21,16 @@
     <div class="wrapper d-flex align-items-stretch">
         <nav id="sidebar">
             <div class="p-4 pt-5">
-                <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+                <img th:src="@{/images/logo.jpg}" class="img logo rounded-circle mb-5" />
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Users</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
-                                <a th:href="@{/User/userList}">Home 1</a>
+                                <a th:href="@{/User/userList}">List of employees</a>
                             </li>
                             <li>
-                                <a href="#">Home 2</a>
+                                <a th:href="@{/User/addUser}">Add new User</a>
                             </li>
                             <li>
                                 <a href="#">Home 3</a>
@@ -85,15 +80,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+
                 </ul>
 
                 <div class="footer">
@@ -131,7 +118,9 @@
                                 <a class="nav-link" href="#">Portfolio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
+                               <div> <form sec:authorize="isAuthenticated()" class="form-inline my-2my-lg-0"form-method="post"th:action="@{/logout}">
+                                    <button class="btn btn-outline-danger my-2my-sm-0btn-sm"type="submit">Logout</button>
+                               </form>    </div>
                             </li>
                         </ul>
                     </div>

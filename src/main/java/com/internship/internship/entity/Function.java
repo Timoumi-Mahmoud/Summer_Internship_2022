@@ -1,10 +1,15 @@
 package com.internship.internship.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","parent"})
+
+
 public class Function  extends Auditable<String> {
 
     @Id
@@ -49,6 +54,11 @@ public class Function  extends Auditable<String> {
         this.children = children;
     }
 
+    public Function(int idFunction, String nameFunction) {
+        this.idFunction = idFunction;
+        this.nameFunction = nameFunction;
+    }
+
     public int getIdFunction() {
         return idFunction;
     }
@@ -87,5 +97,12 @@ public class Function  extends Auditable<String> {
 
     public void setChildren(Set<com.internship.internship.entity.Function> children) {
         this.children = children;
+    }
+
+    @Override
+    public String toString() {
+        return
+               nameFunction ;
+
     }
 }

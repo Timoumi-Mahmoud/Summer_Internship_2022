@@ -1,9 +1,15 @@
 package com.internship.internship.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.internship.internship.entity.Role;
+import org.aspectj.apache.bcel.ExceptionConstants;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,13 +22,23 @@ public class User extends Auditable<String> {
 //@GeneratedValue(strategy = GenerationType.AUTO)
 @Column(name = "id_user")
     private int idUser;
+    @Email(message = "Email is not valid", regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")
+    @NotEmpty(message = "Email cannot be empty")
     private String email;
+    @Size(min = 6, message
+            = "Description must be greater than Six characters")
     private String password;
+    @NotEmpty(message = "first name cannot be empty")
     private  String firstName;
+    @NotEmpty(message = "last ,ame cannot be empty")
     private  String lastName;
     private  String sex;
+
     private Date birthDate;
+
+
     private  Date hireDate;
+
     private  int tel;
     private  String address;
 

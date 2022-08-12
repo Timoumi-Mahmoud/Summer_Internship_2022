@@ -1,11 +1,16 @@
-<html >
-<head>
-    <meta charset = "utf-8">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1, shrink-to-fit = no">
-    <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <title>Internship Application</title>
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragments/adminTemplate.html">
+<head  th:insert="fragments/adminTemplate.html :: headfragment">
+
 </head>
 <body>
+<th:block th:insert="fragments/adminTemplate.html::nav">
+
+    <div layout:fragment="content">
+        <!-- page content -->
 <div class = "container " >
     <nav class = "navbar navbar-expand-sm navbar-dark bg-secondary">
         <a class = "navbar-brand" href = "homepage-static.html"></a>
@@ -38,7 +43,7 @@
                 <input th:field="*{firstName}"  type = "text" class = "form-control" placeholder = "Your first name ...">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger"> </span>
+                <span class="text-danger" th:errors="*{firstName}"> </span>
             </div>
         </div>
 
@@ -48,7 +53,7 @@
                 <input th:field="*{lastName}"  type = "text" class = "form-control" placeholder = "Your last name ...">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger" > </span>
+                <span class="text-danger" th:errors="*{lastName}"> </span>
             </div>
         </div>
 
@@ -60,7 +65,7 @@
                 <input th:field="*{email}"  type = "text" class = "form-control" placeholder = "Your email ...">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger"> </span>
+                <span class="text-danger" th:errors="*{email}"> </span>
             </div>
         </div>
         <div class = "form-group row ">
@@ -69,7 +74,7 @@
                 <input th:field="*{password}"  type = "password" class = "form-control" placeholder = "A solid passwor ...">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger"> </span>
+                <span class="text-danger" th:errors="*{password}"> </span>
             </div>
         </div>
 
@@ -94,7 +99,7 @@
                 <input th:field="*{tel}"  type = "text" class = "form-control" placeholder = "Your phone number ...">
             </div>
             <div class="col-sm-4">
-                <span class="text-danger"> </span>
+                <span class="text-danger" th:errors="*{tel}"> </span>
             </div>
         </div>
 
@@ -106,7 +111,7 @@
 
             </div>
             <div class="col-sm-4">
-                <span class="text-danger"> </span>
+                <span class="text-danger" > </span>
             </div>
         </div>
         <div class = "form-group row ">
@@ -116,7 +121,7 @@
 
             </div>
             <div class="col-sm-4">
-                <span class="text-danger"> </span>
+                <span class="text-danger"   > </span>
             </div>
         </div>
         <div class = "form-group row">
@@ -125,7 +130,7 @@
                 <textarea   th:field="*{address}" class = "form-control" rows = "3" placeholder = "Your address ..."></textarea>
             </div>
             <div class="col-sm-4">
-                <span class="text-danger"> </span>
+                <span class="text-danger" th:errors="*{address}"> </span>
             </div>
         </div>
 
@@ -145,6 +150,20 @@
             </div>
         </div>
         <br><br>
+        <div class="form-group row">
+            <label class="col-4 col-form-label" style="font-family: 'Elephant' ; font-size: 50px; color: #491217" >Roles: </label>
+            <div class="col-8">
+                <th:block th:each="role: ${listRoles}">
+                    <input type="checkbox" th:field="*{roles}"
+                           th:text="${role.name}" th:value="${role.id}" class="m-xl-4"style=" top: .8rem;
+  width: 1.55rem;
+  height: 1.55rem; --moz-column-count: 2;  column-count:2;  -webkit-column-count:2;"  />
+                    <br>
+                </th:block>
+            </div>
+        </div>
+
+
 
         <div class = "form-group row">
             <div class = "col-sm-10">
@@ -161,6 +180,13 @@
 <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" > </script>
 
 
+
+        <!--end page content --->
+    </div>
+</th:block>
+<div th:insert="fragments/adminTemplate.html ::js"></div>
+</body>
+</html>
 
 
 

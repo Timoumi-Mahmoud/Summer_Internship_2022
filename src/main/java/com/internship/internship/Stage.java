@@ -17,7 +17,6 @@ public class Stage {
 	public AuditorAware<String> auditorAware() {
 		return new AuditAware();
 	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(Stage.class, args);
 	}

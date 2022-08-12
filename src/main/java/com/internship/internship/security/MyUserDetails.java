@@ -5,7 +5,10 @@ import com.internship.internship.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -27,6 +30,7 @@ public MyUserDetails(User user){
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getName()));
             System.out.println("result iss \n");
+
             System.out.println(role.getName());
             System.out.println("--------------------");
         }

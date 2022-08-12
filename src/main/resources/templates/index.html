@@ -1,9 +1,9 @@
-<html xmlns:th="http://www.thymeleaf.org"><head>
-<!-- Meta tags -->
+<!--<html xmlns:th="http://www.thymeleaf.org"><head>
+<!-- Meta tags
 <meta charset="utf-8">
 <meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no">
 
-<!-- Bootstrap CSS -->
+<!-- Bootstrap CSS
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
 <title>Watchlist App</title>
@@ -72,4 +72,35 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragments/adminTemplate.html">
+<head  th:insert="fragments/adminTemplate.html :: headfragment">
+
+</head>
+<body>
+<th:block th:insert="fragments/adminTemplate.html ::nav">
+
+    <div layout:fragment="content">
+        <!-- page content -->
+
+        <!--end page content --->
+    </div>
+</th:block>
+<div th:insert="fragments/adminTemplate.html ::js"></div>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

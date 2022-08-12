@@ -23,6 +23,7 @@
                 <thead>
                 <tr>
                     <th>Function Name</th>
+                    <th>parent </th>
 
                 </tr>
                 </thead>
@@ -30,7 +31,7 @@
 
                 <tr th:each="i : ${function}">
                     <td th:text="${i.nameFunction}">Avatar</td>
-
+                    <td th:text="${i.parent}">Avatar</td>
                     <td>
                         <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                         <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
