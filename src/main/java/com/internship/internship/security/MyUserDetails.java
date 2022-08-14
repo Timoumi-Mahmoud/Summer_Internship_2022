@@ -73,4 +73,15 @@ public MyUserDetails(User user){
     public boolean isEnabled() {
         return true;
     }
+
+    public String getName(){
+    return this.user.getFirstName()+" "+this.user.getLastName();
+    }
+
+    @Override
+    public String toString() {
+        return "MyUserDetails{" +
+                "user=" + user +
+                '}';
+    }
 }

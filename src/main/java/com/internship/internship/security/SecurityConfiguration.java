@@ -55,6 +55,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .usernameParameter("txtUsername")
                     .passwordParameter("txtPassword").
                     and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
+                    .and().rememberMe().tokenValiditySeconds(2592000).key("mySecret!")
+
                 ;
     }
 

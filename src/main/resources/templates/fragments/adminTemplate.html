@@ -1,7 +1,7 @@
 
     <!DOCTYPE html>
     <html lang="en"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-          xmlns:th="http:www.thymeleaf.org">
+          xmlns:th="http:www.thymeleaf.org"        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 
     <head  th:fragment="headfragment">
@@ -19,13 +19,17 @@
     <th:block th:fragment="nav">
 
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar">
+        <nav id="sidebar" sec:authorize="isAuthenticated()">
             <div class="p-4 pt-5">
                 <img th:src="@{/images/logo.jpg}" class="img logo rounded-circle mb-5" />
+            <!--        <span sec:authentication="principal.name">Fullname</span>Role(s): <span sec:authentication="principal.authorities"></span>
+                </li> -->
                 <ul class="list-unstyled components mb-5">
-                    <li class="active">
+
+                    <li class="active"  sec:authorize="hasRole('ROLE_ADMIN')"  >
+
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Users</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <ul class="collapse list-unstyled" id="homeSubmenu" >
                             <li>
                                 <a th:href="@{/User/userList}">List of employees</a>
                             </li>
@@ -116,7 +120,6 @@
                                 <a class="nav-link" href="#">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Portfolio</a>
                             </li>
                             <li class="nav-item">
                                <div> <form sec:authorize="isAuthenticated()" class="form-inline my-2my-lg-0"form-method="post"th:action="@{/logout}">
