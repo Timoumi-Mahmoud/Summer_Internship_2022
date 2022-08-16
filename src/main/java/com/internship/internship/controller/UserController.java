@@ -9,6 +9,7 @@ import com.internship.internship.services.DepartmentService;
 import com.internship.internship.services.RoleService;
 import com.internship.internship.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -49,10 +50,39 @@ public UserController(UserService UserService){  same as autowired
         userService.delete(id);
         return new RedirectView("/User/userList");    }
 
-
-
+////////////////////////////////////////////////////
 
     @GetMapping( path={"/userList","/search"})
+    public ModelAndView getAllPages(Model model){
+
+
+        return getOnePage( 1);
+    }
+
+
+    @GetMapping("/userList/page/{pageNumber}")
+    public ModelAndView getOnePage( @PathVariable("pageNumber") int currentPage){
+        Page<User> page = userService.findPage(currentPage);
+        int totalPages = page.getTotalPages();
+        long totalItems = page.getTotalElements();
+        List<User> Users = page.getContent();
+        ModelAndView mav = new ModelAndView("/user/userList");
+
+        mav.addObject("currentPage", currentPage);
+        mav.addObject("totalPages", totalPages);
+        mav.addObject("totalItems", totalItems);
+        mav.addObject("Users", Users);
+
+        return mav;
+    }
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+   /* @GetMapping( path={"/userList","/search"})
 
     public ModelAndView  userListall(String keyword)  {
         Map<String, List<User>> model = new HashMap<String, List<User>>();
@@ -69,7 +99,7 @@ public UserController(UserService UserService){  same as autowired
         }
         return new ModelAndView(viewName , model);
     }
-
+*/
     @GetMapping("/addUser")
     public ModelAndView addForm() {
         ModelAndView mav = new ModelAndView("user/registration");

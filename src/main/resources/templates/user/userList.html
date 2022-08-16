@@ -66,13 +66,22 @@
                         </div>
                     </td>
                     <td>
-                    <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idUser})}"    ><i class="fa fa-trash fa-3x" aria-hidden="true"></i>
+                    <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{/User/delete/{id}(id=${i.idUser})}"    ><i class="fa fa-trash fa-3x" aria-hidden="true"></i>
                     </a>
                     <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{users/edit/{id}(id=${i.idUser})}" ><i class="fas fa-edit fa-3x"></i></a>
                     </td>
                 </tr>
                 </tbody>
             </table>
+
+                <footer style="font-size: large" class="panel-footer">
+                                Total Employees [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
+                                &nbsp; &nbsp; - &nbsp;
+                                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                        <a th:href="@{'/User/userList/page/' + ${i}}">[[${i}]]</a>
+                        &nbsp; &nbsp;
+                    </span>
+                </footer>
         </div>
     </div>
 </div>

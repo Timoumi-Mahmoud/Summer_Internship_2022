@@ -1,14 +1,10 @@
 package com.internship.internship.controller;
 
 
-import com.internship.internship.AppUser.UserRepository;
-import com.internship.internship.entity.Function;
 import com.internship.internship.entity.Role;
-import com.internship.internship.entity.User;
 import com.internship.internship.repository.RoleRepository;
 import com.internship.internship.services.FunctionService;
 import com.internship.internship.services.RoleService;
-import com.internship.internship.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
@@ -38,7 +34,7 @@ private FunctionService functionService;
         roleService.delete(id);
         return new RedirectView("/Role/listRole");
     }
-
+/*  Normal Desplay
     @GetMapping("/listRole")
     public ModelAndView  RoleList()  {
         ModelAndView mav = new ModelAndView("role/list");
@@ -46,26 +42,22 @@ private FunctionService functionService;
         return mav;
     }
 
-    @GetMapping("/listRolePage")
-    public ModelAndView  RoleListPage()  {
-        ModelAndView mav = new ModelAndView("role/listPage");
-        mav.addObject("role",roleService.findAll() );
-        return mav;
-    }
+ */
 
-    @GetMapping("/l/l")
+    /////////////////////////////////////////////////////////////////////
+    @GetMapping("/listRole")
     public ModelAndView getAllPages(Model model){
         return getOnePage( 1);
     }
 
 
-    @GetMapping("l/l/page/{pageNumber}")
+    @GetMapping("/listRole/page/{pageNumber}")
     public ModelAndView getOnePage( @PathVariable("pageNumber") int currentPage){
         Page<Role> page = roleService.findPage(currentPage);
         int totalPages = page.getTotalPages();
         long totalItems = page.getTotalElements();
         List<Role> role = page.getContent();
-        ModelAndView mav = new ModelAndView("role/listPage");
+        ModelAndView mav = new ModelAndView("role/list");
 
         mav.addObject("currentPage", currentPage);
         mav.addObject("totalPages", totalPages);
@@ -74,7 +66,7 @@ private FunctionService functionService;
 
         return mav;
     }
-
+//////////////////////////////////////////////////////////////////////////////////
     ////////////////////////
     @GetMapping("/addRole")
     public ModelAndView addForm() {
