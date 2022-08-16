@@ -25,13 +25,19 @@ public class Role  extends Auditable<String> {
 
   /*  @ManyToMany(targetEntity = User.class, mappedBy = "roles", cascade = CascadeType.ALL)*/
   @ManyToMany(targetEntity = User.class, mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
-    private Set<User> userss;
+  private Set<User> userss;
 
 
 
 
 
-
+    @ManyToMany(targetEntity = Function.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinTable(
+            name = "Functions_roles",
+            joinColumns = @JoinColumn(name = "id_function"),
+            inverseJoinColumns = @JoinColumn(name = "id_role")
+    )
+    private Set<Function> RolesFunction = new HashSet<>();
 
 
     public Role(Integer id, String name, String descriptionOfTheRole) {
@@ -47,16 +53,7 @@ public class Role  extends Auditable<String> {
 
 
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(
-            name = "Functions_roles",
-            joinColumns = @JoinColumn(name = "id_function"),
-            inverseJoinColumns = @JoinColumn(name = "id_role")
-    )
-    private Set<Function> RolesFunction = new HashSet<>();
+
 
 
     public Integer getId() {

@@ -20,17 +20,9 @@ public class Function  extends Auditable<String> {
     private String nameFunction;
 
 
-/*
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(
-            name = "Functions_roles",
-            joinColumns = @JoinColumn(name = "id_role"),
-            inverseJoinColumns = @JoinColumn(name = "id_function")
-    )
-    private Set<Role> RolesF = new HashSet<>();*/
+
+    @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    private Set<Role> RolesF ;
 
     @ManyToOne
     private Function parent;
@@ -93,6 +85,14 @@ public class Function  extends Auditable<String> {
     public void setChildren(Set<com.internship.internship.entity.Function> children) {
         this.children = children;
     }
+
+    @PreRemove
+    private void removeGroupsFromUsers() {
+        for (Role r : RolesF) {
+            r.getRolesFunction().remove(this);
+        }
+    }
+
 
     @Override
     public String toString() {
