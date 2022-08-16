@@ -23,12 +23,14 @@ public class Role  extends Auditable<String> {
             = "Description must be between 10 and 200 characters")
     private String descriptionOfTheRole;
 
-  /*  @ManyToMany(targetEntity = User.class, mappedBy = "roles", cascade = CascadeType.ALL)*/
   @ManyToMany(targetEntity = User.class, mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
   private Set<User> userss;
-
-
-
+    @PreRemove
+    private void removeRolesFromUsers() {
+        for (User u : userss) {
+            u.getRoles().remove(this);
+        }
+    }
 
 
     @ManyToMany(targetEntity = Function.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
@@ -45,10 +47,6 @@ public class Role  extends Auditable<String> {
         this.name = name;
         this.descriptionOfTheRole = descriptionOfTheRole;
     }
-
-
-
-
 
 
 
@@ -101,12 +99,6 @@ public class Role  extends Auditable<String> {
     }
 
 
-    @PreRemove
-    private void removeGroupsFromUsers() {
-        for (User u : userss) {
-            u.getRoles().remove(this);
-        }
-    }
 
 
 

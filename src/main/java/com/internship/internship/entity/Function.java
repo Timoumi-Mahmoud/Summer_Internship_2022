@@ -87,7 +87,7 @@ public class Function  extends Auditable<String> {
     }
 
     @PreRemove
-    private void removeGroupsFromUsers() {
+    private void removeFunctionFromRoles() {
         for (Role r : RolesF) {
             r.getRolesFunction().remove(this);
         }
