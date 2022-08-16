@@ -45,8 +45,12 @@ public class User extends Auditable<String> {
 
     private  int tel;
     private  String address;
+/*
+    @ManyToMany(targetEntity = Role.class,
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH } )
+*/
+@ManyToMany(targetEntity = Role.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH} )
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "id_user"),
@@ -55,8 +59,8 @@ public class User extends Auditable<String> {
     private Set<Role> roles = new HashSet<>();
 
 
-    @ManyToOne( fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_department", nullable = false)
+    @ManyToOne( fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "id_department", nullable = true)
     private Department department;
 
 

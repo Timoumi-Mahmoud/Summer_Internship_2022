@@ -2,6 +2,7 @@ package com.internship.internship.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -22,17 +23,9 @@ public class Role  extends Auditable<String> {
             = "Description must be between 10 and 200 characters")
     private String descriptionOfTheRole;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(
-            name = "Functions_roles",
-            joinColumns = @JoinColumn(name = "id_function"),
-            inverseJoinColumns = @JoinColumn(name = "id_role")
-    )
-    private Set<Function> RolesFunction = new HashSet<>();
-
+  /*  @ManyToMany(targetEntity = User.class, mappedBy = "roles", cascade = CascadeType.ALL)*/
+  @ManyToMany(targetEntity = User.class, mappedBy = "roles", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    private Set<User> userss;
 
 
 
@@ -46,6 +39,25 @@ public class Role  extends Auditable<String> {
         this.name = name;
         this.descriptionOfTheRole = descriptionOfTheRole;
     }
+
+
+
+
+
+
+
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(
+            name = "Functions_roles",
+            joinColumns = @JoinColumn(name = "id_function"),
+            inverseJoinColumns = @JoinColumn(name = "id_role")
+    )
+    private Set<Function> RolesFunction = new HashSet<>();
+
 
     public Integer getId() {
             return id;
@@ -66,6 +78,13 @@ public class Role  extends Auditable<String> {
         this.name = name;
     }
 
+    public Set<User> getUserss() {
+        return userss;
+    }
+
+    public void setUserss(Set<User> userss) {
+        this.userss = userss;
+    }
 
     public Role() {
 
@@ -83,6 +102,18 @@ public class Role  extends Auditable<String> {
         this.id = id;
         this.name = name;
     }
+
+
+    @PreRemove
+    private void removeGroupsFromUsers() {
+        for (User u : userss) {
+            u.getRoles().remove(this);
+        }
+    }
+
+
+
+
 
     public Set<Function> getRolesFunction() {
         return RolesFunction;

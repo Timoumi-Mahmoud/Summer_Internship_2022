@@ -76,6 +76,8 @@ public class Function  extends Auditable<String> {
     }
 
 
+
+
     public com.internship.internship.entity.Function getParent() {
         return parent;
     }

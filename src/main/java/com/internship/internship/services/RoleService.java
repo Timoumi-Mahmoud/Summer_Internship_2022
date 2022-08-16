@@ -6,6 +6,7 @@ import com.internship.internship.entity.Role;
 import com.internship.internship.entity.User;
 import com.internship.internship.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,6 +51,17 @@ public class RoleService {
 
     public Set<Role> getUserRoles(User user){
         return user.getRoles();
+    }
+    public ResponseEntity<Object> deleteRole(int id) {
+        if(roleRepository.findById(id).isPresent()){
+            if(roleRepository.getOne(id).getUserss().size() == 0) {
+                roleRepository.deleteById(id);
+                if (roleRepository.findById(id).isPresent()) {
+                    return ResponseEntity.unprocessableEntity().body("Failed to delete the specified record");
+                } else return ResponseEntity.ok().body("Successfully deleted specified record");
+            } else return ResponseEntity.unprocessableEntity().body("Failed to delete,  Please delete the users associated with this role");
+        } else
+            return ResponseEntity.unprocessableEntity().body("No Records Found");
     }
 
 
