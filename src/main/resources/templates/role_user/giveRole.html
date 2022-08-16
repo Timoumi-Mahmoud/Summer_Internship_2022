@@ -11,14 +11,14 @@
         <!-- page content -->
 
 
-<h3> Affect Roles to users::</h3>
+<h3> Edit user information ::</h3>
 
 <a th:href="@{/User/userList}" >Back to users List</a>
 
 <div style="margin-left: 10%; font-family: monospace; color:darksalmon;" >
 
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-12">
             <br>
             <br>
             <table border="0" style="margin_top:5px; font-family:monospace; font-size:20px" class="title "  >
@@ -33,8 +33,8 @@
 
                     </mark>
                         </div></td>
-                    <td>   -    -:</td>
-                    <td th:utext="${u.firstName}">:</td>
+        <td >:</td>
+                    <td th:utext="${u.firstName} +' '+ ${u.lastName} ">:</td>
                 </tr>
 
                 </tr>
@@ -61,10 +61,29 @@
                 <br>
 
                 <tr>
-                    <td><mark>Age</mark></td>
+                    <td><mark>birth date</mark></td>
                     <td>:</td>
-                    <td >...</td>
+                    <td th:utext="${u.birthDate}">...</td>
                 </tr>
+        <tr>
+            <td><mark>hiring  date</mark></td>
+            <td>:</td>
+            <td th:utext="${u.hireDate}">...</td>
+        </tr>
+        <br>
+        <br>
+
+        <tr>
+            <td><mark>last modification</mark></td>
+            <td>:</td>
+            <td>
+        at
+                <small><span th:utext="${u.getLastModifiedDate()}"></span></small>
+                by <small><span th:utext="${u.getLastModifiedBy()}"></span></small>
+
+            </td>
+
+        </tr>
 
 
 
@@ -95,7 +114,7 @@
 
 
                 <div class="form-group row">
-                    <label class="col-4 col-form-label" style="font-family: 'Elephant' ; font-size: 50px; color: #491217" >Roles: </label>
+                    <label class="col-4 col-form-label" style="font-family: 'Bodoni MT Black' ; font-size: 50px; color: #491217" > List of Roles: </label>
                     <div class="col-8">
                         <th:block th:each="role: ${listRoles}">
                             <input type="checkbox" th:field="*{roles}"
@@ -103,6 +122,19 @@
                         </th:block>
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label" style="font-family: 'Bodoni MT Black' ; font-size: 50px; color: #491217" > List of function: </label>
+                    <div class="col-8">
+                        <th:block th:each="role: ${listRoles}">
+                            <th:block th:each="f: ${role.RolesFunction}">
+                            <span th:text="${f.nameFunction}"></span>
+                            </th:block>
+
+                        </th:block>
+                    </div>
+                </div>
+
                 <br>
                 <br>
 

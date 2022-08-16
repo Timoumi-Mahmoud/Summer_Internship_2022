@@ -4,6 +4,7 @@ package com.internship.internship.controller;
 import com.internship.internship.entity.Department;
 import com.internship.internship.entity.Role;
 import com.internship.internship.entity.User;
+import com.internship.internship.repository.RoleRepository;
 import com.internship.internship.services.DepartmentService;
 import com.internship.internship.services.RoleService;
 import com.internship.internship.services.UserService;
@@ -29,6 +30,8 @@ public class UserController {
   private  RoleService roleService;
   @Autowired
   private DepartmentService departmentService;
+  @Autowired
+  private RoleRepository roleRepository;
 
 /*
 public UserController(UserService UserService){  same as autowired
@@ -58,8 +61,10 @@ public UserController(UserService UserService){  same as autowired
             System.out.println("the  result is:: \n"+userService.search(keyword));
             model.put("Users",userService.search(keyword));
         }else {
-            System.out.println("\n  -----------------\n");
-            System.out.println("\n  -----------------\n");
+
+
+                System.out.println("\n  -----------The fuciton  is::::------\n"  + roleRepository.findById(1)    );
+
             model.put("Users",  userService.findAll());
         }
         return new ModelAndView(viewName , model);
@@ -90,6 +95,7 @@ public UserController(UserService UserService){  same as autowired
         userService.save(user);
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/");
+
         return new ModelAndView(redirectView);
     }
     @GetMapping("/users/edit/{id}")

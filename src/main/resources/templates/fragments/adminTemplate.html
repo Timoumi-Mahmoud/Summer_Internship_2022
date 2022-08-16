@@ -14,19 +14,20 @@
             <link rel="stylesheet" th:href="@{/css/style.css}">
        <!--  -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
     <th:block th:fragment="nav">
 
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" sec:authorize="isAuthenticated()">
+        <nav id="sidebar" >
             <div class="p-4 pt-5">
                 <img th:src="@{/images/logo.jpg}" class="img logo rounded-circle mb-5" />
             <!--        <span sec:authentication="principal.name">Fullname</span>Role(s): <span sec:authentication="principal.authorities"></span>
                 </li> -->
                 <ul class="list-unstyled components mb-5">
 
-                    <li class="active"  sec:authorize="hasRole('ROLE_ADMIN')"  >
+                    <li class="active"   >
 
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Users</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu" >

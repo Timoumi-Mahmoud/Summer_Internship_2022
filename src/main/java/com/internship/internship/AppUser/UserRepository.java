@@ -19,7 +19,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             nativeQuery = true)
     List<User> search(String keyword);
 
-
+    @Query("SELECT user FROM User user LEFT JOIN user.roles role WHERE role.id = ?1")
+    List<User> findUserByRole(int role);
 
 
 }

@@ -2,6 +2,7 @@ package com.internship.internship.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.internship.internship.entity.Role;
 import org.aspectj.apache.bcel.ExceptionConstants;
 
@@ -11,10 +12,13 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+
 public class User extends Auditable<String> {
 
 @Id
@@ -194,6 +198,12 @@ public class User extends Auditable<String> {
         return new ArrayList<>();
     }
 */
+
+
+
+
+
+
 
     @Override
     public String toString() {

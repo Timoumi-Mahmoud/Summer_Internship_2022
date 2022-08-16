@@ -94,8 +94,11 @@ public class Function  extends Auditable<String> {
 
     @Override
     public String toString() {
-        return
-               nameFunction ;
-
+        return "Function{" +
+                "idFunction=" + idFunction +
+                ", nameFunction='" + nameFunction + '\'' +
+                ", parent=" + parent +
+                ", children=" + children +
+                '}';
     }
 }

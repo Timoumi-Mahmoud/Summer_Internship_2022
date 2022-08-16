@@ -1,5 +1,7 @@
 package com.internship.internship.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -8,6 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "roles")
+
 public class Role  extends Auditable<String> {
     @Id
     @Column(name = "id_role")
@@ -94,6 +97,8 @@ public class Role  extends Auditable<String> {
         return "Role{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", descriptionOfTheRole='" + descriptionOfTheRole + '\'' +
+                ", RolesFunction=" + RolesFunction +
                 '}';
     }
 }

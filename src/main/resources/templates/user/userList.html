@@ -40,6 +40,7 @@
                     <th>hiring date </th>
                     <th>age</th>
                     <th>address </th>
+                    <th>role</th>
                     <Action></Action>
 
                 </tr>
@@ -55,14 +56,19 @@
                     <td th:text="${i.hireDate}"></td>
                     <td th:text="${i.birthDate}"></td>
                     <td th:text="${i.address}"></td>
-
-
                     <td>
-                        <a th:href="@{delete/{id}(id=${i.idUser})}"  class="btn btn-danger btn btn-outline-success my-2 my-sm-0" role="button" style="color:black;" > Delete</a></td>
-
-                    <td> <a th:href="@{users/edit/{id}(id=${i.idUser})}" class="btn btn-info btn btn-outline-success my-2 my-sm-0" role="button" style="color:black;" >Give a role</a></td>
-
-
+                        <div class="form-group row">
+                            <div class="col-8">
+                                <th:block th:each="role: ${i.roles}">
+                                   <span th:text="${role.name}"></span>
+                                </th:block>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                    <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idUser})}"    ><i class="fa fa-trash fa-3x" aria-hidden="true"></i>
+                    </a>
+                    <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{users/edit/{id}(id=${i.idUser})}" ><i class="fas fa-edit fa-3x"></i></a>
                     </td>
                 </tr>
                 </tbody>

@@ -58,7 +58,7 @@ public abstract class Auditable<U> {
     }
 
     public Date getLastModifiedDate() {
-        return lastModifiedDate;
+        return lastModifiedDate ;
     }
 
     public void setLastModifiedDate(Date lastModifiedDate) {
