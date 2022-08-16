@@ -6,6 +6,9 @@ import com.internship.internship.entity.Role;
 import com.internship.internship.entity.User;
 import com.internship.internship.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +23,18 @@ public class RoleService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<Role> findAll(){return roleRepository.findAll();}
+    public List<Role> findAll(){
+        return roleRepository.findAll();
+    }
+
+
+
+    public Page<Role> findPage(int pageNumber){
+        Pageable pageable = PageRequest.of(pageNumber - 1,5);
+        return roleRepository.findAll(pageable);
+    }
+
+
     public void delete(int id){
         roleRepository.deleteById(id);
     }

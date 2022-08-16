@@ -36,13 +36,26 @@
                     <td th:text="${i.descriptionOfTheRole}">Email of the responsable </td>
 
                     <td>
-                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                        <a class="add" title="Add" data-toggle="tooltip"  a th:href="@{/Role/addRole}" ><i class="material-icons">&#xE03B;</i></a>
                         <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.id})}"  ><i class="material-icons">&#xE254;</i></a>
                         <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.id})}"    ><i class="material-icons">&#xE872;</i></a>
                     </td>
                 </tr>
+
+
                 </tbody>
+
             </table>
+
+            <footer style="font-size: large" class="panel-footer">
+                Total Items [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
+                &nbsp; &nbsp; - &nbsp;
+                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+        <a th:href="@{'/Role/listRole/page/' + ${i}}">[[${i}]]</a>
+        &nbsp; &nbsp;
+    </span>
+            </footer>
+
         </div>
     </div>
 </div>

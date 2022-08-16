@@ -10,6 +10,8 @@ import com.internship.internship.services.FunctionService;
 import com.internship.internship.services.RoleService;
 import com.internship.internship.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,6 +46,34 @@ private FunctionService functionService;
         return mav;
     }
 
+    @GetMapping("/listRolePage")
+    public ModelAndView  RoleListPage()  {
+        ModelAndView mav = new ModelAndView("role/listPage");
+        mav.addObject("role",roleService.findAll() );
+        return mav;
+    }
+
+    @GetMapping("/l/l")
+    public ModelAndView getAllPages(Model model){
+        return getOnePage( 1);
+    }
+
+
+    @GetMapping("l/l/page/{pageNumber}")
+    public ModelAndView getOnePage( @PathVariable("pageNumber") int currentPage){
+        Page<Role> page = roleService.findPage(currentPage);
+        int totalPages = page.getTotalPages();
+        long totalItems = page.getTotalElements();
+        List<Role> role = page.getContent();
+        ModelAndView mav = new ModelAndView("role/listPage");
+
+        mav.addObject("currentPage", currentPage);
+        mav.addObject("totalPages", totalPages);
+        mav.addObject("totalItems", totalItems);
+        mav.addObject("role", role);
+
+        return mav;
+    }
 
     ////////////////////////
     @GetMapping("/addRole")
