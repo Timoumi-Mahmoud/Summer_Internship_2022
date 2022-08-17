@@ -80,7 +80,10 @@ private FunctionService functionService;
     @RequestMapping(value = "/saveRole",method = RequestMethod.POST)
     public ModelAndView  saveDept(@Valid Role role, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("role/add");
+            ModelAndView mav = new ModelAndView("role/add");
+            mav.addObject("role", role);
+            mav.addObject("Function", functionService.findAll());
+            return mav;
         }
         roleService.save(role);
         RedirectView redirectView = new RedirectView();

@@ -104,12 +104,18 @@ public class DepartmentController {
 
     }
     @PostMapping(value = "/update/{id}")
-    public ModelAndView updateSave(@PathVariable("id") int id, Department department ) {
+    public ModelAndView updateSave( @PathVariable("id") int id,@Valid Department department, BindingResult bindingResult ) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("department/update");
+
+        }
+
         department.setIdDepartment(id);
+
         departmentRepository.save(department);
         ModelAndView mav = new ModelAndView("department/update");
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/Department/add");
+        redirectView.setUrl("/Department/list");
         return new ModelAndView(redirectView);
         }
 

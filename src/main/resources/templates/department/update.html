@@ -25,7 +25,7 @@
             <input th:field="*{departmentName}"  type = "text" class = "form-control" placeholder = "Mandatory">
         </div>
         <div class="col-sm-4">
-            <span class="text-danger"  > </span>
+            <span class="text-danger"  th:errors="*{departmentName}" > </span>
         </div>
     </div>
 
@@ -35,7 +35,7 @@
             <input th:field="*{responsibleEmail}"  type = "text" class = "form-control" placeholder = "Mandatory">
         </div>
         <div class="col-sm-4">
-            <span class="text-danger"  > </span>
+            <span class="text-danger"  th:errors="*{responsibleEmail}" > </span>
         </div>
     </div>
 
@@ -45,7 +45,7 @@
             <input th:field="*{responsiblePhone}"  type = "text" class = "form-control" placeholder = "Mandatory">
         </div>
         <div class="col-sm-4">
-            <span class="text-danger"   > </span>
+            <span class="text-danger" th:errors="*{responsiblePhone}"  > </span>
         </div>
     </div>
     <input type="hidden" th:field="*{idDepartment}">
