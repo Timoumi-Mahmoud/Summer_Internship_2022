@@ -26,6 +26,7 @@
                 <tr>
                     <th>Role name</th>
                     <th>Description</th>
+                    <th>Function related to this role </th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -34,11 +35,22 @@
                 <tr th:each="i : ${role}">
                     <td th:text="${i.name}">Avatar</td>
                     <td th:text="${i.descriptionOfTheRole}">Email of the responsable </td>
+                    <td >
 
+                        <div class="form-group row">
+                            <div class="col-8">
+                                <th:block th:each="f: ${i.RolesFunction}">
+                                    <span th:text="${f.nameFunction}"></span>
+                                </th:block>
+                            </div>
+                        </div>
+
+
+                    </td>
                     <td>
                         <a class="add" title="Add" data-toggle="tooltip"  a th:href="@{/Role/addRole}" ><i class="material-icons">&#xE03B;</i></a>
                         <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.id})}"  ><i class="material-icons">&#xE254;</i></a>
-                        <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.id})}"    ><i class="material-icons">&#xE872;</i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{/Role/delete/{id}(id=${i.id})}"    ><i class="material-icons">&#xE872;</i></a>
                     </td>
                 </tr>
 
@@ -47,14 +59,65 @@
 
             </table>
 
-            <footer style="font-size: large" class="panel-footer">
-                Total Items [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
-                &nbsp; &nbsp; - &nbsp;
-                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-        <a th:href="@{'/Role/listRole/page/' + ${i}}">[[${i}]]</a>
-        &nbsp; &nbsp;
-    </span>
+            <footer class="panel-footer">
+                <nav aria-label="Page navigation example">
+                    Total Items [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
+                    <ul class="pagination">
+                        <li class="page-item">
+                            &nbsp;    <a  th:if="${currentPage > 1}" th:href="@{/Role/listRole/page/1}"><i class="fa fa-step-backward"></i></a>
+                            <span th:unless="${currentPage > 1}"><i class="fa fa-step-backward"></i></span>
+                        </li>
+
+                        <li class="page-item">
+                            &nbsp;    <a th:if="${currentPage > 1}" th:href="@{'/Role/listRole/page/' + ${currentPage - 1}}"><i class="fa fa-backward"></i> </a>
+                            <span th:unless="${currentPage > 1}"><i class="fa fa-backward"></i>   </span>
+                        </li>
+
+                        <li class="page-item">
+
+                                &nbsp;     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                <a th:if="${i != currentPage}" th:href="@{'/Role/listRole/page/' + ${i}}">[[${i}]]</a>
+                                <span th:unless="${i != currentPage}">[[${i}]]</span>
+                                </span>
+                        </li>
+                        <li class="page-item">
+                            &nbsp; <a th:if="${currentPage < totalPages}" th:href="@{'/Role/listRole/page/' + ${currentPage + 1}}"> <i class="fa fa-forward"></i></a>
+                            <span th:unless="${currentPage < totalPages}"> <i class="fa fa-forward"></i></span>
+                        </li>
+
+                        <li class="page-item">
+                            &nbsp;   <a th:if="${currentPage < totalPages}" th:href="@{'/Role/listRole/page/' + ${totalPages}}"><i class="fa fa-step-forward"></i></a>
+                            <span th:unless="${currentPage < totalPages}"><i class="fa fa-step-forward"></i></span>
+                        </li>
+                    </ul>
+                </nav>
             </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
     </div>
