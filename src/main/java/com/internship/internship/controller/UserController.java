@@ -53,8 +53,13 @@ public UserController(UserService UserService){  same as autowired
 ////////////////////////////////////////////////////
 
     @GetMapping( path={"/userList","/search"})
-    public ModelAndView getAllPages(Model model){
-
+    public ModelAndView getAllPages(String keyword){
+        Map<String, List<User>> model = new HashMap<String, List<User>>();
+        String viewName = "/user/userList";
+        if(keyword != null){
+            model.put("Users",userService.search(keyword));
+            return new ModelAndView(viewName , model);
+        }
 
         return getOnePage( 1);
     }

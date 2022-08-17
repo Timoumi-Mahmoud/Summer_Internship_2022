@@ -16,13 +16,12 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2>User <b>Details</b></h2>
-
                     </div>
                <!--     <div class="col-sm-4">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fa fa-plus" ></i>  <a th:href="@{/Role/addRole}" class="link_green">test</a>    </button>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fa fa-plus" ></i>  <a>Other things</a>    </button>
                     </div>  -->
-                    <form class="form-inline" th:action="@{search}" method="get">
+                    <form class="form-inline" th:action="@{/User/search}" method="get">
                         <input class="form-control mr-sm-2" type="text" name="keyword" th:value="${keyword}" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         <button class="btn btn-outline-success my-2 my-sm-0" ><a th:href="@{/User/userList}"  class="link_green">Reset </a> </button>
@@ -74,15 +73,52 @@
                 </tbody>
             </table>
 
-                <footer style="font-size: large" class="panel-footer">
-                                Total Employees [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
-                                &nbsp; &nbsp; - &nbsp;
-                                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                        <a th:href="@{'/User/userList/page/' + ${i}}">[[${i}]]</a>
-                        &nbsp; &nbsp;
-                    </span>
-                </footer>
+
         </div>
+        <footer class="panel-footer">
+            &nbsp;
+
+            <nav aria-label="Page navigation example">
+                Total Items [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
+
+                <ul class="pagination">
+                    <li class="page-item">
+                        &nbsp;    <a  th:if="${currentPage > 1}" th:href="@{/User/userList/page/1}"><i class="fa fa-step-backward"></i></a>
+                        <span th:unless="${currentPage > 1}"><i class="fa fa-step-backward"></i></span>
+                    </li>
+
+                    <li class="page-item">
+                        &nbsp;    <a th:if="${currentPage > 1}" th:href="@{'/User/userList/page/' + ${currentPage - 1}}"><i class="fa fa-backward"></i> </a>
+                        <span th:unless="${currentPage > 1}"><i class="fa fa-backward"></i>   </span>
+                    </li>
+
+                    <li class="page-item"   th:unless="${keyword}  != 'null'">
+
+
+
+                        &nbsp;     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+        <a th:if="${i != currentPage}" th:href="@{'/User/userList/page/' + ${i}}">[[${i}]]</a>
+        <span th:unless="${i != currentPage}">[[${i}]]</span>
+</span>
+                    </li>
+
+                    <li class="page-item">
+                        &nbsp; <a th:if="${currentPage < totalPages}" th:href="@{'/User/userList/page/' + ${currentPage + 1}}"> <i class="fa fa-forward"></i></a>
+                        <span th:unless="${currentPage < totalPages}"> <i class="fa fa-forward"></i></span>
+                    </li>
+
+                    <li class="page-item">
+                        &nbsp;   <a th:if="${currentPage < totalPages}" th:href="@{'/User/userList/page/' + ${totalPages}}"><i class="fa fa-step-forward"></i></a>
+                        <span th:unless="${currentPage < totalPages}"><i class="fa fa-step-forward"></i></span>
+                    </li>
+                </ul>
+            </nav>
+
+
+
+
+
+        </footer>
     </div>
 </div>
 
