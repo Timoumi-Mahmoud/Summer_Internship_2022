@@ -49,7 +49,7 @@ public class User extends Auditable<String> {
     @ManyToMany(targetEntity = Role.class,
             cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH } )
 */
-@ManyToMany(targetEntity = Role.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH} )
+@ManyToMany(targetEntity = Role.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH} , fetch = FetchType.EAGER )
 
     @JoinTable(
             name = "users_roles",
