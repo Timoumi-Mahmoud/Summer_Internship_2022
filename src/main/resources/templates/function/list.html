@@ -24,14 +24,39 @@
                 <tr>
                     <th>Function Name</th>
                     <th>parent </th>
+                    <th>child</th>
+                    <th>act</th>
 
                 </tr>
                 </thead>
                 <tbody>
 
                 <tr th:each="i : ${function}">
-                    <td th:text="${i.nameFunction}">Avatar</td>
-                    <td th:text="${i.parent}">Avatar</td>
+
+                   <td th:text="${i.nameFunction}">Avatar</td>
+                    <td >
+                        <div class="form-group row">
+                            <div class="col-8">
+                    <th:block th:each="f: ${i.parent}">
+                        <span th:text="${f.nameFunction}"></span>
+                    </th:block>
+
+                            </div></div>
+
+                    </td>
+                <!--    <td th:text="${i.nameFunction}">Avatar</td>-->
+                    <td >
+                        <div class="form-group row">
+                            <div class="col-8">
+                                <th:block th:each="f: ${i.children}">
+                                    <span th:text="${f.nameFunction}"></span>
+                                </th:block>
+
+                            </div></div>
+
+                    </td>
+
+
                     <td>
                         <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                         <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
@@ -45,18 +70,26 @@
 </div>
         <!--end page content --->
         <div class="tree well">
-            <ul>
-                <li>
-                    <span><i class="icon-folder-open"></i> Parent</span> <a href="">Goes somewhere</a>
-                    <ul>
+            <ul th:each="i : ${function}" >
+                <li >
+                    <span th:text="${i.nameFunction}"  ><i class="icon-folder-open"></i> Parent</span> <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
+                    <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
+
+
+
+
+
+                    <ul th:each="f: ${i.children}">
                         <li>
-                            <span><i class="icon-minus-sign"></i> Child</span> <a href="">Goes somewhere</a>
-                            <ul>
+                            <span  span th:text="${f.nameFunction}"><i class="icon-minus-sign"></i> Child</span> <a href="">Goes somewhere</a>
+                            <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
+                            <!--<ul>
                                 <li>
                                     <span><i class="icon-leaf"></i> Grand Child</span> <a href="">Goes somewhere</a>
                                 </li>
-                            </ul>
-                        </li>
+                            </ul>-->
+                        </li><!--
                         <li>
                             <span><i class="icon-minus-sign"></i> Child</span> <a href="">Goes somewhere</a>
                             <ul>
@@ -89,17 +122,17 @@
                                     <span><i class="icon-leaf"></i> Grand Child</span> <a href="">Goes somewhere</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>-->
                     </ul>
                 </li>
-                <li>
+             <!--  <li>
                     <span><i class="icon-folder-open"></i> Parent2</span> <a href="">Goes somewhere</a>
                     <ul>
                         <li>
                             <span><i class="icon-leaf"></i> Child</span> <a href="">Goes somewhere</a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
             </ul>
         </div>
 

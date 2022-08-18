@@ -28,7 +28,7 @@ public class Function  extends Auditable<String> {
     private Function parent;
 
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
-    private Set<Function> children = new HashSet<>();
+    private Set<Function> children ;
 
 
     public Function() {
@@ -93,14 +93,10 @@ public class Function  extends Auditable<String> {
         }
     }
 
-
     @Override
     public String toString() {
         return "Function{" +
-                "idFunction=" + idFunction +
-                ", nameFunction='" + nameFunction + '\'' +
-                ", parent=" + parent +
-                ", children=" + children +
+                "nameFunction='" + nameFunction + '\'' +
                 '}';
     }
 }
