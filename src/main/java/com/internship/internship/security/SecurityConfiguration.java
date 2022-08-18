@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,11 +36,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProviderBean());
     }
-
+  /*  public static  String s=  SecurityContextHolder.getContext().getAuthentication().getAuthorities()+"";
+    public static  String l=s.substring(1,s.length() - 1);
+   public static String y= l.replace("ROLE_", "");
     Role role;
-  // String test= myUserDetails.getAuthorities().toString();
+  // String test= myUserDetails.getAuthorities().toString();*/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+
+
+
+
 
             http.authorizeRequests()
                     /// .anyRequest().authenticated()
@@ -55,7 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .usernameParameter("txtUsername")
                     .passwordParameter("txtPassword").
                     and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
-                    .and().rememberMe().tokenValiditySeconds(2592000).key("mySecret!")
+                    .and().rememberMe().tokenValiditySeconds(2592000).key("mySecret!").userDetailsService(userDetailsService);
 
                 ;
     }

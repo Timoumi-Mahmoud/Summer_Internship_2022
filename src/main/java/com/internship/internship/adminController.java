@@ -5,6 +5,7 @@ import com.internship.internship.entity.Department;
 import com.internship.internship.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +18,17 @@ public class adminController {
 
 @Autowired
 private UserRepository userRepository;
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+  //  @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping("/admin")
     public String admin() {
-
-     return  "this admin page***!!!!!";
+      String s=  SecurityContextHolder.getContext().getAuthentication().getAuthorities()+"";
+        String k=  "ADMIN";
+        System.out.println("the value of kkkkk ::::::" +k+"\n   the new value");
+        System.out.println(s.substring(1,s.length() - 1));
+       String l=s.substring(1,s.length() - 1);
+      String y= l.replace("ROLE_", "");
+               System.out.println("\n---------------------"+y);
+        return  "this admin page***!!!!!" + "\n "+ s;
 
     }
 
