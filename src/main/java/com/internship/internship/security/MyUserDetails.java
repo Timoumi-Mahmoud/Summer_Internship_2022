@@ -30,10 +30,10 @@ public MyUserDetails(User user){
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getName()));
-            System.out.println("result iss \n");
+         //   System.out.println("result iss \n");
 
-            System.out.println(role.getName());
-            System.out.println("--------------------");
+           // System.out.println(role.getName());
+            //System.out.println("--------------------");
         }
 
         return authorities;
@@ -79,10 +79,10 @@ public MyUserDetails(User user){
     return this.user.getFirstName()+" "+this.user.getLastName();
     }
 
-    @Override
+  /*  @Override
     public String toString() {
         return "MyUserDetails{" +
                 "user=" + user +
                 '}';
-    }
+    }*/
 }

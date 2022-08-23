@@ -223,7 +223,7 @@ public class User extends Auditable<String> {
                 ", tel=" + tel +
                 ", address='" + address + '\'' +
                 ", roles=" + roles +
-                ", department=" + department +
+
                 '}';
     }
 }

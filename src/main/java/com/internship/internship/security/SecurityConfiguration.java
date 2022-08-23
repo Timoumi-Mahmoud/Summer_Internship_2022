@@ -23,7 +23,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private MyUserDetailsService myUserDetailsService;
 
-    private MyUserDetails myUserDetails;
 
 
 
@@ -36,36 +35,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProviderBean());
     }
-  /*  public static  String s=  SecurityContextHolder.getContext().getAuthentication().getAuthorities()+"";
-    public static  String l=s.substring(1,s.length() - 1);
-   public static String y= l.replace("ROLE_", "");
-    Role role;
-  // String test= myUserDetails.getAuthorities().toString();*/
+  /*  public static  String s=  SecurityContextHolder.getContext().getAuthentication().getAuthorities()+"";;*/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-
-
-
-
-
             http.authorizeRequests()
                     /// .anyRequest().authenticated()
                     .antMatchers("/").permitAll()
-                      .antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/manager").hasRole("MANAGER")
-               //    .antMatchers("/profile").hasAnyAuthority()
-
-
+                    .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                //      .antMatchers("/admin/**").hasRole("ADMIN")
+                  //  .antMatchers("/manager").hasRole("MANAGER")
+                    .anyRequest().access("@rbacService.hasPermission(request,authentication)")
                     .and().formLogin()
                     .loginProcessingUrl("/signin")
                     .loginPage("/login").permitAll()
                     .usernameParameter("txtUsername")
-                    .passwordParameter("txtPassword").
-                    and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
-                    .and().rememberMe().tokenValiditySeconds(2592000).key("mySecret!").userDetailsService(userDetailsService);
+                    .passwordParameter("txtPassword")
+                    .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
+                    .and().rememberMe().tokenValiditySeconds(2592000).key("mySecret!").userDetailsService(userDetailsService)
 
-                ;
+            ;
     }
 
 
@@ -78,15 +66,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     return daoAuthenticationProvider;
     }
 
-
-
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
-
-
-
 
 }
