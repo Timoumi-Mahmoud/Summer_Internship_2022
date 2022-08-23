@@ -25,10 +25,7 @@ private UserRepository userRepository;
         System.out.println(s.substring(1,s.length() - 1));
        String l=s.substring(1,s.length() - 1);
       String y= l.replace("ROLE_", "");*/
-               System.out.println("\n------the res---------------");
-        System.out.println("workign fine !!!!!!!!!!");
-        System.out.println(userRepository.findByEmail("admin@admin.com"));
-        System.out.println("\n------the res of roles---------------");
+
 
 
         return  "this admin page***!!!!!" + "\n ";
@@ -96,4 +93,16 @@ public List<User> users(){
         ModelAndView mav = new ModelAndView("login");
         return mav;
     }
+
+
+
+
+
+
+        @GetMapping("/accessDenied")
+        public ModelAndView getAccessDenied() {
+            ModelAndView mav = new ModelAndView("accessDenied");
+            return mav;
+
+        }
 }
