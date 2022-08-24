@@ -18,6 +18,7 @@ public class Function  extends Auditable<String> {
     private int idFunction;
 
     private String nameFunction;
+    private String url;
 
 
 
@@ -86,6 +87,14 @@ public class Function  extends Auditable<String> {
         this.children = children;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @PreRemove
     private void removeFunctionFromRoles() {
         for (Role r : RolesF) {
@@ -93,11 +102,15 @@ public class Function  extends Auditable<String> {
         }
     }
 
+
+
+
     @Override
     public String toString() {
         return "Function{" +
                 "idFunction=" + idFunction +
                 ", nameFunction='" + nameFunction + '\'' +
+                ", url='" + url + '\'' +
 
 
                 ", children=" + children +

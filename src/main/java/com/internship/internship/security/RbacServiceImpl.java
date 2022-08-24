@@ -35,7 +35,7 @@ public class RbacServiceImpl implements  RbacService {
                // System.out.println(functionRepository.urlsFinder(username));
                 for (Function i : f.getChildren()) {
 
-                    if (antPathMatcher.match( f.getNameFunction() +   i.getNameFunction(), request.getRequestURI())) {
+                    if (antPathMatcher.match( f.getUrl() +   i.getUrl(), request.getRequestURI())) {
                         hasPermission = true;
                         break;
                     }

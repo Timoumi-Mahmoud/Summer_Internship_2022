@@ -23,6 +23,7 @@
                 <thead>
                 <tr>
                     <th>Function Name</th>
+                    <th>Url</th>
                     <th>parent </th>
                     <th>child</th>
                     <th>act</th>
@@ -33,7 +34,8 @@
 
                 <tr th:each="i : ${function}">
 
-                   <td th:text="${i.nameFunction}">Avatar</td>
+                   <td th:text="${i.nameFunction}"></td>
+                    <td th:text="${i.url}">Avatar</td>
                     <td >
                         <div class="form-group row">
                             <div class="col-8">
@@ -71,7 +73,7 @@
         <!--end page content --->
         <div class="tree well">
             <ul th:each="i : ${function}" >
-                <li >
+                <li  th:unless="${i.children !=null and i.children.isEmpty()}">
                     <span th:text="${i.nameFunction}"  ><i class="icon-folder-open"></i> Parent</span> <a href="">Goes somewhere</a>  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
                     <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
