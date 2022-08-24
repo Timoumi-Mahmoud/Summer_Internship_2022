@@ -29,16 +29,18 @@ public class RbacServiceImpl implements  RbacService {
             //For reading all urls that user have access to it , with a query urlsFinder
             List<Function> urls = functionRepository.urlsFinder(username);
 
-            System.out.println( "the secoodne test iss  ::  "+ functionRepository.urlsFinder(username)  +"\n");
+            System.out.println( "the secoodne test iss  ::  "+ urls +"\n");
 
             for (Function f : urls) {
-              System.out.println(functionRepository.urlsFinder(username));
-                if (antPathMatcher.match(f.getNameFunction(), request.getRequestURI())) {
-                    hasPermission = true;
-                    break;
+                //   System.out.println(functionRepository.urlsFinder(username));
+                for (Function i : f.getChildren()) {
+
+                    if (antPathMatcher.match( f.getNameFunction() +   i.getNameFunction(), request.getRequestURI())) {
+                        hasPermission = true;
+                        break;
+                    }
                 }
             }
-
         }
         return hasPermission;
     }

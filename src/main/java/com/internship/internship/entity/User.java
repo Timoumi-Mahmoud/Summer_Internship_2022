@@ -86,12 +86,21 @@ public class User extends Auditable<String> {
     public User(String email, String password, String roles) {
         this.email = email;
         this.password = password;
-
-
-
     }
 
     public User() {
+    }
+
+    public User(String email, String password, String firstName, String lastName, String sex, int tel, String address, Department department) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sex = sex;
+
+        this.tel = tel;
+        this.address = address;
+        this.department = department;
     }
 
     public int getIdUser() {

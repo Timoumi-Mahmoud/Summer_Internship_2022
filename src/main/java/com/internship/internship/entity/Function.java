@@ -21,13 +21,13 @@ public class Function  extends Auditable<String> {
 
 
 
-    @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
+    @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private Set<Role> RolesF ;
 
     @ManyToOne
     private Function parent;
 
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL,  fetch = FetchType.EAGER)
     private Set<Function> children ;
 
 
@@ -96,7 +96,11 @@ public class Function  extends Auditable<String> {
     @Override
     public String toString() {
         return "Function{" +
-                "nameFunction='" + nameFunction + '\'' +
+                "idFunction=" + idFunction +
+                ", nameFunction='" + nameFunction + '\'' +
+
+
+                ", children=" + children +
                 '}';
     }
 }

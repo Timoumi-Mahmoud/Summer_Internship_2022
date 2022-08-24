@@ -51,6 +51,12 @@ public class Department extends Auditable<String> {
         this.responsiblePhone = responsiblePhone;
     }
 
+    public Department(String departmentName, String responsibleEmail, int responsiblePhone) {
+        this.departmentName = departmentName;
+        this.responsibleEmail = responsibleEmail;
+        this.responsiblePhone = responsiblePhone;
+    }
+
     public int getIdDepartment() {
         return idDepartment;
     }
