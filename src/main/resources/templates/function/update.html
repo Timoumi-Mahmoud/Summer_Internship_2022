@@ -13,10 +13,8 @@
         <!-- page content -->
 
 
-<div id="content" class="p-4 p-md-5">   <h1>test</h1></div>
 
-<br>
-<br>
+
 <form method="POST" th:action="@{/Function/update/{id}(id=${function.idFunction})}" th:object="${function}">
     <h2 class = "mt-4"> update a  Function ::</h2>
     <hr/>
@@ -24,7 +22,7 @@
 
 
     <div class = "form-group row ">
-        <label for = "RoleName" class = "col-sm-2 col-form-label"> Function name</label>
+        <label for = "Role Name" class = "col-sm-2 col-form-label"> Function name</label>
         <div class = "col-sm-4">
             <input th:field="*{nameFunction}"  type = "text" class = "form-control" placeholder = "Mandatory">
         </div>
@@ -33,12 +31,20 @@
         </div>
     </div>
     <input type="hidden" th:field="*{idFunction}">
-
+    <div class = "form-group row ">
+        <label for = "Role url " class = "col-sm-2 col-form-label"> url </label>
+        <div class = "col-sm-4">
+            <input th:field="*{url}"  type = "text" class = "form-control" placeholder = "name of the function..">
+        </div>
+        <div class="col-sm-4">
+            <span class="text-danger" > </span>
+        </div>
+    </div>
 
 
 
     <div class = "form-group row ">
-        <label for = "departemnt" class = "col-sm-2 col-form-label">Under :</label>
+        <label for = "parent" class = "col-sm-2 col-form-label">Under :</label>
         <div class = "col-sm-6">
             <select th:field="*{parent}"  style="width: 200px ; height: 45px">
                 <option value="">--------------------------</option>
@@ -49,7 +55,20 @@
 
         </div>
     </div>
-    <br><br>
+    <br>
+    <div class = "form-group row ">
+        <label for = "functions" class = "col-sm-2 col-form-label">Role :</label>
+        <div class = "col-sm-6">
+            <select th:field="*{RolesF}"  style="width: 200px ; height: 45px">
+                <option value="">--------------------------</option>
+                <c:forEach th:each="i : ${funRole}">
+                    <option th:value="${i.id}"  th:text="${i.name}" > </option>
+                </c:forEach>
+            </select>
+
+        </div>
+    </div>
+    <br>
 
 
 

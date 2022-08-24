@@ -39,7 +39,26 @@
     </div>
     <input type="hidden" th:field="*{id}">
 
-    <div class = "form-group row">
+    <div class="form-group row">
+        <label class="col-4 col-form-label" style="font-family: 'Elephant' ; font-size: 50px; color: #491217" >function: </label>
+        <div class="col-8" >
+            <th:block th:each="function: ${Function}">
+                <div    th:unless="${function.children !=null and function.children.isEmpty()}">
+
+                    <input type="checkbox" th:field="*{RolesFunction}"
+                           th:text="${function.nameFunction}" th:value="${function.idFunction}" class="m-xl-4"style=" top: .8rem;
+  width: 1.55rem;
+  height: 1.55rem; --moz-column-count: 2;  column-count:2;  -webkit-column-count:2;"  />
+                    <br>
+
+                    <br>
+
+
+                </div></th:block>
+
+
+
+            <div class = "form-group row">
         <div class = "col-sm-10">
             <button type = "submit" class = "btn btn-primary btnStyle" >Update</button>
         </div>

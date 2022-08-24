@@ -13,7 +13,7 @@
 
 
     <form method="post" th:action="@{saveFunction}" th:object="${function}">
-        <h2 class = "mt-4"> Add a new role::</h2>
+        <h2 class = "mt-4"> Add a new Function::</h2>
         <hr/>
         <!-- Form levels error messages here -->
         <div class = "form-group row ">
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class = "form-group row ">
-            <label for = "Role name" class = "col-sm-2 col-form-label"> url </label>
+            <label for = "Role url " class = "col-sm-2 col-form-label"> url </label>
             <div class = "col-sm-4">
                 <input th:field="*{url}"  type = "text" class = "form-control" placeholder = "name of the function..">
             </div>
@@ -40,11 +40,22 @@
             </div>
         </div>
 
+        <div class = "form-group row ">
+            <label for = "functions" class = "col-sm-2 col-form-label">Role :</label>
+            <div class = "col-sm-6">
+                <select th:field="*{RolesF}"  style="width: 200px ; height: 45px">
+                    <option value="">--------------------------</option>
+                    <c:forEach th:each="i : ${funRole}">
+                        <option th:value="${i.id}"  th:text="${i.name}" > </option>
+                    </c:forEach>
+                </select>
 
+            </div>
+        </div>
 
 
         <div class = "form-group row ">
-            <label for = "departemnt" class = "col-sm-2 col-form-label">Under :</label>
+            <label for = "parent" class = "col-sm-2 col-form-label">Under :</label>
             <div class = "col-sm-6">
                 <select th:field="*{parent}"  style="width: 200px ; height: 45px">
                     <option value="">--------------------------</option>

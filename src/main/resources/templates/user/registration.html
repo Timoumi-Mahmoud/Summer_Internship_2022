@@ -151,15 +151,15 @@
         </div>
         <br><br>
         <div class="form-group row">
-            <label class="col-4 col-form-label" style="font-family: 'Elephant' ; font-size: 50px; color: #491217" >Roles: </label>
+            <label class="col-4 col-form-label"  >Roles: </label>
             <div class="col-8">
                 <th:block th:each="role: ${listRoles}">
                     <input type="checkbox" th:field="*{roles}"
                            th:text="${role.name}" th:value="${role.id}" class="m-xl-4"style=" top: .8rem;
-  width: 1.55rem;
-  height: 1.55rem; --moz-column-count: 2;  column-count:2;  -webkit-column-count:2;"
+  width: 1.5rem;
+  height: 1.5rem; --moz-column-count: 2;  column-count:2;  -webkit-column-count:2;"
                     />
-                    <br>
+
                 </th:block>
             </div>
         </div>

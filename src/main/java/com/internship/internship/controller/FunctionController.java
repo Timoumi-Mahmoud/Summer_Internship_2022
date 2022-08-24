@@ -3,8 +3,11 @@ package com.internship.internship.controller;
 
 import com.internship.internship.entity.Department;
 import com.internship.internship.entity.Function;
+import com.internship.internship.entity.Role;
 import com.internship.internship.repository.FunctionRepository;
+import com.internship.internship.repository.RoleRepository;
 import com.internship.internship.services.FunctionService;
+import com.internship.internship.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +29,9 @@ public class FunctionController {
 
     @Autowired
     private FunctionRepository functionRepository;
+
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("delete/{id}")
     public RedirectView remove(@PathVariable int id){
@@ -50,7 +56,7 @@ public class FunctionController {
         Function function = new Function();
         mav.addObject("function", function);
         mav.addObject("functionMother", functionService.findAll());
-        mav.addObject("fun", functionService.findAll());
+        mav.addObject("funRole", roleService.findAll());
         return mav;
     }
 
@@ -70,14 +76,16 @@ public class FunctionController {
         Function function = functionService.findBy(id);
         ModelAndView mav = new ModelAndView("function/update");
         mav.addObject("functionMother", functionService.findAll());
+        mav.addObject("funRole", roleService.findAll());
 
         mav.addObject("function", function);
         return mav;
     }
     @PostMapping(value = "/update/{id}")
-    public ModelAndView updateSave(@PathVariable("id") int id, Function function ) {
+    public ModelAndView updateSave(@PathVariable("id") int id, Function function, Role role ) {
         function.setIdFunction(id);
         functionRepository.save(function);
+        System.out.println("the result is "+function);
         ModelAndView mav = new ModelAndView("function/update");
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/Function/list");

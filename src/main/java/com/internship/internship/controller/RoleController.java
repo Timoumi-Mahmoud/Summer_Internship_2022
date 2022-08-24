@@ -99,6 +99,8 @@ private FunctionService functionService;
         Role role = roleService.findBy(id);
         ModelAndView mav = new ModelAndView("role/update");
         mav.addObject("role", role);
+        mav.addObject("Function", functionService.findAll());
+
         return mav;
     }
     @PostMapping(value = "/update/{id}")

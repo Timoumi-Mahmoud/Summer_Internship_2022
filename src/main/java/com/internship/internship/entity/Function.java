@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","parent"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","children"})
 
 
 public class Function  extends Auditable<String> {
@@ -22,7 +22,7 @@ public class Function  extends Auditable<String> {
 
 
 
-    @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private Set<Role> RolesF ;
 
     @ManyToOne
@@ -95,6 +95,14 @@ public class Function  extends Auditable<String> {
         this.url = url;
     }
 
+    public Set<Role> getRolesF() {
+        return RolesF;
+    }
+
+    public void setRolesF(Set<Role> rolesF) {
+        RolesF = rolesF;
+    }
+
     @PreRemove
     private void removeFunctionFromRoles() {
         for (Role r : RolesF) {
@@ -102,18 +110,13 @@ public class Function  extends Auditable<String> {
         }
     }
 
-
-
-
     @Override
     public String toString() {
         return "Function{" +
                 "idFunction=" + idFunction +
                 ", nameFunction='" + nameFunction + '\'' +
                 ", url='" + url + '\'' +
-
-
-                ", children=" + children +
+                ", parent=" + parent +
                 '}';
     }
 }

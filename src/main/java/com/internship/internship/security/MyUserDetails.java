@@ -79,10 +79,10 @@ public MyUserDetails(User user){
     return this.user.getFirstName()+" "+this.user.getLastName();
     }
 
-  /*  @Override
+    @Override
     public String toString() {
         return "MyUserDetails{" +
                 "user=" + user +
                 '}';
-    }*/
+    }
 }
