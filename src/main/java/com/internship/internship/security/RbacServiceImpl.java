@@ -32,7 +32,7 @@ public class RbacServiceImpl implements  RbacService {
             System.out.println( "the secoodne test iss  ::  "+ urls +"\n");
 
             for (Function f : urls) {
-                //   System.out.println(functionRepository.urlsFinder(username));
+               // System.out.println(functionRepository.urlsFinder(username));
                 for (Function i : f.getChildren()) {
 
                     if (antPathMatcher.match( f.getNameFunction() +   i.getNameFunction(), request.getRequestURI())) {
