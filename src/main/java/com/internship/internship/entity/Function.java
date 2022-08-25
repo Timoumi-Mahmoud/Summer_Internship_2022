@@ -1,5 +1,6 @@
 package com.internship.internship.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -21,15 +22,26 @@ public class Function  extends Auditable<String> {
     private String url;
 
 
-
-    @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction", cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction",cascade = {CascadeType.PERSIST, CascadeType.DETACH,/*/*/CascadeType.MERGE,CascadeType.REFRESH} , fetch = FetchType.EAGER)
     private Set<Role> RolesF ;
+    @PreRemove
+    private void removeFunctionFromRoles() {
+        for (Role r : RolesF) {
+            r.getRolesFunction().remove(this);
+        }
+        /*
+        for(Function f: children){
+            f.getChildren().remove(this);
 
-    @ManyToOne
+        }*/
+    }
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,/*/*/CascadeType.MERGE,CascadeType.REFRESH})
     private Function parent;
 
-    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL,  fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "parent", cascade=CascadeType.ALL,  fetch = FetchType.EAGER)
     private Set<Function> children ;
+
 
 
     public Function() {
@@ -103,12 +115,6 @@ public class Function  extends Auditable<String> {
         RolesF = rolesF;
     }
 
-    @PreRemove
-    private void removeFunctionFromRoles() {
-        for (Role r : RolesF) {
-            r.getRolesFunction().remove(this);
-        }
-    }
 
     @Override
     public String toString() {

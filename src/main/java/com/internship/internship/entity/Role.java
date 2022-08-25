@@ -33,7 +33,7 @@ public class Role  extends Auditable<String> {
     }
 
 
-    @ManyToMany(targetEntity = Function.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH} , fetch = FetchType.EAGER)
+    @ManyToMany(targetEntity = Function.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH})
     @JoinTable(
             name = "Functions_roles",
             joinColumns = @JoinColumn(name = "id_role"),

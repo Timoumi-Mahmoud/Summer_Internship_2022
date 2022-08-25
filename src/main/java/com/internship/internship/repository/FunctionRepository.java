@@ -3,9 +3,11 @@ package com.internship.internship.repository;
 
 import com.internship.internship.entity.Function;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface FunctionRepository extends JpaRepository<Function,  Integer>  {
@@ -18,5 +20,12 @@ public interface FunctionRepository extends JpaRepository<Function,  Integer>  {
             , nativeQuery = true
              )
     List<Function> urlsFinder( @Param("username") String  username);
+
+
+    @Modifying
+    @Transactional
+    @Query(value ="delete from function where id_function = ?1"     ,nativeQuery=true)
+    void deleteByParentId(Integer id);
+
 
 }

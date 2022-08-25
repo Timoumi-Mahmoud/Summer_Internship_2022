@@ -35,6 +35,9 @@ public class FunctionController {
 
     @GetMapping("delete/{id}")
     public RedirectView remove(@PathVariable int id){
+        System.out.println("this is the function by id \n"+ functionService.findBy(id)   +"\n");
+        functionRepository.deleteByParentId(id);
+
         functionService.delete(id);
         return new RedirectView("/Function/list");
     }
@@ -77,7 +80,6 @@ public class FunctionController {
         ModelAndView mav = new ModelAndView("function/update");
         mav.addObject("functionMother", functionService.findAll());
         mav.addObject("funRole", roleService.findAll());
-
         mav.addObject("function", function);
         return mav;
     }
