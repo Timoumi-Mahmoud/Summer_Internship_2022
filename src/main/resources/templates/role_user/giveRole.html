@@ -95,7 +95,7 @@
             <br>
             <br>
 
-            <form  id="msform" name="myForm" onsubmit="return validateForm()"   th:action="@{/User/save/{id}(id=${user.idUser})}"  th:object="${user}"
+            <form  id="msform" name="myForm" onsubmit="return validateForm()"   th:action="@{/User/edit/{id}(id=${user.idUser})}"  th:object="${user}"
                   method="post" style="max-width: 600px; margin: 0 auto;">
                 <input type="hidden" th:field="*{idUser}" />
                 <input type="hidden" th:field="*{department}" />

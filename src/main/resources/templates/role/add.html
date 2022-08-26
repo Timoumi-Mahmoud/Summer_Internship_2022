@@ -13,7 +13,7 @@
     <div layout:fragment="content">
         <!-- page content -->
 
-    <form id="msform" name="myForm" onsubmit="return validateForm()"   method="post" th:action="@{saveRole}" th:object="${role}">
+    <form id="msform" name="myForm" onsubmit="return validateForm()"   method="post" th:action="@{addRole}" th:object="${role}">
         <h2 class = "mt-4"> Add a new role::</h2>
         <hr/>
         <!-- Form levels error messages here -->

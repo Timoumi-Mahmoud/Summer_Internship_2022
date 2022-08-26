@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","children"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler", "children"})
 
 
 public class Function  extends Auditable<String> {
@@ -22,7 +22,7 @@ public class Function  extends Auditable<String> {
     private String url;
 
 
-    @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction",cascade = {CascadeType.PERSIST, CascadeType.DETACH,/*/*/CascadeType.MERGE,CascadeType.REFRESH} , fetch = FetchType.EAGER)
+    @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction",cascade = {CascadeType.PERSIST, CascadeType.DETACH,/*/CascadeType.MERGE,*/CascadeType.REFRESH} , fetch = FetchType.EAGER)
     private Set<Role> RolesF ;
     @PreRemove
     private void removeFunctionFromRoles() {
@@ -36,10 +36,15 @@ public class Function  extends Auditable<String> {
         }*/
     }
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,/*/*/CascadeType.MERGE,CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,/*/CascadeType.MERGE,*/CascadeType.REFRESH})
     private Function parent;
 
     @OneToMany(mappedBy = "parent", cascade=CascadeType.ALL,  fetch = FetchType.EAGER)
+
+    /*
+    , cascade = CascadeType.REMOVE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+     */
     private Set<Function> children ;
 
 
@@ -115,7 +120,7 @@ public class Function  extends Auditable<String> {
         RolesF = rolesF;
     }
 
-
+/*
     @Override
     public String toString() {
         return "Function{" +
@@ -123,6 +128,18 @@ public class Function  extends Auditable<String> {
                 ", nameFunction='" + nameFunction + '\'' +
                 ", url='" + url + '\'' +
                 ", parent=" + parent +
+                '}';
+    }*/
+
+    @Override
+    public String toString() {
+        return "Function{" +
+                "idFunction=" + idFunction +
+                ", nameFunction='" + nameFunction + '\'' +
+                ", url='" + url + '\'' +
+
+
+                ", children=" + children +
                 '}';
     }
 }

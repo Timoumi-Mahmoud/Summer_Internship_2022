@@ -1,33 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http:www.thymeleaf.org"        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <!DOCTYPE html>
-    <html lang="en"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-          xmlns:th="http:www.thymeleaf.org"        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head  th:fragment="headfragment">
-        <title>Stage</title>
-        <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" th:href="@{/css/style.css}">
-       <!--  -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
-    <th:block th:fragment="nav">
+
+<head  th:fragment="headfragment">
+
+    <title>Sidebar 01</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!--  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<th:block th:fragment="nav">
 
     <div class="wrapper d-flex align-items-stretch">
         <nav id="sidebar" >
             <div class="p-4 pt-5">
                 <img th:src="@{/images/st2i.png}" class="img logo rounded-circle mb-6" />
                 <div  sec:authorize="isAuthenticated()">
-               <span  sec:authentication="principal.name" >Fullname</span>Role(s): <span sec:authentication="principal.authorities"></span>
+                    <span  sec:authentication="principal.name" >Fullname</span>Role(s): <span sec:authentication="principal.authorities"></span>
                 </div>
-
                 </li>
-                <ul class="list-unstyled components mb-5" sec:authorize="hasRole('ROLE_ADMIN')">
+                <ul class="list-unstyled components mb-5">
 
-                    <li class="active"    >
+                    <li class="active"   >
 
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Users</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu" >
@@ -80,78 +82,7 @@
                                 <a th:href="@{/Department/list}">List of department</a>
                             </li>
                             <li>
-                                <a th:href="@{/Department/add}">Add new</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul>
-                <div class="wrapper">
-
-                    <div class="divider div-transparent div-dot"></div>
-                </div>
-
-
-
-                <ul class="list-unstyled components mb-5"  sec:authorize="hasRole('ROLE_MANAGER')">
-
-                    <li class="active"   >
-
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Manage Child</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu" >
-                            <li>
-                                <a href="#">childOne</a>
-                            </li>
-                            <li>
-                                <a href="#">childTwp</a>
-                            </li>
-                            <li>
-                                <a href="#">childThree</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#roleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Role</a>
-                        <ul class="collapse list-unstyled" id="roleSubmenu">
-                            <li>
-                                <a th:href="@{/Role/listRole}">list of roles</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/Role/addRole}">add new role</a>
-                            </li>
-                            <li>
-                                <a href="#">users list in a role</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#functionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Function</a>
-                        <ul class="collapse list-unstyled" id="functionSubmenu">
-                            <li>
-                                <a th:href="@{/Function/list}">List of Function</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/Function/addFunction}">Add new</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
-
-                    </li>
-                    <li>
-                        <a href="#departmentSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Department</a>
-                        <ul class="collapse list-unstyled" id="departmentSubmenu">
-                            <li>
-                                <a th:href="@{/Department/list}">List of department</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/Department/add}">Add new</a>
+                                <a th:href="@{/Department/addDepartment}">Add new</a>
                             </li>
                             <li>
                                 <a href="#">Page 3</a>
@@ -161,16 +92,6 @@
 
                 </ul>
 
-
-
-
-
-
-
-
-
-
-                <br><br><br><br><br><br><br><br><br><br>
                 <div class="footer">
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Internship project <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Stage.com</a>
@@ -178,7 +99,6 @@
                 </div>
 
             </div>
-
         </nav>
 
         <!-- Page Content  -->
@@ -206,9 +126,9 @@
                             <li class="nav-item">
                             </li>
                             <li class="nav-item">
-                               <div> <form sec:authorize="isAuthenticated()" class="form-inline my-2my-lg-0"form-method="post"th:action="@{/logout}">
+                                <div> <form sec:authorize="isAuthenticated()" class="form-inline my-2my-lg-0"form-method="post"th:action="@{/logout}">
                                     <button class="btn btn-outline-danger my-2my-sm-0btn-sm"type="submit">Logout</button>
-                               </form>    </div>
+                                </form>    </div>
                             </li>
                         </ul>
                     </div>
@@ -227,11 +147,11 @@
         </div>
 
     </div></th:block>
-    <div th:fragment="js">
-        <script th:src="@{/js/jquery.min.js}"></script>
-        <script th:src="@{/js/popper.js}"></script>
-        <script th:src="@{/js/bootstrap.min.js}"></script>
-        <script th:src="@{/js/main.js}"></script>
-    </div>
-    </body>
-    </html>
+<div th:fragment="js">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/popper.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</div>
+</body>
+</html>

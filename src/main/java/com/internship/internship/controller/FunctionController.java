@@ -63,7 +63,7 @@ public class FunctionController {
         return mav;
     }
 
-    @RequestMapping(value = "/saveFunction",method = RequestMethod.POST)
+    @RequestMapping(value = "/addFunction",method = RequestMethod.POST)
     public ModelAndView  saveDept(@Valid Function function , BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("function/add");
@@ -83,7 +83,7 @@ public class FunctionController {
         mav.addObject("function", function);
         return mav;
     }
-    @PostMapping(value = "/update/{id}")
+    @PostMapping(value = "/edit/{id}")
     public ModelAndView updateSave(@PathVariable("id") int id, Function function, Role role ) {
         function.setIdFunction(id);
         functionRepository.save(function);

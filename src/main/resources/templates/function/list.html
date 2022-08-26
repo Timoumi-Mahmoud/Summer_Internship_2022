@@ -33,7 +33,6 @@
                 <tbody>
 
                 <tr th:each="i : ${function}">
-
                    <td th:text="${i.nameFunction}"></td>
                     <td th:text="${i.url}">Avatar</td>
                     <td >
@@ -73,6 +72,8 @@
         <!--end page content --->
         <div class="tree well">
             <ul th:each="i : ${function}" >
+                <span th:text="${i}"></span>
+
                 <li  th:unless="${i.children !=null and i.children.isEmpty()}">
                     <span th:text="${i.nameFunction}"  ><i class="icon-folder-open"></i> Parent</span> <a href="">Goes somewhere</a>  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>

@@ -109,6 +109,7 @@ public UserController(UserService UserService){  same as autowired
         return new ModelAndView(viewName , model);
     }
 */
+/////////////////////////////////////////////////////////////////////////
     @GetMapping("/addUser")
     public ModelAndView addForm() {
         ModelAndView mav = new ModelAndView("user/registration");
@@ -121,7 +122,7 @@ public UserController(UserService UserService){  same as autowired
         return mav;
     }
 
-    @RequestMapping(value = "/saveUser",method = RequestMethod.POST)
+    @RequestMapping(value = "/addUser",method = RequestMethod.POST)
     public ModelAndView  saveUser(@Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             ModelAndView mav = new ModelAndView("user/registration");
@@ -138,7 +139,10 @@ public UserController(UserService UserService){  same as autowired
 
         return new ModelAndView(redirectView);
     }
-    @GetMapping("/users/edit/{id}")
+
+
+    /////////////////////////////////////////////////////////////////////////
+    @GetMapping("/edit/{id}")
     public ModelAndView editUser(@PathVariable("id") int id) {
         User user = userService.findBy(id);
 
@@ -149,7 +153,7 @@ public UserController(UserService UserService){  same as autowired
         mav.addObject("listRoles", listRoles);
         return mav;
     }
-    @RequestMapping(value ="/save/{id}" , method = RequestMethod.POST)
+    @RequestMapping(value ="/edit/{id}" , method = RequestMethod.POST)
     public ModelAndView saveUser(@Valid @ModelAttribute("user") User user, @PathVariable("id") int id) {
 
         userService.update(user, id);
@@ -157,7 +161,7 @@ public UserController(UserService UserService){  same as autowired
         redirectView.setUrl("/");
         return new ModelAndView(redirectView);
     }
-
+    /////////////////////////////////////////////////////////////////////////
     @GetMapping("/login")
     public ModelAndView  loginPage() {
         ModelAndView mav = new ModelAndView("user/login");

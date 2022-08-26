@@ -67,7 +67,7 @@ private FunctionService functionService;
         return mav;
     }
 //////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////
+
     @GetMapping("/addRole")
     public ModelAndView addForm() {
         ModelAndView mav = new ModelAndView("role/add");
@@ -77,7 +77,7 @@ private FunctionService functionService;
         return mav;
     }
 
-    @RequestMapping(value = "/saveRole",method = RequestMethod.POST)
+    @RequestMapping(value = "/addRole",method = RequestMethod.POST)
     public ModelAndView  saveDept(@Valid Role role, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             ModelAndView mav = new ModelAndView("role/add");
@@ -92,6 +92,7 @@ private FunctionService functionService;
     }
 
 
+//////////////////////////////////////////////////////////////////////////////////
 
 
     @GetMapping("/edit/{id}")
@@ -103,7 +104,7 @@ private FunctionService functionService;
 
         return mav;
     }
-    @PostMapping(value = "/update/{id}")
+    @PostMapping(value = "/edit/{id}")
     public ModelAndView updateSave(@PathVariable("id") int id, Role role ) {
         role.setId(id);
         roleRepository.save(role);
@@ -113,5 +114,6 @@ private FunctionService functionService;
         return new ModelAndView(redirectView);
     }
 
+//////////////////////////////////////////////////////////////////////////////////
 
 }

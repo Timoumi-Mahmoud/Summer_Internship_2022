@@ -11,7 +11,7 @@
 
     <div layout:fragment="content">
         <!-- page content -->
-<form  id="msform" name="myForm" onsubmit="return validateForm()"  method="POST" th:action="@{/Role/update/{id}(id=${role.id})}" th:object="${role}">
+<form  id="msform" name="myForm" onsubmit="return validateForm()"  method="POST" th:action="@{/Role/edit/{id}(id=${role.id})}" th:object="${role}">
     <h2 class = "mt-4"> update a  Role::</h2>
     <hr/>
     <!-- Form levels error messages here -->

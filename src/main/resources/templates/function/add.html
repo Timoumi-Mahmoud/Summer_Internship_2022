@@ -11,8 +11,7 @@
     <div layout:fragment="content">
         <!-- page content -->
 
-
-    <form id="msform" name="myForm" onsubmit="return validateForm()"    method="post" th:action="@{saveFunction}" th:object="${function}">
+    <form id="msform" name="myForm" onsubmit="return validateForm()"    method="post" th:action="@{addFunction}" th:object="${function}">
         <h2 class = "mt-4"> Add a new Function::</h2>
         <hr/>
         <!-- Form levels error messages here -->

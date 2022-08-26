@@ -2,11 +2,9 @@ package com.internship.internship.services;
 
 
 import com.internship.internship.AppUser.UserRepository;
-import com.internship.internship.entity.Role;
 import com.internship.internship.entity.User;
 import com.internship.internship.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class UserService {

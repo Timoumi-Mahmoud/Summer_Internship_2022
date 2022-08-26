@@ -68,7 +68,7 @@ public class DepartmentController {
     }
 
 
-    @GetMapping("/add")
+    @GetMapping("/addDepartment")
     public ModelAndView addDepForm() {
         ModelAndView mav = new ModelAndView("department/add");
         Department department = new Department();
@@ -79,7 +79,7 @@ public class DepartmentController {
         return mav;
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/addDepartment", method = RequestMethod.POST)
     public ModelAndView saveDept(@Valid Department department, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("department/add");
@@ -103,7 +103,7 @@ public class DepartmentController {
 
 
     }
-    @PostMapping(value = "/update/{id}")
+    @PostMapping(value = "/edit/{id}")
     public ModelAndView updateSave( @PathVariable("id") int id,@Valid Department department, BindingResult bindingResult ) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("department/update");
