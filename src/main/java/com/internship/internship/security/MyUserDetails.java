@@ -1,5 +1,6 @@
 package com.internship.internship.security;
 
+import com.internship.internship.entity.Function;
 import com.internship.internship.entity.Role;
 import com.internship.internship.entity.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -78,6 +79,19 @@ public MyUserDetails(User user){
     public String getName(){
     return this.user.getFirstName()+" "+this.user.getLastName();
     }
+
+
+    public Set<Role> getRoles(){
+
+
+
+
+
+                return  this.user.getRoles();
+
+}
+
+
 
     @Override
     public String toString() {

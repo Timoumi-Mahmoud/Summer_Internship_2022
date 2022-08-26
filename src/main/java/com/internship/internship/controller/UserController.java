@@ -4,8 +4,10 @@ package com.internship.internship.controller;
 import com.internship.internship.entity.Department;
 import com.internship.internship.entity.Role;
 import com.internship.internship.entity.User;
+import com.internship.internship.repository.FunctionRepository;
 import com.internship.internship.repository.RoleRepository;
 import com.internship.internship.services.DepartmentService;
+import com.internship.internship.services.FunctionService;
 import com.internship.internship.services.RoleService;
 import com.internship.internship.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,8 @@ public class UserController {
   private DepartmentService departmentService;
   @Autowired
   private RoleRepository roleRepository;
+  @Autowired
+  private FunctionService functionService;
 
 /*
 public UserController(UserService UserService){  same as autowired
@@ -124,6 +128,7 @@ public UserController(UserService UserService){  same as autowired
 
             mav.addObject("departs", departmentService.findAll());
             mav.addObject("listRoles", roleService.findAll());
+       //     mav.addObject("functionId", functionService.findBy(id));
           //  return new ModelAndView("/user/registration");
             return mav;
         }

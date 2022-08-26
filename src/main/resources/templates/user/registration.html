@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="fragments/adminTemplate.html">
-<head  th:insert="fragments/adminTemplate.html :: headfragment">
+      layout:decorate="fragments/adminTemplate.html"  >
+<head  th:insert="fragments/adminTemplate.html :: headfragment (pageTitle='Bla Bla Some Title')">
 
 </head>
 <body>
@@ -28,7 +28,7 @@
 
         </div>
     </nav>
-    <form method="post" th:action="@{saveUser}" th:object="${user}" style="margin-left: 70px">
+    <form method="post"          th:action="@{saveUser}" th:object="${user}" style="margin-left: 70px">
         <h2 class = "mt-4">Please provide correct information :</h2>
         <hr/>
         <!-- Form levels error messages here -->
@@ -154,7 +154,7 @@
             <label class="col-4 col-form-label"  >Roles: </label>
             <div class="col-8">
                 <th:block th:each="role: ${listRoles}">
-                    <input type="checkbox" th:field="*{roles}"
+                    <input  id="myBtn" name="CS"  type="checkbox" th:field="*{roles}"
                            th:text="${role.name}" th:value="${role.id}" class="m-xl-4"style=" top: .8rem;
   width: 1.5rem;
   height: 1.5rem; --moz-column-count: 2;  column-count:2;  -webkit-column-count:2;"
@@ -166,9 +166,68 @@
 
 
 
+        <h2>Modal Example</h2>
+
+        <!-- Trigger/Open The Modal -->
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<div id="cs-input"> +5</div>
+
+
+
+                <p  >Some text in the Modal..</p>
+            </div>
+        </div>
+<script>$(':checkbox').on('change', function() {
+    var values = $(':checkbox:checked').map(function() {
+        return this.value;
+    }).get().join(', ');
+    $('#cs-input').html(values);
+});</script>
+<br><br><br>
+
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function() {   modal.style.display = "block"; }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {   modal.style.display = "none"; }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                } }
+        </script>
+
+
+
+
+
+
+<br>
+        <div></div>
+
+
+
+
         <div class = "form-group row">
             <div class = "col-sm-10">
-                <button type = "submit" class = "btn btn-primary" style="position: center;">Submit</button>
+                <button type = "submit" class = "btn btn-primary" style="position: center;"   >Submit</button>
                 <input type="hidden" />
             </div>
         </div>
@@ -183,6 +242,13 @@
 
 
         <!--end page content --->
+
+
+
+
+
+
+
     </div>
 </th:block>
 <div th:insert="fragments/adminTemplate.html ::js"></div>

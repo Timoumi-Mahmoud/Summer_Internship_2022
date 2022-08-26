@@ -11,6 +11,7 @@
 
     <div layout:fragment="content">
         <!-- page content -->
+
 <div class="container-lg">
     <div class="table-responsive">
         <div class="table-wrapper">
@@ -21,6 +22,8 @@
 
                 </div>
             </div>
+            <a  style="margin-right:10px"class="add float-right" title="Add" data-toggle="tooltip"  a th:href="@{/Role/addRole}" ><i class="material-icons fa-4x">&#xE03B;</i></a>
+
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -48,9 +51,8 @@
 
                     </td>
                     <td>
-                        <a class="add" title="Add" data-toggle="tooltip"  a th:href="@{/Role/addRole}" ><i class="material-icons">&#xE03B;</i></a>
-                        <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.id})}"  ><i class="material-icons">&#xE254;</i></a>
-                        <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{/Role/delete/{id}(id=${i.id})}"    ><i class="material-icons">&#xE872;</i></a>
+                        <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.id})}"  ><i class="material-icons ">&#xE254;</i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{/Role/delete/{id}(id=${i.id})}"    ><i class="material-icons ">&#xE872;</i></a>
                     </td>
                 </tr>
 
@@ -92,33 +94,6 @@
                     </ul>
                 </nav>
             </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
 </div>

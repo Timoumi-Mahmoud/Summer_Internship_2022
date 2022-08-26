@@ -13,7 +13,7 @@
     <div layout:fragment="content">
         <!-- page content -->
 
-    <form method="post" th:action="@{saveRole}" th:object="${role}">
+    <form id="msform" name="myForm" onsubmit="return validateForm()"   method="post" th:action="@{saveRole}" th:object="${role}">
         <h2 class = "mt-4"> Add a new role::</h2>
         <hr/>
         <!-- Form levels error messages here -->
@@ -25,7 +25,7 @@
         <div class = "form-group row ">
             <label for = "Role name" class = "col-sm-8 col-form-label"> <b> Role name</b> <b class="redInput"> *</b></label>
             <div class = "col-sm-5">
-                <input th:field="*{name}"  type = "text" class = "form-control" placeholder = "name of the Role..">
+                <input th:field="*{name}"  type = "text" class = "form-control inputSize" placeholder = "name of the Role..">
             </div>
             <div class="col-sm-4">
                 <span class="text-danger" th:errors="*{name}"> </span>
@@ -34,7 +34,7 @@
         <div class = "form-group row">
             <label for = "Description of the role" class = "col-sm-8 col-form-label"><b>Description of the role</b><b class="redInput"> *</b></label>
             <div class = "col-sm-5">
-                <textarea   th:field="*{descriptionOfTheRole}" class = "form-control" rows ="20"cols="20"   placeholder = "short description of the role.."
+                <textarea   th:field="*{descriptionOfTheRole}" class = "form-control inputSize" rows ="20"cols="20"   placeholder = "short description of the role.."
                 style="height:100%"></textarea>
             </div>
             <div class="col-sm-4">
@@ -75,6 +75,12 @@
         <!--end page content --->
 
 
+        <script>
+            function validateForm() {
+                alert("role add it with success ");
+                return true;
+            }
+        </script>
     </div>
 </th:block>
 <div th:insert="fragments/adminTemplate.html ::js"></div>

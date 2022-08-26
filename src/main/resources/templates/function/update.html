@@ -15,7 +15,7 @@
 
 
 
-<form method="POST" th:action="@{/Function/update/{id}(id=${function.idFunction})}" th:object="${function}">
+<form id="msform" name="myForm" onsubmit="return validateForm()"     method="POST" th:action="@{/Function/update/{id}(id=${function.idFunction})}" th:object="${function}">
     <h2 class = "mt-4"> update a  Function ::</h2>
     <hr/>
     <!-- Form levels error messages here -->
@@ -24,7 +24,7 @@
     <div class = "form-group row ">
         <label for = "Role Name" class = "col-sm-2 col-form-label"> Function name</label>
         <div class = "col-sm-4">
-            <input th:field="*{nameFunction}"  type = "text" class = "form-control" placeholder = "Mandatory">
+            <input th:field="*{nameFunction}"  type = "text" class = "form-control inputSize" placeholder = "Mandatory">
         </div>
         <div class="col-sm-4">
             <span class="text-danger"  > </span>
@@ -34,7 +34,7 @@
     <div class = "form-group row ">
         <label for = "Role url " class = "col-sm-2 col-form-label"> url </label>
         <div class = "col-sm-4">
-            <input th:field="*{url}"  type = "text" class = "form-control" placeholder = "name of the function..">
+            <input th:field="*{url}"  type = "text" class = "form-control inputSize" placeholder = "name of the function..">
         </div>
         <div class="col-sm-4">
             <span class="text-danger" > </span>
@@ -81,6 +81,12 @@
     </div>
 </form>
 
+        <script>
+            function validateForm() {
+                alert("Department update it with success ");
+                return true;
+            }
+        </script>
         <!--end page content --->
     </div>
 </th:block>

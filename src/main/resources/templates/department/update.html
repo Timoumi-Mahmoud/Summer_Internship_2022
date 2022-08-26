@@ -22,7 +22,7 @@
     <div class = "form-group row ">
         <label for = "DepartmentName" class = "col-sm-8 col-form-label"> <b>Department name</b></label>
         <div class = "col-sm-5">
-            <input th:field="*{departmentName}"  type = "text" class = "form-control" placeholder = "Mandatory">
+            <input th:field="*{departmentName}"  type = "text" class = "form-control inputSize" placeholder = "Mandatory">
         </div>
         <div class="col-sm-4">
             <span class="text-danger"  th:errors="*{departmentName}" > </span>
@@ -32,7 +32,7 @@
     <div class = "form-group row ">
         <label for = "EmailResponsible" class = "col-sm-8 col-form-label"><b>Email of the Responsible</b></label>
         <div class = "col-sm-5">
-            <input th:field="*{responsibleEmail}"  type = "text" class = "form-control" placeholder = "Mandatory">
+            <input th:field="*{responsibleEmail}"  type = "text" class = "form-control inputSize" placeholder = "Mandatory">
         </div>
         <div class="col-sm-4">
             <span class="text-danger"  th:errors="*{responsibleEmail}" > </span>
@@ -42,7 +42,7 @@
     <div class = "form-group row ">
         <label for = "phone" class = "col-sm-8 col-form-label"> <b>Phone number of the responsible </b></label>
         <div class = "col-sm-5">
-            <input th:field="*{responsiblePhone}"  type = "text" class = "form-control" placeholder = "Mandatory">
+            <input th:field="*{responsiblePhone}"  type = "text" class = "form-control inputSize" placeholder = "Mandatory">
         </div>
         <div class="col-sm-4">
             <span class="text-danger" th:errors="*{responsiblePhone}"  > </span>

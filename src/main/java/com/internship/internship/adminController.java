@@ -105,4 +105,15 @@ public List<User> users(){
             return mav;
 
         }
+        /*
+
+    @GetMapping("/")
+    public ModelAndView index() {
+        ModelAndView mav = new ModelAndView("index");
+        mav.addObject("page-title", "Home");
+
+        return mav;
+
+    }*/
+
 }
