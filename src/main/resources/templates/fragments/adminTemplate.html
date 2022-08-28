@@ -11,8 +11,19 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-
     <!--  -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+
+    <!--  Bootstrap cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+
+
+
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
 </head>
@@ -22,10 +33,11 @@
     <div class="wrapper d-flex align-items-stretch">
         <nav id="sidebar" >
             <div class="p-4 pt-5">
-                <img th:src="@{/images/st2i.png}" class="img logo rounded-circle mb-6" />
-                <div  sec:authorize="isAuthenticated()">
-                    <span  sec:authentication="principal.name" >Fullname</span>Role(s): <span sec:authentication="principal.authorities"></span>
-                </div>
+                <img th:src="@{/images/LogoST2I.jpg}" class="img logo rounded-circle mb-6" />
+
+                <div  sec:authorize="isAuthenticated()" style="font-size:small;">
+                    <i class="bi bi-person-square  fa-2x" >   </i>          <span  sec:authentication="principal.name" >Fullname</span>Role(s): <span sec:authentication="principal.authorities"></span>
+                </div></i>
                 </li>
                 <ul class="list-unstyled components mb-5">
 
@@ -91,6 +103,101 @@
                     </li>
 
                 </ul>
+                <div style="background-color: white"><hr></div>
+                <br>
+
+
+
+
+                <ul class="list-unstyled components mb-5">
+
+                    <li class="active"   >
+
+                        <a href="#h1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parent One</a>
+                        <ul class="collapse list-unstyled" id="h1" >
+                            <li>
+                                <a href="">child One</a>
+                            </li>
+                            <li>
+                                <a href="">child two</a>
+                            </li>
+                            <li>
+                                <a href="">child three</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#h2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parent two</a>
+                        <ul class="collapse list-unstyled" id="h2">
+                            <li>
+                                <a href="">child One</a>
+                            </li>
+                            <li>
+                                <a href="">child two</a>
+                            </li>
+                            <li>
+                                <a href="#">child three</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#h3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parent three</a>
+                        <ul class="collapse list-unstyled" id="h3">
+                            <li>
+                                <a href="">child One</a>
+                            </li>
+                            <li>
+                                <a href="">child two</a>
+                            </li>
+                            <li>
+                                <a href="#">child three</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#h4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parent four</a>
+                        <ul class="collapse list-unstyled" id="h4">
+                            <li>
+                                <a href="">child One</a>
+                            </li>
+                            <li>
+                                <a href="">child two</a>
+                            </li>
+                            <li>
+                                <a href="#">child three</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div style="background-color: white"><hr></div>
+                <br><br><br>
+
+
+
+
+
+
+
+
 
                 <div class="footer">
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -117,7 +224,7 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
+                           <li class="nav-item active">
                                 <a class="nav-link" th:href="@{/admin}">admin page</a>
                             </li>
                             <li class="nav-item">
@@ -125,11 +232,25 @@
                             </li>
                             <li class="nav-item">
                             </li>
-                            <li class="nav-item">
-                                <div> <form sec:authorize="isAuthenticated()" class="form-inline my-2my-lg-0"form-method="post"th:action="@{/logout}">
-                                    <button class="btn btn-outline-danger my-2my-sm-0btn-sm"type="submit">Logout</button>
-                                </form>    </div>
-                            </li>
+                          <li class="nav-item">
+                                    <div> <form sec:authorize="isAuthenticated()" class="form-inline my-2my-lg-0"form-method="post"th:action="@{/logout}">
+                                        <button class="btn btn-outline-danger my-2my-sm-0btn-sm"type="submit"><i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; &nbsp;Logout</button>
+                                    </form>    </div>
+                                </li>
+
+
+
+
+
+
+
+
+                                </li>
+                            </ul>
+
+
+
+
                         </ul>
                     </div>
                 </div>

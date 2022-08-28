@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragments/adminTemplate.html"  >
+<head  th:insert="fragments/adminTemplate.html :: headfragment (pageTitle='Bla Bla Some Title')">
+
+</head>
+<body>
+<th:block th:insert="fragments/adminTemplate.html::nav">
+
+    <div layout:fragment="content">
+        <!-- page content -->
+<div style="margin-left: 10%; font-family: monospace; color:darksalmon;" >
+
+    <div class="row">
+        <div class="col-sm-12">
+            <br>
+            <br>
+            <table border="0" style="margin_top:5px; font-family:monospace; font-size:20px" class="title "  >
+
+                <tr >
+
+                    <td ><mark>
+                        <div th:switch="${u.sex}">
+                            <span th:case="'Female'"> Madame </span>
+                            <span th:case="'Male'">Monsieur</span>
+                            <span th:case="*">User is some other thing</span>
+
+                    </mark>
+        </div></td>
+        <td >:</td>
+        <td th:utext="${u.firstName} +' '+ ${u.lastName} ">:</td>
+        </tr>
+
+        </tr>
+
+        <td><mark>Phone</mark></td>
+        <td>:</td>
+        <td th:utext="${u.tel}">:</td>
+        </tr>
+        <tr>
+            <td><mark>Email</mark></td>
+            <td >:</td>
+            <td th:utext="${u.email}">:</td>
+        </tr>
+        <tr>
+            <td><mark>Address</mark></td>
+            <td>:</td>
+            <td th:utext="${u.address}">:</td>
+        </tr>
+        <tr>
+            <td> <mark> Department</mark> </td>
+            <td>:</td>
+            <td th:utext="${u.department.departmentName}">:</td>
+        </tr>
+        <br>
+
+        <tr>
+            <td><mark>birth date</mark></td>
+            <td>:</td>
+            <td th:utext="${u.birthDate}">...</td>
+        </tr>
+        <tr>
+            <td><mark>hiring  date</mark></td>
+            <td>:</td>
+            <td th:utext="${u.hireDate}">...</td>
+        </tr>
+        <br>
+        <br>
+
+        <tr>
+            <td><mark>last modification</mark></td>
+            <td>:</td>
+            <td>
+                at
+                <small><span th:utext="${u.getLastModifiedDate()}"></span></small>
+                by <small><span th:utext="${u.getLastModifiedBy()}"></span></small>
+
+            </td>
+
+        </tr>
+
+
+
+        </table>
+    </div>
+
+</div>
+<button >update information </button>
+
+
+
+    <!--end page content --->
+
+
+
+
+
+
+
+</div>
+</th:block>
+<div th:insert="fragments/adminTemplate.html ::js"></div>
+</body>
+</html>
+
+
+

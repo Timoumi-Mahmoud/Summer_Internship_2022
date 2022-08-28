@@ -35,10 +35,19 @@ public class FunctionController {
 
     @GetMapping("delete/{id}")
     public RedirectView remove(@PathVariable int id){
+        System.out.println("\n -------------------------\n");
         System.out.println("this is the function by id \n"+ functionService.findBy(id)   +"\n");
-        functionRepository.deleteByParentId(id);
+        System.out.println("\n -------------------------\n");
+        Function f= functionService.findBy(id);
+        if(f.getParent() ==null){
+            functionService.delete(id);
+        }else {
+            functionRepository.deleteByParentId(id);
+        }
 
-        functionService.delete(id);
+        // functionRepository.deleteByParentId(id);
+
+
         return new RedirectView("/Function/list");
     }
 

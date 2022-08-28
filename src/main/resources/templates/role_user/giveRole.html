@@ -114,18 +114,20 @@
 
 
                 <div class="form-group row">
-                    <label class="col-4 col-form-label" style="font-family: 'Bodoni MT Black' ; font-size: 50px; color: #491217" > List of Roles: </label>
-                    <div class="col-8">
+                    <label class="col-4 col-form-label" style="font-family: 'Bodoni MT Black' ; font-size: 20px; color: #491217 " > List of Roles: </label>
+                    <div class="col-8" >
                         <th:block th:each="role: ${listRoles}">
                             <input type="checkbox" th:field="*{roles}"
-                                   th:text="${role.name}" th:value="${role.id}" class="m-2" />
+                                   th:text="${role.name}" th:value="${role.id}" class="m-2" style=" top: .8rem;
+  width: 1.55rem;
+  height: 1.55rem; --moz-column-count: 2;  column-count:2;  -webkit-column-count:2;"      />
                         </th:block>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-4 col-form-label" style="font-family: 'Bodoni MT Black' ; font-size: 50px; color: #491217" > List of function: </label>
-                    <div class="col-8">
+                    <label class="col-4 col-form-label" style="font-family: 'Bodoni MT Black' ; font-size: 30px; color: #491217" > List of function: </label>
+                    <div class="col-8" >
                         <th:block th:each="role: ${listRoles}">
                             <th:block th:each="f: ${role.RolesFunction}">
                             <span th:text="${f.nameFunction}"></span>

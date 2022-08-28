@@ -8467,14 +8467,14 @@ a[data-toggle="collapse"] {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
-  height: 30%;
+  width: 10%;
+  height: 10%;
 }
 
 /* The Close Button */
 .close {
   color: #aaaaaa;
-  float: right;
+  float: left;
   font-size: 28px;
   font-weight: bold;
 }
