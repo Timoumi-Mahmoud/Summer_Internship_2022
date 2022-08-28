@@ -11,7 +11,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "roles")
-
 public class Role  extends Auditable<String> {
     @Id
     @Column(name = "id_role")
@@ -31,8 +30,6 @@ public class Role  extends Auditable<String> {
             u.getRoles().remove(this);
         }
     }
-
-
     @ManyToMany(targetEntity = Function.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.REFRESH}/*   ,  fetch = FetchType.EAGER*/)
     @JoinTable(
             name = "Functions_roles",

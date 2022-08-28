@@ -8467,8 +8467,8 @@ a[data-toggle="collapse"] {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 10%;
-  height: 10%;
+  width: 50%;
+  height: 20%;
 }
 
 /* The Close Button */
@@ -8484,3 +8484,10 @@ a[data-toggle="collapse"] {
   text-decoration: none;
   cursor: pointer;
 }
+/*the red etoile*/
+
+.obligatoire:after {
+  content: "*";
+  color: red;
+}
+/**/

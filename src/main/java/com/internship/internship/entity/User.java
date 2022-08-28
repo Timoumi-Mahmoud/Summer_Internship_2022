@@ -5,12 +5,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.internship.internship.entity.Role;
 import org.aspectj.apache.bcel.ExceptionConstants;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
@@ -18,13 +17,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-
+@Table(name = "user")
 public class User extends Auditable<String> {
-
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-//@GeneratedValue(strategy = GenerationType.AUTO)
-@Column(name = "id_user")
+   @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
     private int idUser;
     @Email(message = "Email is not valid", regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])")
     @NotEmpty(message = "Email cannot be empty")
@@ -34,23 +31,27 @@ public class User extends Auditable<String> {
     private String password;
     @NotEmpty(message = "first name cannot be empty")
     private  String firstName;
-    @NotEmpty(message = "last ,ame cannot be empty")
+    @NotEmpty(message = "last name cannot be empty")
     private  String lastName;
+
+    @Pattern(regexp = "male|female", flags = Pattern.Flag.CASE_INSENSITIVE)
+    @NotBlank(message = "please provide a gender ")
     private  String sex;
+
 
     private Date birthDate;
 
-
     private  Date hireDate;
 
-    private  int tel;
-    private  String address;
-/*
-    @ManyToMany(targetEntity = Role.class,
-            cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH } )
-*/
-@ManyToMany(targetEntity = Role.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH} , fetch = FetchType.EAGER )
+   @NotBlank(message = "mobileNumber is required")
+   @Size(min = 8, max = 12)
+    private  String tel;
 
+    @NotEmpty(message = "address cannot be empty")
+    private  String address;
+
+    @ManyToMany(targetEntity = Role.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH} ,
+        fetch = FetchType.EAGER )
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "id_user"),
@@ -62,27 +63,18 @@ public class User extends Auditable<String> {
     @ManyToOne( fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "id_department", nullable = true)
     private Department department;
-
-
-
-
-
-
-
     public User(String email, String password, Set<Role> roles) {
         this.email = email;
         this.password = password;
         this.roles = roles;
     }
 
+
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
-
-
-
-
     public User(String email, String password, String roles) {
         this.email = email;
         this.password = password;
@@ -91,7 +83,7 @@ public class User extends Auditable<String> {
     public User() {
     }
 
-    public User(String email, String password, String firstName, String lastName, String sex, int tel, String address, Department department) {
+    public User(String email, String password, String firstName, String lastName, String sex, String tel, String address, Department department) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -179,11 +171,11 @@ public class User extends Auditable<String> {
         this.hireDate = hireDate;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 

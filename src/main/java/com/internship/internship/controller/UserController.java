@@ -118,6 +118,7 @@ public UserController(UserService UserService){  same as autowired
         User user = new User();
         mav.addObject("user", user);
         Map<String, List<Department>> departs = new HashMap<String, List<Department>>();
+        mav.addObject("Function", functionService.findAll());
 
         return mav;
     }
@@ -167,6 +168,60 @@ public UserController(UserService UserService){  same as autowired
         ModelAndView mav = new ModelAndView("user/login");
         return mav;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////
+
+
+    @GetMapping("/e/{id}")
+    public ModelAndView showFormForUpdate(@PathVariable("id") int id) {
+        Role role = roleService.findBy(id);
+        ModelAndView mav = new ModelAndView("role/update");
+        mav.addObject("role", role);
+        mav.addObject("Function", functionService.findAll());
+
+        return mav;
+    }
+    @PostMapping(value = "/e/{id}")
+    public ModelAndView updateSave(@PathVariable("id") int id, Role role ) {
+        role.setId(id);
+        roleRepository.save(role);
+        ModelAndView mav = new ModelAndView("role/update");
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/Role/listRole");
+        return new ModelAndView(redirectView);
+    }
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

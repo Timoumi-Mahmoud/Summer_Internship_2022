@@ -20,7 +20,7 @@
     <!-- Form levels error messages here -->
 <div class="com">
     <div class = "form-group row ">
-        <label for = "DepartmentName" class = "col-sm-8 col-form-label"> <b>Department name</b></label>
+        <label for = "DepartmentName" class = "col-sm-8 col-form-label"> <b>Department name</b><span class="obligatoire"></span>:</label>
         <div class = "col-sm-5">
             <input th:field="*{departmentName}"  type = "text" class = "form-control inputSize" placeholder = "Mandatory">
         </div>
@@ -30,7 +30,7 @@
     </div>
 
     <div class = "form-group row ">
-        <label for = "EmailResponsible" class = "col-sm-8 col-form-label"><b>Email of the Responsible</b></label>
+        <label for = "EmailResponsible" class = "col-sm-8 col-form-label"><b>Email of the Responsible</b><span class="obligatoire"></span>:</label>
         <div class = "col-sm-5">
             <input th:field="*{responsibleEmail}"  type = "text" class = "form-control inputSize" placeholder = "Mandatory">
         </div>
@@ -40,7 +40,7 @@
     </div>
 
     <div class = "form-group row ">
-        <label for = "phone" class = "col-sm-8 col-form-label"> <b>Phone number of the responsible </b></label>
+        <label for = "phone" class = "col-sm-8 col-form-label"> <b>Phone number of the responsible </b><span class="obligatoire"></span>:</label>
         <div class = "col-sm-5">
             <input th:field="*{responsiblePhone}"  type = "text" class = "form-control inputSize" placeholder = "Mandatory">
         </div>

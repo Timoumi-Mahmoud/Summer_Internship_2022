@@ -22,7 +22,7 @@
 
 
     <div class = "form-group row ">
-        <label for = "Role Name" class = "col-sm-2 col-form-label"> Function name</label>
+        <label for = "Role Name" class = "col-sm-2 col-form-label"> <b>Function name</b>  <span class="obligatoire"></span>:</label>
         <div class = "col-sm-4">
             <input th:field="*{nameFunction}"  type = "text" class = "form-control inputSize" placeholder = "Mandatory">
         </div>
@@ -32,7 +32,7 @@
     </div>
     <input type="hidden" th:field="*{idFunction}">
     <div class = "form-group row ">
-        <label for = "Role url " class = "col-sm-2 col-form-label"> url </label>
+        <label for = "Role url " class = "col-sm-2 col-form-label"><b>url</b>  <span class="obligatoire"></span>: </label>
         <div class = "col-sm-4">
             <input th:field="*{url}"  type = "text" class = "form-control inputSize" placeholder = "name of the function..">
         </div>
@@ -44,7 +44,7 @@
 
 
     <div class = "form-group row ">
-        <label for = "parent" class = "col-sm-2 col-form-label">Under :</label>
+        <label for = "parent" class = "col-sm-2 col-form-label"><b>Under </b> :</label>
         <div class = "col-sm-6">
             <select th:field="*{parent}"  style="width: 200px ; height: 45px">
                 <option value="">--------------------------</option>
@@ -57,7 +57,7 @@
     </div>
     <br>
     <div class = "form-group row ">
-        <label for = "functions" class = "col-sm-2 col-form-label">Role :</label>
+        <label for = "functions" class = "col-sm-2 col-form-label"><b>Role </b>:</label>
         <div class = "col-sm-6">
             <select th:field="*{RolesF}"  style="width: 200px ; height: 45px">
                 <option value="">--------------------------</option>

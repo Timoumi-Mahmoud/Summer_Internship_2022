@@ -9,10 +9,7 @@ import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler", "children"})
-
-
 public class Function  extends Auditable<String> {
-
     @Id
     @Column(name = "id_function")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,25 +26,16 @@ public class Function  extends Auditable<String> {
         for (Role r : RolesF) {
             r.getRolesFunction().remove(this);
         }
-        /*
-        for(Function f: children){
-            f.getChildren().remove(this);
 
-        }*/
     }
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,/*/CascadeType.MERGE,*/CascadeType.REFRESH})
     private Function parent;
 
     @OneToMany(mappedBy = "parent", cascade=CascadeType.ALL,  fetch = FetchType.EAGER)
-
-    /*
-    , cascade = CascadeType.REMOVE)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-     */
     private Set<Function> children ;
 
-
+    //getters , setters and constructor
 
     public Function() {
     }

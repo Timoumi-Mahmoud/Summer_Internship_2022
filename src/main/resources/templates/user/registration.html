@@ -38,9 +38,9 @@
             </div>
         </div>
         <div class = "form-group row ">
-            <label for = "First Name" class = "col-sm-2 col-form-label">First Name :</label>
+            <label for = "First Name" class = "col-sm-2 col-form-label">First Name <span class="obligatoire"></span> :</label>
             <div class = "col-sm-6">
-                <input th:field="*{firstName}"  type = "text" class = "form-control" placeholder = "Your first name ...">
+                <input th:field="*{firstName}"  type = "text" class = "form-control" placeholder = " first name ...">
             </div>
             <div class="col-sm-4">
                 <span class="text-danger" th:errors="*{firstName}"> </span>
@@ -48,9 +48,9 @@
         </div>
 
         <div class = "form-group row ">
-            <label for = "Last Name" class = "col-sm-2 col-form-label">Last Name :</label>
+            <label for = "Last Name" class = "col-sm-2 col-form-label">Last Name <span class="obligatoire"></span>   :</label>
             <div class = "col-sm-6">
-                <input th:field="*{lastName}"  type = "text" class = "form-control" placeholder = "Your last name ...">
+                <input th:field="*{lastName}"  type = "text" class = "form-control" placeholder = " last name ...">
             </div>
             <div class="col-sm-4">
                 <span class="text-danger" th:errors="*{lastName}"> </span>
@@ -60,18 +60,18 @@
 
 
         <div class = "form-group row ">
-            <label for = "email" class = "col-sm-2 col-form-label mr-0">Email :</label>
+            <label for = "email" class = "col-sm-2 col-form-label mr-0">Email <span class="obligatoire"></span> :</label>
             <div class = "col-sm-6">
-                <input th:field="*{email}"  type = "text" class = "form-control" placeholder = "Your email ...">
+                <input th:field="*{email}"  type = "text" class = "form-control" placeholder = "valid email address  ...">
             </div>
             <div class="col-sm-4">
                 <span class="text-danger" th:errors="*{email}"> </span>
             </div>
         </div>
         <div class = "form-group row ">
-            <label for = "password" class = "col-sm-2 col-form-label mr-0">Password :</label>
+            <label for = "password" class = "col-sm-2 col-form-label mr-0">Password <span class="obligatoire"></span> :</label>
             <div class = "col-sm-6">
-                <input th:field="*{password}"  type = "password" class = "form-control" placeholder = "A solid passwor ...">
+                <input th:field="*{password}"  type = "password" class = "form-control" placeholder = "A solid password more than six characters  ...">
             </div>
             <div class="col-sm-4">
                 <span class="text-danger" th:errors="*{password}"> </span>
@@ -79,24 +79,29 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-md-5 control-label">Your Gender :</label>
-            <div class="col-md-4">
-                <div class="radio">
-                    <label>
-                        <input  th:field="*{sex}"  type="radio" name="hosting" value="Male" /> male
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input th:field="*{sex}"  type="radio" name="hosting" value="Female" /> female
-                    </label>
-                </div>
+            <label class="col-md-5 control-label"> Gender <span class="obligatoire"></span> :</label>
+            <div class="col-sm-6">
+                        <div class="radio">
+                            <label>
+                                <input  th:field="*{sex}"  type="radio" name="hosting" value="Male" /> male
+                            </label>
+
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input th:field="*{sex}"  type="radio" name="hosting" value="Female" /> female
+                            </label>
+                        </div>
+                        <div class="col-sm-4 float-right  ">
+                            <span class="text-danger" th:errors="*{sex}"> </span>
+                        </div>
             </div>
+
         </div>
         <div class = "form-group row ">
-            <label for = "tel" class = "col-sm-2 col-form-label">Phone number :</label>
+            <label for = "tel" class = "col-sm-2 col-form-label">Phone number <span class="obligatoire"></span> :</label>
             <div class = "col-sm-6">
-                <input th:field="*{tel}"  type = "text" class = "form-control" placeholder = "Your phone number ...">
+                <input th:field="*{tel}"  type = "text" class = "form-control" placeholder = " phone number  ...">
             </div>
             <div class="col-sm-4">
                 <span class="text-danger" th:errors="*{tel}"> </span>
@@ -105,9 +110,13 @@
 
 
         <div class = "form-group row ">
-            <label for = "birthDate" class = "col-sm-2 col-form-label">BirthDate date :</label>
+            <label for = "birthDate" class = "col-sm-2 col-form-label">Birth Date  <span class="obligatoire"></span> :</label>
             <div class = "col-sm-6">
-                <input type="date" th:field="${user.birthDate}" id="student-birtvh-date"   style="width: 200px"/>
+                <input type="date" th:field="${user.birthDate}" id="student-birtvh-date"   style="width: 200px"
+                       placeholder="yyyy-dd-mm" value=""
+                       min="1997-01-01" max="2030-31-01"
+
+                />
 
             </div>
             <div class="col-sm-4">
@@ -115,9 +124,11 @@
             </div>
         </div>
         <div class = "form-group row ">
-            <label for = "hireDae" class = "col-sm-2 col-form-label">Hire Date date :</label>
+            <label for = "hireDae" class = "col-sm-2 col-form-label">Hire  date <span class="obligatoire"></span> :</label>
             <div class = "col-sm-6">
-                <input type="date" th:field="${user.hireDate}" id="student-birtvh-date"  style="width: 200px"/>
+                <input type="date" th:field="${user.hireDate}" id="student-birtvh-date"  style="width: 200px"
+
+                />
 
             </div>
             <div class="col-sm-4">
@@ -125,9 +136,9 @@
             </div>
         </div>
         <div class = "form-group row">
-            <label for = "Adresse" class = "col-sm-2 col-form-label">Adresse :</label>
+            <label for = "Adresse" class = "col-sm-2 col-form-label">Adresse <span class="obligatoire"></span> :</label>
             <div class = "col-sm-6">
-                <textarea   th:field="*{address}" class = "form-control" rows = "3" placeholder = "Your address ..."></textarea>
+                <textarea   th:field="*{address}" class = "form-control" rows = "3" placeholder = "Complete  address ..."></textarea>
             </div>
             <div class="col-sm-4">
                 <span class="text-danger" th:errors="*{address}"> </span>
@@ -138,7 +149,7 @@
 
 
         <div class = "form-group row ">
-            <label for = "departemnt" class = "col-sm-2 col-form-label">Departemnt :</label>
+            <label for = "departemnt" class = "col-sm-2 col-form-label">Departemnt <span class="obligatoire"></span> :</label>
             <div class = "col-sm-6">
                 <select th:field="*{department}"  style="width: 200px ; height: 45px">
                     <option value="">--------------------------</option>
@@ -151,10 +162,10 @@
         </div>
         <br><br>
         <div class="form-group row">
-            <label class="col-4 col-form-label"  >Roles: </label>
+            <label class="col-4 col-form-label"  >Roles : </label>
             <div class="col-8">
                 <th:block th:each="role: ${listRoles}">
-                    <input  id="myBtn" name="CS"  type="checkbox" th:field="*{roles}"
+                    <input    type="checkbox" th:field="*{roles}"
                            th:text="${role.name}" th:value="${role.id}" class="m-xl-4"style=" top: .8rem;
   width: 1.5rem;
   height: 1.5rem; --moz-column-count: 2;  column-count:2;  -webkit-column-count:2;"
@@ -164,66 +175,11 @@
             </div>
         </div>
 
+<div>
+</div>
 
 
-        <h2>Modal Example</h2>
-
-        <!-- Trigger/Open The Modal -->
-
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<div id="cs-input"> +5</div>
-
-
-
-                <p  >Some text in the Modal..</p>
-            </div>
-        </div>
-<script>$(':checkbox').on('change', function() {
-    var values = $(':checkbox:checked').map(function() {
-        return this.value;
-    }).get().join(', ');
-    $('#cs-input').html(values);
-});</script>
 <br><br><br>
-
-        <script>
-            // Get the modal
-            var modal = document.getElementById("myModal");
-            // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // When the user clicks the button, open the modal
-            btn.onclick = function() {   modal.style.display = "block"; }
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {   modal.style.display = "none"; }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                } }
-        </script>
-
-
-
-
-
-
-<br>
-        <div></div>
-
-
-
 
         <div class = "form-group row">
             <div class = "col-sm-10">
