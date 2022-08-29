@@ -61,7 +61,9 @@ public class DepartmentController {
 
 
 
-    @GetMapping("delete/{id}")
+   /* @GetMapping("delete/{id}")*/
+ //  @RequestMapping(value="/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
+   @RequestMapping(value = "delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
     public RedirectView remove(@PathVariable int id) {
         departmentService.delete(id);
         return new RedirectView("/Department/list");

@@ -136,7 +136,7 @@ public UserController(UserService UserService){  same as autowired
         }
         userService.save(user);
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/");
+        redirectView.setUrl("/User/userList");
 
         return new ModelAndView(redirectView);
     }

@@ -13,6 +13,7 @@
         <!-- page content -->
 
 
+
         <div class="container-lg">
             <div class="table-responsive">
                 <div class="table-wrapper">
@@ -29,6 +30,7 @@
                             <th>Phone </th>
 
                             <th>Actions</th>
+                            <th>delete</th>
 
                         </tr>
                         </thead>
@@ -42,12 +44,57 @@
 
                             <td>
 
-                                <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{/Department/edit/{id}(id=${i.idDepartment})}"  ><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{/Department/delete/{id}(id=${i.idDepartment})}"    ><i class="material-icons">&#xE872;</i></a>
-                            </td>
+                                <a class="edit " title="Edit" data-toggle="tooltip"  a th:href="@{/Department/edit/{id}(id=${i.idDepartment})}"  ><i class="material-icons">&#xE254;</i></a>
+
+
+                            </td >
+                            <a class="   " a href=""  th:data-href="@{/Department/delete/{id}(id=${i.idDepartment})}"  data-toggle="modal" data-target="#myModal" title="Delete"  ><i class="material-icons ">&#xE872;</i></a>
+
+
+                           </td>
+                            <!-- Delete Modal -->
+                            <div class="container">
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Delete      &#9888;
+                                                </h4>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p class="my-0 font-weight-bold">Are you sure  to delete   &nbsp;  <span th:text="${i.departmentName}"></span>    Department?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <a class="btn btn-danger btn-ok">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </tr>
+                        </th:each>
                         </tbody>
                     </table>
+
+
+
+
+
+
+
+
+                    <!-- Delete Modal JS -->
+                    <script>
+                        $('#myModal').on('show.bs.modal', function(e) {
+                            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+                        });
+                    </script>
+
+
+
 
 
                     <footer class="panel-footer">
@@ -89,6 +136,9 @@
                 </div>
             </div>
         </div>
+
+
+
     </div>
 
 
@@ -96,6 +146,19 @@
 
     <!--end page content --->
 
+
+
+
+
+
+
+
+
+
+
+
+
+    <!---      --------------------------->
 
     </div>
 </th:block>
