@@ -11,7 +11,7 @@
     <div layout:fragment="content">
         <!-- page content -->
 
-<form method="POST" th:action="@{/Department/edit/{id}(id=${department.idDepartment})}" th:object="${department}">
+<form method="POST" th:action="@{/Department/edit/{id}(id=${department.idDepartment})}" th:object="${department}" style="margin-left: 5%">
     <h2 class = "mt-4"> update a  Department::</h2>
     <hr/>
     <!-- Form levels error messages here -->

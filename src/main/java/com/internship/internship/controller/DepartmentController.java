@@ -69,7 +69,7 @@ public class DepartmentController {
         return new RedirectView("/Department/list");
     }
 
-
+/*
     @GetMapping("/addDepartment")
     public ModelAndView addDepForm() {
         ModelAndView mav = new ModelAndView("department/add");
@@ -94,7 +94,7 @@ public class DepartmentController {
         }
 
 
-
+*/
 
     @GetMapping("/edit/{id}")
     public ModelAndView showFormForUpdate(@PathVariable("id") int id) {
@@ -122,7 +122,7 @@ public class DepartmentController {
         }
 
 
-        @PostMapping(value = "/ajouter" )
+        @PostMapping(value = "/addDepartment" )
     public ModelAndView ajouter(Department department){
        departmentService.save(department);
             RedirectView redirectView = new RedirectView();

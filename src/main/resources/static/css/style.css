@@ -8252,10 +8252,13 @@ a[data-toggle="collapse"] {
 }
 
 .inputSize{
-  width: 600px; height: 50px;
+  width: 400px; height: 50px;
 }
 
 
 
 /*----------------------------------------------------------*/
-/* The Modal (background) */
+span.obligatoire:after {
+  content: "*";
+  color: red;
+}
