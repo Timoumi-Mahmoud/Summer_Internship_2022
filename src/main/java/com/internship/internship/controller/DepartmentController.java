@@ -121,6 +121,16 @@ public class DepartmentController {
         return new ModelAndView(redirectView);
         }
 
+
+        @PostMapping(value = "/ajouter" )
+    public ModelAndView ajouter(Department department){
+       departmentService.save(department);
+            RedirectView redirectView = new RedirectView();
+            redirectView.setUrl("/Department/list");
+            return new ModelAndView(redirectView);
+
+        }
+
     }
 
 
