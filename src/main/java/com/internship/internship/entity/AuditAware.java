@@ -13,21 +13,14 @@ import java.util.Optional;
 
 
 public class AuditAware implements AuditorAware<String> {
-
-
-
     @Override
     public Optional<String> getCurrentAuditor() {
         //   return Optional.ofNullable("Mahmoud").filter(s -> !s.isEmpty());    }
         Authentication authentication = SecurityContextHolder.getContext()
-                .getAuthentication();
+                .getAuthentication();//return get the authenticated user information
 
         String username = authentication.getName();
-
-
-        return Optional.ofNullable(username).filter(s -> !s.isEmpty());
-
-
+        return Optional.ofNullable(username).filter(s -> !s.isEmpty());  //return the username
     }
     }
 

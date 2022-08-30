@@ -34,6 +34,91 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 
 
+@Query(value = "SELECT user.id_user,\n" +
+        "\t first_name, last_name,\n" +
+        "\temail,\n" +
+        "\ttel,\n" +
+        "\tbirth_date,\n" +
+        "\tuser.created_by,\n" +
+        "\tdepartment_name,\n" +
+        "\tgroup_concat(DISTINCT roles.name) AS roles,\n" +
+        "\tgroup_concat(DISTINCT function.name_function) AS functions\n" +
+        "FROM user\n" +
+        "\tinner join department ON\n" +
+        "\t user.id_department = department.id_department\n" +
+        "\tjoin users_roles ON\n" +
+        "\t users_roles.id_user = user.id_user\n" +
+        "\tjoin roles ON\n" +
+        "\t users_roles.id_role = roles.id_role\n" +
+        "\tjoin functions_roles ON\n" +
+        "\t functions_roles.id_role = roles.id_role\n" +
+        "\t OR functions_roles.id_role != roles.id_role\n" +
+        "\tjoin function ON\n" +
+        "\t functions_roles.id_function = function.id_function\n" +
+        "GROUP BY user.id_user", nativeQuery = true)
+List<String> allUserDetails();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

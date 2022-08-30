@@ -48,19 +48,11 @@
                             </div>
                         </div>
 
-
                     </td>
                     <td>
                         <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.id})}"  ><i class="material-icons ">&#xE254;</i></a>
-
-
                         <a class="   " a href=""  th:data-href="@{/Role/delete/{id}(id=${i.id})}"  data-toggle="modal" data-target="#myModal" title="Delete"  ><i class="material-icons ">&#xE872;</i></a>
-
-
                     </td>
-
-
-
                     <div class="container">
                         <div class="modal fade" id="myModal" role="dialog">
                             <div class="modal-dialog">
@@ -81,17 +73,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
                     <!-- Delete Modal JS -->
                     <script>
                         $('#myModal').on('show.bs.modal', function(e) {
@@ -99,40 +80,11 @@
                         });
                     </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </tr>
-
-
                 </tbody>
-
             </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <!-- pagination  -->
             <footer class="panel-footer">
                 <nav aria-label="Page navigation example">
                     Total Items [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
@@ -166,6 +118,7 @@
                     </ul>
                 </nav>
             </footer>
+            <!-- pagination  -->
         </div>
     </div>
 </div>

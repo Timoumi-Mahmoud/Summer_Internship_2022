@@ -30,7 +30,7 @@
                             <th>Phone </th>
 
                             <th>Actions</th>
-                            <th>delete</th>
+
 
                         </tr>
                         </thead>
@@ -46,9 +46,9 @@
 
                                 <a class="edit " title="Edit" data-toggle="tooltip"  a th:href="@{/Department/edit/{id}(id=${i.idDepartment})}"  ><i class="material-icons">&#xE254;</i></a>
 
+                                <a class="   " a href=""  th:data-href="@{/Department/delete/{id}(id=${i.idDepartment})}"  data-toggle="modal" data-target="#myModal" title="Delete"  ><i class="material-icons ">&#xE872;</i></a>
 
                             </td >
-                            <a class="   " a href=""  th:data-href="@{/Department/delete/{id}(id=${i.idDepartment})}"  data-toggle="modal" data-target="#myModal" title="Delete"  ><i class="material-icons ">&#xE872;</i></a>
 
 
                            </td>

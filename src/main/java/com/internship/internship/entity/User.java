@@ -30,6 +30,7 @@ public class User extends Auditable<String> {
             = "Description must be greater than Six characters")
     private String password;
     @NotEmpty(message = "first name cannot be empty")
+    @Column(name = "first_name")
     private  String firstName;
     @NotEmpty(message = "last name cannot be empty")
     private  String lastName;
@@ -122,7 +123,6 @@ public class User extends Auditable<String> {
 
 
 
-
     public Set<Role> getRoles() {
         return roles;
     }
@@ -134,9 +134,8 @@ public class User extends Auditable<String> {
     public String getFirstName() {
         return firstName;
     }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String First_name) {
+        this.firstName= First_name;
     }
 
     public String getLastName() {
@@ -209,7 +208,6 @@ public class User extends Auditable<String> {
 
 
 
-
     @Override
     public String toString() {
         return "User{" +
@@ -227,4 +225,10 @@ public class User extends Auditable<String> {
 
                 '}';
     }
+
+
+
+
+
+
 }

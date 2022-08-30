@@ -10,15 +10,23 @@ import com.internship.internship.services.DepartmentService;
 import com.internship.internship.services.FunctionService;
 import com.internship.internship.services.RoleService;
 import com.internship.internship.services.UserService;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +67,7 @@ public UserController(UserService UserService){  same as autowired
     @GetMapping( path={"/userList","/search"})
     public ModelAndView getAllPages(String keyword){
         Map<String, List<User>> model = new HashMap<String, List<User>>();
+
         String viewName = "/user/userList";
         if(keyword != null){
             model.put("Users",userService.search(keyword));
@@ -210,6 +219,97 @@ public UserController(UserService UserService){  same as autowired
     }
 
 //////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+    @GetMapping("/report/{format}")
+    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
+        return userService.exportReport(format);
+    }
+    @Autowired
+    ApplicationContext context;
+    @GetMapping(path = "/pdf")
+    @ResponseBody
+//    public void getPdf(@PathVariable String jrxml, HttpServletResponse response) throws Exception {
+    public void getPdf(HttpServletResponse response) throws Exception {
+        //Get JRXML template from resources folder
+//        Resource resource = context.getResource("classpath:reports/" + jrxml + ".jrxml");
+        Resource resource = context.getResource("classpath:UserReport.jrxml");
+        //Compile to jasperReport
+        InputStream inputStream = resource.getInputStream();
+        JasperReport report = JasperCompileManager.compileReport(inputStream);
+        //Parameters Set
+        Map<String, Object> params = new HashMap<>();
+
+        List<User> cars = (List<User>) userService.findAll();
+
+        //Data source Set
+        JRDataSource dataSource = new JRBeanCollectionDataSource(cars);
+        params.put("datasource", dataSource);
+
+        //Make jasperPrint
+        JasperPrint jasperPrint = JasperFillManager.fillReport(report, params, dataSource);
+        //Media Type
+        response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+        //Export PDF Stream
+        JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

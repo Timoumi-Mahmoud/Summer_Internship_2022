@@ -5,10 +5,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.Set;
 
 @Entity
@@ -27,8 +24,9 @@ public class Department extends Auditable<String> {
     @NotEmpty(message = "Email cannot be empty")
     private String responsibleEmail;
 
-    @NotNull
-    private int  responsiblePhone;
+    @NotBlank(message = "mobile Number is required")
+    @Size(min = 8, max = 12)
+    private String  responsiblePhone;
 
 
 /*
@@ -44,14 +42,14 @@ public class Department extends Auditable<String> {
     public Department() {
     }
 
-    public Department(int idDepartment, String departmentName, String responsibleEmail, int responsiblePhone) {
+    public Department(int idDepartment, String departmentName, String responsibleEmail, String responsiblePhone) {
         this.idDepartment = idDepartment;
         this.departmentName = departmentName;
         this.responsibleEmail = responsibleEmail;
         this.responsiblePhone = responsiblePhone;
     }
 
-    public Department(String departmentName, String responsibleEmail, int responsiblePhone) {
+    public Department(String departmentName, String responsibleEmail, String responsiblePhone) {
         this.departmentName = departmentName;
         this.responsibleEmail = responsibleEmail;
         this.responsiblePhone = responsiblePhone;
@@ -89,11 +87,11 @@ public class Department extends Auditable<String> {
         Users = users;
     }
 
-    public int getResponsiblePhone() {
+    public String getResponsiblePhone() {
         return responsiblePhone;
     }
 
-    public void setResponsiblePhone(int responsiblePhone) {
+    public void setResponsiblePhone(String responsiblePhone) {
         this.responsiblePhone = responsiblePhone;
     }
 

@@ -15,22 +15,19 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable<U> {
-
     @CreatedBy
     @Column(name = "created_by", updatable = false)
     protected U createdBy;
-
     @CreatedDate
     @Column(name = "created_date", updatable = false)
     @Temporal(TIMESTAMP)
     protected Date createdDate;
-
     @LastModifiedBy
     protected U lastModifiedBy;
-
     @LastModifiedDate
     @Temporal(TIMESTAMP)
     protected Date lastModifiedDate;
+
 
 
     public U getCreatedBy() {
