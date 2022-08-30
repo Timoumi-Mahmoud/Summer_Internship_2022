@@ -31,14 +31,14 @@ FROM user
 	 functions_roles.id_function = function.id_function
 GROUP BY user.id_user]]>
     </queryString>
-    <field name="firstName" class="java.lang.String">
-        <property name="com.jaspersoft.studio.field.name" value="firstName"/>
-        <property name="com.jaspersoft.studio.field.label" value="firstName"/>
+    <field name="first_name" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="first_name"/>
+        <property name="com.jaspersoft.studio.field.label" value="first_name"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="user"/>
     </field>
-    <field name="lastName" class="java.lang.String">
-        <property name="com.jaspersoft.studio.field.name" value="lastName"/>
-        <property name="com.jaspersoft.studio.field.label" value="lastName"/>
+    <field name="last_name" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="last_name"/>
+        <property name="com.jaspersoft.studio.field.label" value="last_name"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="user"/>
     </field>
     <field name="email" class="java.lang.String">
@@ -51,19 +51,19 @@ GROUP BY user.id_user]]>
         <property name="com.jaspersoft.studio.field.label" value="tel"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="user"/>
     </field>
-    <field name="birthDate" class="java.sql.Date">
-        <property name="com.jaspersoft.studio.field.name" value="birthDate"/>
-        <property name="com.jaspersoft.studio.field.label" value="birthDate"/>
+    <field name="birth_date" class="java.sql.Date">
+        <property name="com.jaspersoft.studio.field.name" value="birth_date"/>
+        <property name="com.jaspersoft.studio.field.label" value="birth_date"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="user"/>
     </field>
-    <field name="createdBy" class="java.lang.String">
+    <field name="created_by" class="java.lang.String">
         <property name="com.jaspersoft.studio.field.name" value="created_by"/>
         <property name="com.jaspersoft.studio.field.label" value="created_by"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="user"/>
     </field>
-    <field name="departmentName" class="java.lang.String">
-        <property name="com.jaspersoft.studio.field.name" value="departmentName"/>
-        <property name="com.jaspersoft.studio.field.label" value="departmentName"/>
+    <field name="department_name" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="department_name"/>
+        <property name="com.jaspersoft.studio.field.label" value="department_name"/>
         <property name="com.jaspersoft.studio.field.tree.path" value="department"/>
     </field>
     <field name="roles" class="java.lang.String">
@@ -78,7 +78,7 @@ GROUP BY user.id_user]]>
         <band height="575" splitType="Stretch">
             <image vAlign="Bottom">
                 <reportElement positionType="Float" x="-20" y="66" width="105" height="409" uuid="64ca4020-b604-4de9-9ed1-921b74cfd593"/>
-                <imageExpression><![CDATA["waves.jpg"]]></imageExpression>
+                <imageExpression><![CDATA["C:/Users/lenovo/Desktop/waves.jpg"]]>     </imageExpression>
             </image>
             <frame>
                 <reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#666666" uuid="6eb7cb61-0dd7-47a8-8475-5fa6c3a348dc"/>
@@ -204,7 +204,7 @@ GROUP BY user.id_user]]>
                         <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
                         <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
                     </box>
-                    <textFieldExpression><![CDATA[$F{firstName} + " " + $F{lastName}]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[$F{first_name} + " " + $F{last_name}]]></textFieldExpression>
                 </textField>
                 <textField textAdjust="StretchHeight">
                     <reportElement style="Detail" x="80" y="0" width="78" height="15" uuid="b533d8c0-f73c-4f17-8882-c67b3550e1ac">
@@ -240,7 +240,7 @@ GROUP BY user.id_user]]>
                         <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
                         <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
                     </box>
-                    <textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{birthDate})]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{birth_date})]]></textFieldExpression>
                 </textField>
                 <textField textAdjust="StretchHeight">
                     <reportElement style="Detail" x="360" y="-1" width="78" height="15" uuid="43d54380-bd9c-4e25-bece-8998bc6e55b7">
@@ -252,7 +252,7 @@ GROUP BY user.id_user]]>
                         <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
                         <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
                     </box>
-                    <textFieldExpression><![CDATA[$F{createdBy}]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[$F{created_by}]]></textFieldExpression>
                 </textField>
                 <textField>
                     <reportElement style="Detail" x="440" y="-1" width="78" height="15" uuid="24248aec-6976-4a98-b3bc-3ae68c8c5a3e">
@@ -264,7 +264,7 @@ GROUP BY user.id_user]]>
                         <bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
                         <rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
                     </box>
-                    <textFieldExpression><![CDATA[$F{departmentName}]]></textFieldExpression>
+                    <textFieldExpression><![CDATA[$F{department_name}]]></textFieldExpression>
                 </textField>
                 <textField textAdjust="StretchHeight">
                     <reportElement style="Detail" x="520" y="0" width="78" height="15" uuid="7179c0fb-b2f3-467d-8ebf-a205bdea5fda">
@@ -316,7 +316,7 @@ GROUP BY user.id_user]]>
                 <textElement>
                     <font size="12"/>
                 </textElement>
-                <text><![CDATA[Waves Title Report]]></text>
+                <text><![CDATA[1,Avenue du Dollar,résidence Sidi Mansour III Bloc A,Les Jardins du Lac, Lac II 1053 Tunis]]></text>
             </staticText>
         </band>
     </pageFooter>

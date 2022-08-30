@@ -6,12 +6,7 @@ import com.internship.internship.entity.User;
 import com.internship.internship.repository.RoleRepository;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.export.JRPdfExporter;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.export.SimpleExporterInput;
-import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
-import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
-import net.sf.jasperreports.export.SimplePdfReportConfiguration;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
@@ -32,29 +27,21 @@ import java.util.Map;
 
 @Service
 public class UserService {
-    @Autowired
+
+    @Autowired                               //call of the user Repository class
     private UserRepository userRepository;
-@Autowired
-private RoleRepository roleRepository;
 
 
-    /**
-     * Get All todos
-     *
-     * @return List<Todo>
-     */
 
 
     public List<User> findAll() {
-
         return userRepository.findAll();
     }
-
+//used in the pagination
     public Page<User> findPage(int pageNumber){
         Pageable pageable = PageRequest.of(pageNumber - 1,5);
         return userRepository.findAll(pageable);
     }
-
 
 
     public List<User> search(String value) {
@@ -70,17 +57,15 @@ private RoleRepository roleRepository;
     }
 
     public User save(User user) {
-        /////user.setPassword(passwordEncoder().encode(user.getPassword()));
-        System.out.println("\n ---------+"+ userRepository.allUserDetails()+"\n-------------------");
 
+        System.out.println("\n ---------+"+ userRepository.allUserDetails()+"\n-------------------");
+        /////Decrypt password in the registration process with BCrypt
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
 
-
         return userRepository.save(user);
     }
-
 
 
 
@@ -99,24 +84,14 @@ private RoleRepository roleRepository;
         oldUser.setRoles(user.getRoles());
         oldUser.setEmail(user.getEmail());
         oldUser.setDepartment(user.getDepartment());
-        System.out.println("the new Titile is::::" + user.getFirstName());
-        System.out.println("the new to user" + user);
+        //System.out.println("the new firstname is::::" + user.getFirstName());
+       //System.out.println("the new to user" + user);
         userRepository.save(user);
         return user;
     }
 
 
-
-private List<String>getAllUsers(){
-        List<String> users= new ArrayList<>();
-
-    users=userRepository.allUserDetails();
-return users;
-}
-
-
-
-
+/////Work with Jasper report to generate PDF and Html file
 public String exportReport(String format) throws FileNotFoundException {
 
         String path="C://jasper//";
@@ -124,19 +99,18 @@ public String exportReport(String format) throws FileNotFoundException {
     File file = ResourceUtils.getFile("classpath:userDetails.jrxml");
 
     try {
-        List<String> userList=userRepository.allUserDetails();
+        List<Map<String, Object>>userList=userRepository.allUserDetails();
         System.out.println("\n"+userList+"\n");
         JasperReport jasper= JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource ds =new JRBeanCollectionDataSource(getAllUsers());
         Map<String, Object> paramters=new HashMap<String , Object>();
-        paramters.put("gain java", "knoledger");
+        paramters.put(" empty", "paramters");
 
-
-        JasperPrint jasperPrint= JasperFillManager.fillReport(jasper,paramters);
+        JasperPrint jasperPrint= JasperFillManager.fillReport(jasper,paramters,ds);
         if(format.equalsIgnoreCase("html")){
-            JasperExportManager.exportReportToHtmlFile(jasperPrint,path+"//test.html");
+            JasperExportManager.exportReportToHtmlFile(jasperPrint,path+"//myReport.html");
         } if(format.equalsIgnoreCase("pdf")){
-            JasperExportManager.exportReportToPdfFile(jasperPrint,path +"//test.pdf");
+            JasperExportManager.exportReportToPdfFile(jasperPrint,path +"//myReport.pdf");
 
         }
 
@@ -146,6 +120,12 @@ public String exportReport(String format) throws FileNotFoundException {
     return "path: "+path;
 }
 
+    public List<Map<String, Object>>getAllUsers(){
+        List<Map<String, Object>> users= new ArrayList<>();
+
+        users=userRepository.allUserDetails();
+        return users;
+    }
 
 
 

@@ -17,17 +17,15 @@
                 <div class="row">
                     <div class="col-sm-8"><h2>User <b>Details</b></h2>
                     </div>
-               <!--     <div class="col-sm-4">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fa fa-plus" ></i>  <a th:href="@{/Role/addRole}" class="link_green">test</a>    </button>
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <i class="fa fa-plus" ></i>  <a>Other things</a>    </button>
-                    </div>  -->
                     <form class="form-inline" th:action="@{/User/search}" method="get">
                         <input class="form-control mr-sm-2" type="text" name="keyword" th:value="${keyword}" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         <button class="btn btn-outline-success my-2 my-sm-0" ><a th:href="@{/User/userList}"  class="link_green">Reset </a> </button>
+                        <a style="margin-bottom: 20px; margin-left: 95%; "class="pdf" title="pdf" data-toggle="tooltip"  a th:href="@{/User/pdf}" target="_blank" ><i class="fas fa-file-pdf fa-2xl " style="margin-bottom: 20px; margin-left: 95%; color: gray;"></i></i></a>
                     </form>
 
                 </div>
+
             </div>
             <table class="table table-bordered">
                 <thead>
@@ -103,22 +101,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </tr>
                 </tbody>
             </table>
@@ -164,13 +146,10 @@
                 </ul>
             </nav>
 
-
-
-
-
         </footer>
     </div>
 </div>
+
 
     </div>
 </th:block>

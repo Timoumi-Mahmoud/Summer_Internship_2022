@@ -18,6 +18,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -94,31 +96,6 @@ public UserController(UserService UserService){  same as autowired
         return mav;
     }
 
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////
-   /* @GetMapping( path={"/userList","/search"})
-
-    public ModelAndView  userListall(String keyword)  {
-        Map<String, List<User>> model = new HashMap<String, List<User>>();
-        String viewName = "/user/userList";
-        if(keyword != null){
-            System.out.println("the  result is:: \n"+userService.search(keyword));
-            model.put("Users",userService.search(keyword));
-        }else {
-
-
-                System.out.println("\n  -----------The fuciton  is::::------\n"  + roleRepository.findById(1)    );
-
-            model.put("Users",  userService.findAll());
-        }
-        return new ModelAndView(viewName , model);
-    }
-*/
-/////////////////////////////////////////////////////////////////////////
     @GetMapping("/addUser")
     public ModelAndView addForm() {
         ModelAndView mav = new ModelAndView("user/registration");
@@ -238,17 +215,18 @@ public UserController(UserService UserService){  same as autowired
     public void getPdf(HttpServletResponse response) throws Exception {
         //Get JRXML template from resources folder
 //        Resource resource = context.getResource("classpath:reports/" + jrxml + ".jrxml");
-        Resource resource = context.getResource("classpath:UserReport.jrxml");
+        Resource resource = context.getResource("classpath:userDetails.jrxml");
+
         //Compile to jasperReport
         InputStream inputStream = resource.getInputStream();
         JasperReport report = JasperCompileManager.compileReport(inputStream);
         //Parameters Set
         Map<String, Object> params = new HashMap<>();
 
-        List<User> cars = (List<User>) userService.findAll();
+        List<Map<String, Object>> users = (List<Map<String, Object>>) userService.getAllUsers();
 
         //Data source Set
-        JRDataSource dataSource = new JRBeanCollectionDataSource(cars);
+        JRDataSource dataSource = new JRBeanCollectionDataSource(users);
         params.put("datasource", dataSource);
 
         //Make jasperPrint

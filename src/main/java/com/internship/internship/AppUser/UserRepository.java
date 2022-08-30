@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @EnableJpaRepositories
@@ -56,7 +57,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
         "\tjoin function ON\n" +
         "\t functions_roles.id_function = function.id_function\n" +
         "GROUP BY user.id_user", nativeQuery = true)
-List<String> allUserDetails();
+List<Map<String, Object>> allUserDetails();
+
 
 
 
