@@ -78,7 +78,7 @@ GROUP BY user.id_user]]>
         <band height="575" splitType="Stretch">
             <image vAlign="Bottom">
                 <reportElement positionType="Float" x="-20" y="66" width="105" height="409" uuid="64ca4020-b604-4de9-9ed1-921b74cfd593"/>
-                <imageExpression><![CDATA["C:/Users/lenovo/Desktop/waves.jpg"]]>     </imageExpression>
+                <imageExpression><![CDATA["http://localhost:8081/images/waves.jpg"]]></imageExpression>
             </image>
             <frame>
                 <reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#666666" uuid="6eb7cb61-0dd7-47a8-8475-5fa6c3a348dc"/>
@@ -104,25 +104,41 @@ GROUP BY user.id_user]]>
         </band>
     </background>
     <title>
-        <band height="104" splitType="Stretch">
+        <band height="134" splitType="Stretch">
             <staticText>
-                <reportElement style="Title" x="0" y="0" width="802" height="67" uuid="1dcadd54-7d50-4470-85ed-189e4d910b25"/>
+                <reportElement style="Title" x="-100" y="3" width="802" height="67" uuid="1dcadd54-7d50-4470-85ed-189e4d910b25"/>
                 <textElement textAlignment="Right" verticalAlignment="Middle">
                     <font size="54" isBold="false"/>
                 </textElement>
-                <text><![CDATA[ST2I report]]></text>
+                <text><![CDATA[ST2I ]]></text>
             </staticText>
             <staticText>
-                <reportElement style="SubTitle" x="232" y="67" width="568" height="37" uuid="862cb50c-5a5e-4906-a495-226e25115fb6"/>
+                <reportElement style="SubTitle" x="160" y="10" width="353" height="37" uuid="862cb50c-5a5e-4906-a495-226e25115fb6"/>
                 <textElement textAlignment="Right">
-                    <font size="26"/>
+                    <font size="30" isBold="true"/>
                 </textElement>
-                <text><![CDATA[User details:]]></text>
+                <text><![CDATA[User details report]]></text>
             </staticText>
             <image hAlign="Center">
-                <reportElement x="0" y="0" width="96" height="67" uuid="9e61da03-e624-4b89-87c1-7c16d6ef03a9"/>
-                <imageExpression><![CDATA["C:/Users/lenovo/Desktop/LogoST2I.jpg"]]></imageExpression>
+                <reportElement x="-11" y="-5" width="96" height="67" uuid="9e61da03-e624-4b89-87c1-7c16d6ef03a9"/>
+                <imageExpression><![CDATA["http://localhost:8081/images/LogoST2I.jpg"]]></imageExpression>
             </image>
+            <staticText>
+                <reportElement x="597" y="70" width="205" height="15" uuid="02e3393c-5be3-414f-b63f-865d4237f1bf"/>
+                <text><![CDATA[1,Avenue du Dollar,résidence Sidi Mansour III Bloc A]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="597" y="85" width="205" height="15" uuid="bca72eb8-523c-4d29-88b1-8ed759efe3e8"/>
+                <text><![CDATA[Les Jardins du Lac, Lac II 1053 Tunis]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="597" y="100" width="205" height="15" uuid="ce4bbc08-e8be-48ee-b551-bed21010e9b4"/>
+                <text><![CDATA[TEL : 71 195 300]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="600" y="115" width="205" height="15" uuid="7fc90cfd-1994-4235-ba94-5088a183e52a"/>
+                <text><![CDATA[Email : st2i@st2i.com.tn]]></text>
+            </staticText>
         </band>
     </title>
     <pageHeader>
@@ -145,19 +161,19 @@ GROUP BY user.id_user]]>
                     <text><![CDATA[Email]]></text>
                 </staticText>
                 <staticText>
-                    <reportElement style="Column header" x="190" y="0" width="78" height="15" uuid="a097c984-db4f-4a11-a0d8-f26150063615">
+                    <reportElement style="Column header" x="180" y="0" width="78" height="15" uuid="a097c984-db4f-4a11-a0d8-f26150063615">
                         <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bfff7a6b-6dcf-4f94-ba6d-c17dcf8d9560"/>
                     </reportElement>
                     <text><![CDATA[Phone]]></text>
                 </staticText>
                 <staticText>
-                    <reportElement style="Column header" x="280" y="0" width="78" height="15" uuid="fc4a4e14-47bf-495f-959c-2f3797f579e2">
+                    <reportElement style="Column header" x="258" y="0" width="78" height="15" uuid="fc4a4e14-47bf-495f-959c-2f3797f579e2">
                         <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cca6aea4-faec-455d-abd2-0d41b5c5e9a8"/>
                     </reportElement>
                     <text><![CDATA[Birth date]]></text>
                 </staticText>
                 <staticText>
-                    <reportElement style="Column header" x="360" y="0" width="78" height="15" uuid="a2fcaad1-18c9-4c11-98fd-bb8963ccb5a3">
+                    <reportElement style="Column header" x="350" y="0" width="78" height="15" uuid="a2fcaad1-18c9-4c11-98fd-bb8963ccb5a3">
                         <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c348e56-82f3-4013-9b46-200a1936ec18"/>
                     </reportElement>
                     <text><![CDATA[Created by]]></text>
@@ -219,7 +235,7 @@ GROUP BY user.id_user]]>
                     <textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
                 </textField>
                 <textField>
-                    <reportElement style="Detail" x="188" y="-1" width="78" height="15" uuid="b30382b6-cb09-49b3-80ce-3bb5e61b05b1">
+                    <reportElement style="Detail" x="170" y="-1" width="78" height="15" uuid="b30382b6-cb09-49b3-80ce-3bb5e61b05b1">
                         <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bfff7a6b-6dcf-4f94-ba6d-c17dcf8d9560"/>
                     </reportElement>
                     <box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
@@ -231,7 +247,7 @@ GROUP BY user.id_user]]>
                     <textFieldExpression><![CDATA[$F{tel}]]></textFieldExpression>
                 </textField>
                 <textField textAdjust="StretchHeight">
-                    <reportElement style="Detail" x="280" y="0" width="78" height="15" uuid="728ebaac-80e4-4274-8401-2b19b72d4318">
+                    <reportElement style="Detail" x="250" y="0" width="78" height="15" uuid="728ebaac-80e4-4274-8401-2b19b72d4318">
                         <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cca6aea4-faec-455d-abd2-0d41b5c5e9a8"/>
                     </reportElement>
                     <box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
@@ -243,7 +259,7 @@ GROUP BY user.id_user]]>
                     <textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{birth_date})]]></textFieldExpression>
                 </textField>
                 <textField textAdjust="StretchHeight">
-                    <reportElement style="Detail" x="360" y="-1" width="78" height="15" uuid="43d54380-bd9c-4e25-bece-8998bc6e55b7">
+                    <reportElement style="Detail" x="350" y="0" width="78" height="15" uuid="43d54380-bd9c-4e25-bece-8998bc6e55b7">
                         <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c348e56-82f3-4013-9b46-200a1936ec18"/>
                     </reportElement>
                     <box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
@@ -316,7 +332,7 @@ GROUP BY user.id_user]]>
                 <textElement>
                     <font size="12"/>
                 </textElement>
-                <text><![CDATA[1,Avenue du Dollar,résidence Sidi Mansour III Bloc A,Les Jardins du Lac, Lac II 1053 Tunis]]></text>
+                <text><![CDATA[http://www.st2i.com.tn/]]></text>
             </staticText>
         </band>
     </pageFooter>

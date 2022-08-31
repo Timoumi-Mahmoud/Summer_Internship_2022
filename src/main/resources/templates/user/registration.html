@@ -47,7 +47,7 @@
             <div class = "col-sm-3">
                 <input th:field="*{lastName}"  type = "text" class = "form-control" placeholder = " last name ...">
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <span class="text-danger" th:errors="*{lastName}"> </span> <br>
                 <span class="text-danger" th:errors="*{firstName}"> </span>
 
@@ -61,7 +61,7 @@
             <div class = "col-sm-6">
                 <input th:field="*{email}"  type = "text" class = "form-control" placeholder = "valid email address  ...">
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <span class="text-danger" th:errors="*{email}"> </span>
             </div>
         </div>
@@ -70,7 +70,7 @@
             <div class = "col-sm-6">
                 <input th:field="*{password}"  type = "password" class = "form-control" placeholder = "A solid password more than six characters  ...">
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <span class="text-danger" th:errors="*{password}"> </span>
             </div>
         </div>
@@ -81,7 +81,7 @@
             <div class = "col-sm-6">
                 <input th:field="*{tel}"  type = "text" class = "form-control" placeholder = " phone number  ...">
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <span class="text-danger" th:errors="*{tel}"> </span>
             </div>
         </div>
@@ -129,7 +129,7 @@
                 />
 
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <span class="text-danger"   > </span>
             </div>
         </div>
@@ -138,7 +138,7 @@
             <div class = "col-sm-6">
                 <textarea   th:field="*{address}" class = "form-control" rows = "3" placeholder = "Complete  address ..."></textarea>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <span class="text-danger" th:errors="*{address}"> </span>
             </div>
         </div>
@@ -181,7 +181,7 @@
 
         <div class = "form-group row">
             <div class = "col-sm-10">
-                <button type = "submit" class = "btn btn-primary" style="position: center;"   >Submit</button>
+                <button type = "submit" class = "btn btn-primary" style="position: center;"   data-toggle="modal"  href="#ignismyModal"  >Submit</button>
                 <input type="hidden" />
             </div>
         </div>
@@ -197,6 +197,33 @@
 
         <!--end page content --->
 
+        <!--Model Popup starts-->
+        <div class="container">
+            <div class="row">
+                <div class="modal fade" id="ignismyModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <div class="thank-you-pop">
+                                    <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
+                                    <h1>Thank You!</h1>
+                                    <p>Your submission is received and we will contact you soon</p>
+                                    <h3 class="cupon-pop">Your Id: <span>12345</span></h3>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

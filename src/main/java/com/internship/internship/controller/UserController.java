@@ -121,6 +121,11 @@ public UserController(UserService UserService){  same as autowired
             return mav;
         }
         userService.save(user);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/User/userList");
 
