@@ -13,7 +13,7 @@
     <div layout:fragment="content">
         <!-- page content -->
 
-        <form id="msform" name="myForm" onsubmit="return validateForm()"   method="post" th:action="@{addRole}" th:object="${role}">
+        <form   method="post" th:action="@{addRole}" th:object="${role}">
             <h2 class = "mt-4"> Add a new role::</h2>
             <hr/>
             <div class="container">
@@ -30,9 +30,10 @@
                 <div class = "col-sm-5">
                     <input th:field="*{name}"  type = "text" class = "form-control inputSize" placeholder = "name of the Role..">
                 </div>
-                <div class="col-sm-4">
+                <div class = "form-group row">
+                <div class="col-sm-8">
                     <span class="text-danger" th:errors="*{name}"> </span>
-                </div>
+                </div>   </div>
         </div>
         <div class = "form-group row">
                 <label for = "Description of the role" class = "col-sm-8 col-form-label"><b>Description of the role</b> <span class="obligatoire"></span> :</label>
@@ -40,9 +41,10 @@
                     <textarea   th:field="*{descriptionOfTheRole}" class = "form-control inputSize" rows ="20"cols="20"   placeholder = "short description of the role.."
                     style="height:100%"></textarea>
                 </div>
-                <div class="col-sm-4">
+            <div class = "form-group row">
+                <div class="col-sm-8">
                     <span class="text-danger" th:errors="*{descriptionOfTheRole}"> </span>
-                </div>
+                </div>   </div>
         </div>
 
 <br></div>
@@ -211,7 +213,7 @@ var number= 0;
 
         <div class = "form-group row">
             <div class = "col-sm-10">
-                <button type = "submit" class = "btn btn-primary btnStyle">Add</button>
+                <button type = "submit" class = "btn btn-primary btnStyle" data-toggle="modal"  href="#RoleModal">Add</button>
                 <input type="hidden" />
             </div>
         </div>
@@ -223,13 +225,69 @@ var number= 0;
 
         <!--end page content --->
 
+        <!--Model Popup starts-->
+        <div class="container">
+            <div class="row">
+                <div class="modal fade" id="ignismyModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+                            </div>
 
-        <script>
-            function validateForm() {
-                alert("role add it with success ");
-                return true;
-            }
-        </script>
+                            <div class="modal-body">
+                                <div class="thank-you-pop">
+                                    <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
+                                    <h1>Thank You!</h1>
+                                    <p>Function has been registered in our database with success</p>
+                                    <!-- <h3 class="cupon-pop">Your Id: <span>12345</span></h3> -->
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Model Popup starts-->
+        <div class="container">
+            <div class="row">
+                <div class="modal fade" id="RoleModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <div class="thank-you-pop">
+                                    <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
+                                    <h1>Thank You!</h1>
+                                    <p>Role has been registered in our database with success</p>
+                                    <!-- <h3 class="cupon-pop">Your Id: <span>12345</span></h3> -->
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
     </div>
 
 

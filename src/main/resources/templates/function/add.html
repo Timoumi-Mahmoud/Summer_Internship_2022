@@ -11,7 +11,7 @@
     <div layout:fragment="content">
         <!-- page content -->
 
-    <form id="msform" name="myForm" onsubmit="return validateForm()"    method="post" th:action="@{addFunction}" th:object="${function}">
+    <form     method="post" th:action="@{addFunction}" th:object="${function}">
         <h2 class = "mt-4"> Add a new Function::</h2>
         <hr/>
         <!-- Form levels error messages here -->
@@ -71,7 +71,7 @@
 
         <div class = "form-group row">
             <div class = "col-sm-10">
-                <button type = "submit" class = "btn btn-primary">Submit</button>
+                <button type = "submit" class = "btn btn-primary"  data-toggle="modal"  href="#FunctionModal"   >Submit</button>
                 <input type="hidden" />
             </div>
         </div>
@@ -80,12 +80,50 @@
 
     </form>
 
-        <script>
-            function validateForm() {
-                alert("Function add it with success ");
-                return true;
-            }
-        </script>
+
+
+
+        <!--Model Popup starts-->
+        <div class="container">
+            <div class="row">
+                <div class="modal fade" id="FunctionModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <div class="thank-you-pop">
+                                    <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
+                                    <h1>Thank You!</h1>
+                                    <p>Function has been registered in our database with success</p>
+                                    <!-- <h3 class="cupon-pop">Your Id: <span>12345</span></h3> -->
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!--end page content --->
     </div>
 </th:block>

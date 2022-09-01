@@ -86,6 +86,11 @@ private FunctionService functionService;
             return mav;
         }
         roleService.save(role);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/Role/listRole");
         return new ModelAndView(redirectView);

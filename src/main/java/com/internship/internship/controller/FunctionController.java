@@ -78,6 +78,11 @@ public class FunctionController {
             return new ModelAndView("function/add");
         }
         functionService.save(function);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/Function/list");
         return new ModelAndView(redirectView);

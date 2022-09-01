@@ -27,7 +27,7 @@ public class User extends Auditable<String> {
     @NotEmpty(message = "Email cannot be empty")
     private String email;
     @Size(min = 6, message
-            = "Description must be greater than Six characters")
+            = "Password must be greater than Six characters")
     private String password;
     @NotEmpty(message = "first name cannot be empty")
     @Column(name = "first_name")
