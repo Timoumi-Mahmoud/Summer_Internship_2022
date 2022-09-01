@@ -42,7 +42,7 @@
                     <i class="bi bi-person-square  fa-2x" >   </i>          <span  sec:authentication="principal.name" >Fullname</span>Role(s): <span sec:authentication="principal.authorities"></span>
                 </div></i>
                 </li>
-                <ul class="list-unstyled components mb-5">
+                <ul class="list-unstyled components mb-5"  sec:authorize="hasRole('ROLE_ADMIN')">
 
                     <li class="active"   >
 
@@ -110,7 +110,7 @@
 
 
 
-                <ul class="list-unstyled components mb-5">
+                <ul class="list-unstyled components mb-5"      sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')">
 
                     <li class="active"   >
 

@@ -8265,7 +8265,7 @@ span.obligatoire:after {
 /*-------------------------------------------*/
 /*--thank you pop starts here--*/
 .thank-you-pop{
-  width:100%;
+  width:150%;
   padding:20px;
   text-align:center;
 }
@@ -8319,3 +8319,8 @@ span.obligatoire:after {
   border:0px;
 }
 /*--thank you pop ends here--*/
+input#q156 {
+  transform: scale(2);
+}input#q157 {
+   transform: scale(2);
+ }

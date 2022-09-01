@@ -37,16 +37,17 @@
 
                 <tr th:each="i : ${role}">
                     <td th:text="${i.name}">Avatar</td>
-                    <td th:text="${i.descriptionOfTheRole}">Email of the responsable </td>
+                    <td th:text="${i.descriptionOfTheRole}" style="white-space: pre-wrap;"><p></p> </td>
                     <td >
 
-                        <div class="form-group row">
-                            <div class="col-8">
-                                <th:block th:each="f: ${i.RolesFunction}">
-                                    <span th:text="${f.nameFunction}"></span>
-                                </th:block>
-                            </div>
-                        </div>
+
+                        <th:block th:each="f: ${i.RolesFunction}">
+                            <span th:text="${f.nameFunction}"></span><br>
+                        </th:block>
+
+
+
+
 
                     </td>
                     <td>

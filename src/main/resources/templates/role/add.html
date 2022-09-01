@@ -13,56 +13,58 @@
     <div layout:fragment="content">
         <!-- page content -->
 
-    <form id="msform" name="myForm" onsubmit="return validateForm()"   method="post" th:action="@{addRole}" th:object="${role}">
-        <h2 class = "mt-4"> Add a new role::</h2>
-        <hr/>
-        <!-- Form levels error messages here -->
-        <div class = "form-group row ">
-            <div class="col-sm-8">
-                <span class="text-danger" > </span>
+        <form id="msform" name="myForm" onsubmit="return validateForm()"   method="post" th:action="@{addRole}" th:object="${role}">
+            <h2 class = "mt-4"> Add a new role::</h2>
+            <hr/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+            <!-- Form levels error messages here -->
+            <div class = "form-group row ">
+                <div class="col-sm-8">
+                    <span class="text-danger" > </span>
+                </div>
             </div>
-        </div>
-        <div class = "form-group row ">
-            <label for = "Role name" class = "col-sm-8 col-form-label"> <b> Role name</b>  <span class="obligatoire"></span> :</label>
-            <div class = "col-sm-5">
-                <input th:field="*{name}"  type = "text" class = "form-control inputSize" placeholder = "name of the Role..">
-            </div>
-            <div class="col-sm-4">
-                <span class="text-danger" th:errors="*{name}"> </span>
-            </div>
+            <div class = "form-group row ">
+                <label for = "Role name" class = "col-sm-8 col-form-label"> <b> Role name</b>  <span class="obligatoire"></span> :</label>
+                <div class = "col-sm-5">
+                    <input th:field="*{name}"  type = "text" class = "form-control inputSize" placeholder = "name of the Role..">
+                </div>
+                <div class="col-sm-4">
+                    <span class="text-danger" th:errors="*{name}"> </span>
+                </div>
         </div>
         <div class = "form-group row">
-            <label for = "Description of the role" class = "col-sm-8 col-form-label"><b>Description of the role</b> <span class="obligatoire"></span> :</label>
-            <div class = "col-sm-5">
-                <textarea   th:field="*{descriptionOfTheRole}" class = "form-control inputSize" rows ="20"cols="20"   placeholder = "short description of the role.."
-                style="height:100%"></textarea>
-            </div>
-            <div class="col-sm-4">
-                <span class="text-danger" th:errors="*{descriptionOfTheRole}"> </span>
-            </div>
+                <label for = "Description of the role" class = "col-sm-8 col-form-label"><b>Description of the role</b> <span class="obligatoire"></span> :</label>
+                <div class = "col-sm-5">
+                    <textarea   th:field="*{descriptionOfTheRole}" class = "form-control inputSize" rows ="20"cols="20"   placeholder = "short description of the role.."
+                    style="height:100%"></textarea>
+                </div>
+                <div class="col-sm-4">
+                    <span class="text-danger" th:errors="*{descriptionOfTheRole}"> </span>
+                </div>
         </div>
 
-<br>
-        <div class="form-group row">
-            <label class="col-4 col-form-label" style="font-family: 'Elephant' ; font-size: 50px; color: #491217" >function: </label>
-            <div class="col-8" >
-                <th:block th:each="function: ${Function}">
-                    <div    th:unless="${function.children !=null and function.children.isEmpty()}">
+<br></div>
+                    <div class="col-sm">
+                        <!--
+                     <div class="form-group row">
+                         <label class="col-4 col-form-label" style="font-family: 'Elephant' ; font-size: 50px; color: #491217" >function: </label>
+                         <div class="col-8" >
+                             <th:block th:each="function: ${Function}">
+                                 <div    th:unless="${function.children !=null and function.children.isEmpty()}">
 
-                    <input type="checkbox" th:field="*{RolesFunction}"
-                           th:text="${function.nameFunction}" th:value="${function.idFunction}" class="m-xl-4"style=" top: .8rem;
-  width: 1.55rem;
-  height: 1.55rem; --moz-column-count: 2;  column-count:2;  -webkit-column-count:2;"  />
-<br>
+                                 <input type="checkbox" th:field="*{RolesFunction}"
+                                        th:text="${function.nameFunction}" th:value="${function.idFunction}" class="m-xl-4"style=" top: .8rem;
+               width: 1.55rem;
+               height: 1.55rem; --moz-column-count: 2;  column-count:2;  -webkit-column-count:2;"  />
+             <br>
 
+                         </div></th:block>
 
-
-
-            </div></th:block>
-
-            </div>
-        </div>
-
+                         </div>
+                     </div>
+             -->
 
         <!--end page content --->
         <div class="tree well" >
@@ -83,7 +85,7 @@
                     <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
 
 
-               </li>
+
 
 
                     <ul >
@@ -145,6 +147,41 @@ var number= 0;
 
 
 
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="col-sm">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
 
 
 
@@ -178,7 +215,10 @@ var number= 0;
                 <input type="hidden" />
             </div>
         </div>
+                    </div>
 
+                </div>
+            </div>
     </form>
 
         <!--end page content --->
@@ -191,7 +231,63 @@ var number= 0;
             }
         </script>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </th:block>
+
+
+
+
+
+
+
 <div th:insert="fragments/adminTemplate.html ::js"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
