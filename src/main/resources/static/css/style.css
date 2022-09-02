@@ -1601,7 +1601,7 @@ pre {
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
@@ -8324,3 +8324,47 @@ input#q156 {
 }input#q157 {
    transform: scale(2);
  }
+
+
+/*--forget password form page --*/
+
+
+body {
+  background-position: center;
+  background-color: #eee;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #505050;
+  font-family: "Rubik",Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.5;
+  text-transform: none;
+}
+
+.forgot{
+  background-color: #fff;
+  padding: 12px;
+  border: 1px solid #dfdfdf;
+}
+
+.padding-bottom-3x {
+  padding-bottom: 72px !important;
+}
+
+.card-footer{
+  background-color: #fff;
+}
+
+.btn{
+
+  font-size: 13px;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #76b7e9;
+  outline: 0;
+  box-shadow: 0 0 0 0px #28a745;
+}
