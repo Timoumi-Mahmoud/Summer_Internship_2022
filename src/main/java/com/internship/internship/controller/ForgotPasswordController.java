@@ -130,10 +130,15 @@ public class ForgotPasswordController {
                 "                                            We cannot simply send you your old password. A unique link to reset your\n" +
                 "                                            password has been generated for you. To reset your password, click the\n" +
                 "                                            following link and follow the instructions.\n" +
-                "                                        </p>\n" +
-                "                                        <a href=\""+resetPassworkLink+ "\n" +
+                "                                        </p>\n"
+                +"<p>  <a href=\""+resetPassworkLink+"\"> Change my password</a> </p>"+
+                "<br>"+
+/*
+ "                                        <a href=\""+resetPassworkLink+ "\n" +
                 "                                            style=\"background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;\">Reset\n" +
                 "                                            Password</a>\n" +
+ */
+
                 "                                    </td>\n" +
                 "                                </tr>\n" +
                 "                                <tr>\n" +
@@ -146,7 +151,7 @@ public class ForgotPasswordController {
                 "                    </tr>\n" +
                 "                    <tr>\n" +
                 "                        <td style=\"text-align:center;\">\n" +
-                "                            <p style=\"font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;\">&copy; <strong>www.rakeshmandal.com</strong></p>\n" +
+                "                            <p style=\"font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;\">&copy; <strong>www.ST2i.com</strong></p>\n" +
                 "                        </td>\n" +
                 "                    </tr>\n" +
                 "                    <tr>\n" +
