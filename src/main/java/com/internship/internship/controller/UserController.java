@@ -150,7 +150,7 @@ public UserController(UserService UserService){  same as autowired
 
         userService.update(user, id);
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/");
+        redirectView.setUrl("/User/userList");
         return new ModelAndView(redirectView);
     }
     /////////////////////////////////////////////////////////////////////////

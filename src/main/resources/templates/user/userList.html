@@ -38,7 +38,7 @@
                     <th>age</th>
                     <th>address </th>
                     <th>role</th>
-                    <Action></Action>
+                    <th>Action </th>
 
                 </tr>
                 </thead>
@@ -63,9 +63,11 @@
                         </div>
                     </td>
                     <td>
-                        <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idUser})}" ><i class="fas fa-edit fa-2x"></i></a>
 
-                        <a class="   " a href=""  th:data-href="@{/User/delete/{id}(id=${i.idUser})}" data-toggle="modal" data-target="#myModal" title="Delete"  ><i class="material-icons fa-2x ">&#xE872;</i></a>
+                        <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idUser})}" ><i class="material-icons">&#xE254;</i></a>
+                        <a class="delete" a href=""  th:data-href="@{/User/delete/{id}(id=${i.idUser})}" data-toggle="modal" data-target="#myModal" title="Delete"  ><i class="material-icons fa-2x ">&#xE872;</i></a>
+
+
 
                     </td>
 
