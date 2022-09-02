@@ -3,7 +3,7 @@ package com.internship.internship.services;
 
 import com.internship.internship.AppUser.UserRepository;
 import com.internship.internship.entity.User;
-import com.internship.internship.repository.RoleRepository;
+import com.internship.internship.entity.password.UserNotFoundException;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
@@ -19,7 +19,6 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -131,6 +130,35 @@ public String exportReport(String format) throws FileNotFoundException {
 
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void updateResetPasswordToken(String token, String email) throws UserNotFoundException {
+        User customer = userRepository.findByEmail(email);
+        if (customer != null) {
+            customer.setResetPasswordToken(token);
+            userRepository.save(customer);
+        } else {
+        throw new UserNotFoundException("Could not find any customer with the email " + email);
+        }
+    }
+
+    public User getByResetPasswordToken(String token) {
+        return userRepository.findByResetPasswordToken(token);
+    }
+
+    public void updatePassword(User customer, String newPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        customer.setPassword(encodedPassword);
+
+        customer.setResetPasswordToken(null);
+        userRepository.save(customer);
+    }
+
+
+
+
+
 
 
 
@@ -138,5 +166,11 @@ public String exportReport(String format) throws FileNotFoundException {
 
 
 }
+
+
+
+
+
+
 
 

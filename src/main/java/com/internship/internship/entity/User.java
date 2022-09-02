@@ -70,7 +70,16 @@ public class User extends Auditable<String> {
         this.roles = roles;
     }
 
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
 
     public User(String email, String password) {
         this.email = email;

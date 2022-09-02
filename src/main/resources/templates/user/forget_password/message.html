@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragments/adminTemplate.html">
+<head  th:insert="fragments/adminTemplate.html :: headfragment">
+
+</head>
+<body>
+
+    <div layout:fragment="content">
+        <!-- page content -->
+
+
+<div class = "container-fluid" >
+<div class = " text - center " >
+<h2 style="  text-align: center;color: #491217 ; font-size: xxx-large ; font-family: monospace">  [[  ${title} ]]  </h2>
+<br>
+
+    <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
+        [[  ${message} ]]
+    </p>
+
+</div>
+</div>
+
+
+</div>
+</th:block>
+<div th:insert="fragments/adminTemplate.html ::js"></div>
+
+</body>
