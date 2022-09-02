@@ -1,4 +1,4 @@
-package com.internship.internship.entity;
+package com.internship.internship.entity.password;
 
 import javax.servlet.http.HttpServletRequest;
 

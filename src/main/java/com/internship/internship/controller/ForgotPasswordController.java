@@ -1,8 +1,8 @@
 package com.internship.internship.controller;
 
 import com.internship.internship.entity.User;
-import com.internship.internship.entity.UserNotFoundException;
-import com.internship.internship.entity.Utility;
+import com.internship.internship.entity.password.UserNotFoundException;
+import com.internship.internship.entity.password.Utility;
 import com.internship.internship.services.UserService;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;

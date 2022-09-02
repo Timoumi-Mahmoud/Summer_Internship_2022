@@ -1,4 +1,4 @@
-package com.internship.internship.entity;
+package com.internship.internship.entity.password;
 
 public class UserNotFoundException extends Exception{
 

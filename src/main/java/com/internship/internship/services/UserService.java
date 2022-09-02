@@ -3,8 +3,7 @@ package com.internship.internship.services;
 
 import com.internship.internship.AppUser.UserRepository;
 import com.internship.internship.entity.User;
-import com.internship.internship.entity.UserNotFoundException;
-import com.internship.internship.repository.RoleRepository;
+import com.internship.internship.entity.password.UserNotFoundException;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
@@ -20,7 +19,6 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
