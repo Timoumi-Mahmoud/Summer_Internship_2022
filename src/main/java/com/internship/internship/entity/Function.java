@@ -8,7 +8,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler", "children"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler", "parent"})
+
 public class Function  extends Auditable<String> {
     @Id
     @Column(name = "id_function")
@@ -31,7 +32,7 @@ public class Function  extends Auditable<String> {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,/*/CascadeType.MERGE,*/CascadeType.REFRESH})
     private Function parent;
-
+    @JsonIgnoreProperties
     @OneToMany(mappedBy = "parent", cascade=CascadeType.ALL,  fetch = FetchType.EAGER)
     private Set<Function> children ;
 
@@ -126,8 +127,7 @@ public class Function  extends Auditable<String> {
                 ", nameFunction='" + nameFunction + '\'' +
                 ", url='" + url + '\'' +
 
-
-                ", children=" + children +
+                ", parent=" + parent +
                 '}';
     }
 }

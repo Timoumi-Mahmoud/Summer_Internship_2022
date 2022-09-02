@@ -70,12 +70,11 @@
     </div>
 </div>
         <!--end page content --->
-        <div class="tree well">
-            <ul th:each="i : ${function}" >
-                <span th:text="${i}"></span>
+        <div class="tree well ">
+            <ul th:each="i : ${function}"   >
 
-                <li  th:unless="${i.children !=null and i.children.isEmpty()}">
-                    <span th:text="${i.nameFunction}"  ><i class="icon-folder-open"></i> Parent</span> <a href="">Goes somewhere</a>  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li  th:unless="${i.parent !=null} "    >
+                    <span th:text="${i.nameFunction}"   ><i class="icon-folder-open"></i> Parent</span> <a href="">Goes somewhere</a>  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
                     <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
 
@@ -83,10 +82,10 @@
 
 
 
-                    <ul >
-                        <li th:each="f: ${i.children}">
-                            <span  span th:text="${f.nameFunction}"><i class="icon-minus-sign"></i> </span> <a href="">Goes somewhere</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{/Function/edit/{id}(id=${f.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
+                    <ul  class="expand" >
+                        <li th:each="f: ${i.children}" class="expand"  style="display:none">
+                            <span   span th:text="${f.nameFunction}"><i class="icon-minus-sign"></i> </span> <a href="">Goes somewhere</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <a class="edit " title="Edit" data-toggle="tooltip"  a th:href="@{/Function/edit/{id}(id=${f.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{/Function/delete/{id}(id=${f.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
 
                             <!--<ul>
@@ -142,6 +141,15 @@
         </div>
 
 
+        <script>
+            $('.expand').click(function() {
+                $('ul', $(this).parent()).eq(0).toggle();
+            });
+        </script>
+
+
+
+
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script><script>$(function () {
     $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
     $('.tree li.parent_li > span').on('click', function (e) {
@@ -156,14 +164,6 @@
         e.stopPropagation();
     });
 });</script>
-
-
-
-
-
-
-
-
 
 
 

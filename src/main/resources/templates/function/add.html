@@ -59,7 +59,9 @@
                 <select th:field="*{parent}"  style="width: 200px ; height: 45px">
                     <option value="">--------------------------</option>
                     <c:forEach th:each="i : ${functionMother}">
-                        <option th:value="${i.idFunction}"  th:text="${i.nameFunction}" > </option>
+                        <th:block th:unless="${i.parent !=null}">
+                        <option th:value="${i.idFunction}"  th:text="${i.nameFunction}" >
+                        </th:block>
                     </c:forEach>
                 </select>
 
