@@ -65,7 +65,7 @@ List<Map<String, Object>> allUserDetails();
 
 
 
-
+public User findByResetPasswordToken(String token);
 
 
 
