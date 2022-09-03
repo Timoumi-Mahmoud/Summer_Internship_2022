@@ -149,6 +149,15 @@ public UserController(UserService UserService){  same as autowired
     public ModelAndView saveUser(@Valid @ModelAttribute("user") User user, @PathVariable("id") int id) {
 
         userService.update(user, id);
+        ModelAndView mav = new ModelAndView("role_user/giveRole");
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/User/userList");
         return new ModelAndView(redirectView);

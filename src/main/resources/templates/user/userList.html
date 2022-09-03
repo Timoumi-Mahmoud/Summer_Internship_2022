@@ -48,7 +48,9 @@
                     <td th:text="${i.firstName} +' ' + ${i.firstName}" ></td>
                     <td th:text="${i.email}"> </td>
                     <td th:text="${i.tel}"> </td>
-                    <td th:text="${i.department.departmentName}"></td>
+                    <td th:unless="${i.department !=null}" >
+                        <span th:text="${i.department.departmentName}"></span>
+                    </td>
 
                     <td th:text="${i.hireDate}"></td>
                     <td th:text="${i.birthDate}"></td>

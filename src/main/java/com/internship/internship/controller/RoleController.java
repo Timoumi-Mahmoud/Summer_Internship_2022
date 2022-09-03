@@ -113,7 +113,13 @@ private FunctionService functionService;
     public ModelAndView updateSave(@PathVariable("id") int id, Role role ) {
         role.setId(id);
         roleRepository.save(role);
+
         ModelAndView mav = new ModelAndView("role/update");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/Role/listRole");
         return new ModelAndView(redirectView);

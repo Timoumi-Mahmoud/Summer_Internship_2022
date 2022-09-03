@@ -101,6 +101,14 @@ public class FunctionController {
     public ModelAndView updateSave(@PathVariable("id") int id, Function function, Role role ) {
         function.setIdFunction(id);
         functionRepository.save(function);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
         System.out.println("the result is "+function);
         ModelAndView mav = new ModelAndView("function/update");
         RedirectView redirectView = new RedirectView();

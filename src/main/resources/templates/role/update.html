@@ -11,7 +11,7 @@
 
     <div layout:fragment="content">
         <!-- page content -->
-<form  id="msform" name="myForm" onsubmit="return validateForm()"  method="POST" th:action="@{/Role/edit/{id}(id=${role.id})}" th:object="${role}">
+<form   method="POST" th:action="@{/Role/edit/{id}(id=${role.id})}" th:object="${role}">
     <h2 class = "mt-4"> update a  Role::</h2>
     <hr/>
     <!-- Form levels error messages here -->
@@ -151,7 +151,7 @@
 
             <div class = "form-group row">
         <div class = "col-sm-10">
-            <button type = "submit" class = "btn btn-primary btnStyle" >Update</button>
+            <button type = "submit" class = "btn btn-primary btnStyle" data-toggle="modal"  href="#RoleModal" >Update</button>
         </div>
     </div>
 </form>
@@ -165,6 +165,53 @@
                 return true;
             }
         </script>
+
+
+
+        <!--Model Popup starts-->
+        <div class="container">
+            <div class="row">
+                <div class="modal fade" id="RoleModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <div class="thank-you-pop">
+                                    <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
+                                    <h1>Thank You!</h1>
+                                    <p>Role has been update it  with success</p>
+                                    <!-- <h3 class="cupon-pop">Your Id: <span>12345</span></h3> -->
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
 </th:block>

@@ -43,6 +43,8 @@ public class User extends Auditable<String> {
     private Date birthDate;
 
     private  Date hireDate;
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 
    @NotBlank(message = "mobileNumber is required")
    @Size(min = 8, max = 12)
@@ -70,8 +72,7 @@ public class User extends Auditable<String> {
         this.roles = roles;
     }
 
-    @Column(name = "reset_password_token")
-    private String resetPasswordToken;
+
 
     public String getResetPasswordToken() {
         return resetPasswordToken;
