@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler", "parent"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler", "parent"})
 
 public class Function  extends Auditable<String> {
     @Id
@@ -126,8 +126,8 @@ public class Function  extends Auditable<String> {
                 "idFunction=" + idFunction +
                 ", nameFunction='" + nameFunction + '\'' +
                 ", url='" + url + '\'' +
+                ", RolesF=" + RolesF +
 
-                ", parent=" + parent +
                 '}';
     }
 }

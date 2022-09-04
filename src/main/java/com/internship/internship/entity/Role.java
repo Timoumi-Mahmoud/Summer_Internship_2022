@@ -115,7 +115,6 @@ public class Role  extends Auditable<String> {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", descriptionOfTheRole='" + descriptionOfTheRole + '\'' +
-                ", RolesFunction=" + RolesFunction +
                 '}';
     }
 }

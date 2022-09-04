@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.Null;
 import java.util.List;
 
 @Component("rbacService")
@@ -34,12 +35,13 @@ public class RbacServiceImpl implements  RbacService {
             for (Function f : urls) {
                // System.out.println(functionRepository.urlsFinder(username));
                 for (Function i : f.getChildren()) {
-
+                    System.out.println("the i.getRoles() \n "+ i.getRolesF());
+if(! i.getRolesF().equals("Null")){
                     if (antPathMatcher.match( f.getUrl() +   i.getUrl(), request.getRequestURI())) {
                         hasPermission = true;
                         break;
                     }
-                }
+                }}
             }
         }
         return hasPermission;

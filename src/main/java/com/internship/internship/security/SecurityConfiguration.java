@@ -41,11 +41,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
             http.authorizeRequests()
          //  .anyRequest().authenticated()
-                   .antMatchers("/").permitAll()
+                   .antMatchers("/login").permitAll()
                     .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
                 //      .antMatchers("/admin/**").hasRole("ADMIN")
                   //  .antMatchers("/manager").hasRole("MANAGER")
-                  // .anyRequest().access("@rbacService.hasPermission(request,authentication)")
+                  .anyRequest().access("@rbacService.hasPermission(request,authentication)")
                     .and().formLogin()
                     .loginProcessingUrl("/signin")
                     .loginPage("/login").permitAll()

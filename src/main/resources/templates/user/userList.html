@@ -35,9 +35,10 @@
                     <th width="8%">phone</th>
                     <th>department</th>
                     <th>hiring date </th>
-                    <th>age</th>
+                    <th>birth date</th>
                     <th>address </th>
                     <th>role</th>
+                    <th>created </th>
                     <th>Action </th>
 
                 </tr>
@@ -48,8 +49,8 @@
                     <td th:text="${i.firstName} +' ' + ${i.firstName}" ></td>
                     <td th:text="${i.email}"> </td>
                     <td th:text="${i.tel}"> </td>
-                    <td th:unless="${i.department !=null}" >
-                        <span th:text="${i.department.departmentName}"></span>
+                    <td th:text="${i.department.departmentName}" >
+
                     </td>
 
                     <td th:text="${i.hireDate}"></td>
@@ -63,6 +64,9 @@
                                 </th:block>
                             </div>
                         </div>
+                    </td>
+                    <td style="font-family: 'Sitka Small'; font-size: 15px;">
+                        by  <span th:text="${i.createdBy}">  </span> at <span th:text="${i.createdDate}"></span>
                     </td>
                     <td>
 
