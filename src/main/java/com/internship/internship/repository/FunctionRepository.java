@@ -2,6 +2,7 @@ package com.internship.internship.repository;
 
 
 import com.internship.internship.entity.Function;
+import com.internship.internship.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +21,10 @@ public interface FunctionRepository extends JpaRepository<Function,  Integer>  {
             , nativeQuery = true
              )
     List<Function> urlsFinder( @Param("username") String  username);
+
+
+
+
 
 
     @Modifying
