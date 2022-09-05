@@ -39,7 +39,7 @@
                 <img th:src="@{/images/LogoST2I.jpg}" class="img logo rounded-circle mb-6" />
 
                 <div  sec:authorize="isAuthenticated()" style="font-size:small;">
-                    <i class="bi bi-person-square  fa-2x" >   </i>          <span  sec:authentication="principal.name" >Fullname</span>Role(s): <span sec:authentication="principal.authorities"></span>
+                    <i class="bi bi-person-square  fa-2x" >   </i>          <span  sec:authentication="principal.name" >Fullname</span> <br> <span sec:authentication="principal.authorities"></span>
                 </div></i>
                 </li>
                 <ul class="list-unstyled components mb-5" >

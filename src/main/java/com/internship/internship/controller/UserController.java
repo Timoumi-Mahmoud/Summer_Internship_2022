@@ -122,7 +122,7 @@ public UserController(UserService UserService){  same as autowired
         }
         userService.save(user);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

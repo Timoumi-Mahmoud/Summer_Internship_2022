@@ -38,7 +38,7 @@
                     <th>birth date</th>
                     <th>address </th>
                     <th>role</th>
-                    <th>created </th>
+               <!--     <th>created </th>-->
                     <th>Action </th>
 
                 </tr>
@@ -65,9 +65,9 @@
                             </div>
                         </div>
                     </td>
-                    <td style="font-family: 'Sitka Small'; font-size: 15px;">
+                 <!--   <td style="font-family: 'Sitka Small'; font-size: 15px;">
                         by  <span th:text="${i.createdBy}">  </span> at <span th:text="${i.createdDate}"></span>
-                    </td>
+                    </td>-->
                     <td>
 
                         <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idUser})}" ><i class="material-icons">&#xE254;</i></a>
@@ -90,7 +90,7 @@
                                         </h4>
                                     </div>
                                     <div class="modal-body text-center">
-                                        <p class="my-0 font-weight-bold">Are you sure  to delete  the user  &nbsp;  <span th:text="${i.firstName}"></span>    ?</p>
+                                        <p class="my-0 font-weight-bold">Are you sure  to delete  this user  &nbsp;   ?</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
