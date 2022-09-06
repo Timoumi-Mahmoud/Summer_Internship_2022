@@ -58,7 +58,7 @@
                 <li  th:unless="${i.children !=null and i.children.isEmpty()}"  >
                     <span th:text="${i.nameFunction}"  ><i class="icon-folder-open"></i> Parent</span>
 
-                    <input  for="checkAll" type="checkbox" th:field="*{RolesFunction}" th:value="${i.idFunction}" id="checkAll" class="m-xl-4"style=" top: .8rem;
+                    <input   name="ckparent" id="ckparent"  type="checkbox" th:field="*{RolesFunction}" th:value="${i.idFunction}"  class="m-xl-4"style=" top: .8rem;
                               width: 1.55rem;
                               height: 1.55rem;" />
                                           &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -73,8 +73,9 @@
 
                     <ul  class="expand">
                         <li th:each="f: ${i.children}"  class="expand"  style="display:none" >
-                            <span   th:text="${f.nameFunction}"><i class="icon-minus-sign"></i> </span> <input   type="checkbox" th:field="*{RolesFunction}"
-                                                                                                                   th:value="${f.idFunction}"   class="cb" />&nbsp;
+                            <span   th:text="${f.nameFunction}"><i class="icon-minus-sign"></i> </span>
+                            <input   type="checkbox" th:field="*{RolesFunction}" name="ckchild1" id="ckchild1" class="ckchild"
+                                                                                                                   th:value="${f.idFunction}"   />&nbsp;
                             <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{/Function/edit/{id}(id=${f.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{/Function/delete/{id}(id=${f.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
 
@@ -108,20 +109,14 @@
 
 
 <script type="text/javascript">
+    $('input:checkbox.ckchild').click(function(event) {
+        var checked = $(this).is(':checked');
 
-    var numberOfChildCheckBoxes = $('.cb').length;
-var number= 0;
-
-
-
-    console.log(number); // it give me 12 the number of the total children which i do not want i want to get only the num
-    $('.cb').change(function() {          //number of the children under the parent
-        var checkedChildCheckBox = $('.cb:checked').length;
-        if (checkedChildCheckBox == numberOfChildCheckBoxes)
-            $("#checkAll").prop('checked', true);
-        else
-            $("#checkAll").prop('checked', false);
+        if (checked) {
+            $('#ckparent').attr('checked', true);
+        }
     });
+
 
 
 </script>
