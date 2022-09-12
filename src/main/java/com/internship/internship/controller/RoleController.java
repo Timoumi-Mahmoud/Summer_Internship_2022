@@ -85,6 +85,7 @@ private FunctionService functionService;
             mav.addObject("Function", functionService.findAll());
             return mav;
         }
+        role.setName(role.getName().toUpperCase());
         roleService.save(role);
         try {
             Thread.sleep(3000);
