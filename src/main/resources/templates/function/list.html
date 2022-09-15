@@ -18,54 +18,56 @@
 
 
                 </div>
-            </div><!--
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Function Name</th>
-                    <th>Url</th>
-                    <th>parent </th>
-                    <th>child</th>
-                    <th>act</th>
+            </div>
+            <a  style="margin-right:10px"class="add float-right" title="Add" data-toggle="tooltip"  a th:href="@{/Function/addFunction}" ><i class="material-icons fa-4x">&#xE03B;</i></a>
+            <!--
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Function Name</th>
+                                <th>Url</th>
+                                <th>parent </th>
+                                <th>child</th>
+                                <th>act</th>
 
-                </tr>
-                </thead>
-                <tbody>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                <tr th:each="i : ${function}">
-                   <td th:text="${i.nameFunction}"></td>
-                    <td th:text="${i.url}">Avatar</td>
-                    <td >
-                        <div class="form-group row">
-                            <div class="col-8">
-                    <th:block th:each="f: ${i.parent}">
-                        <span th:text="${f.nameFunction}"></span>
-                    </th:block>
-
-                            </div></div>
-
-                    </td>
-                  <td th:text="${i.nameFunction}">Avatar</td>
-                    <td >
-                        <div class="form-group row">
-                            <div class="col-8">
-                                <th:block th:each="f: ${i.children}">
+                            <tr th:each="i : ${function}">
+                               <td th:text="${i.nameFunction}"></td>
+                                <td th:text="${i.url}">Avatar</td>
+                                <td >
+                                    <div class="form-group row">
+                                        <div class="col-8">
+                                <th:block th:each="f: ${i.parent}">
                                     <span th:text="${f.nameFunction}"></span>
                                 </th:block>
 
-                            </div></div>
+                                        </div></div>
 
-                    </td>
+                                </td>
+                              <td th:text="${i.nameFunction}">Avatar</td>
+                                <td >
+                                    <div class="form-group row">
+                                        <div class="col-8">
+                                            <th:block th:each="f: ${i.children}">
+                                                <span th:text="${f.nameFunction}"></span>
+                                            </th:block>
+
+                                        </div></div>
+
+                                </td>
 
 
-                    <td>
-                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                        <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
-                        <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table> -->
+                                <td>
+                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                    <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
+                                    <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table> -->
         </div>
     </div>
 </div>

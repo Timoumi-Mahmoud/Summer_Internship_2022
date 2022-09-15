@@ -15,7 +15,7 @@
 	birth_date,
 	user.created_by,
 	department_name,
-	group_concat(DISTINCT roles.name) AS roles,
+	group_concat(DISTINCT roles.name SEPARATOR " ") AS roles,
 	group_concat(DISTINCT function.name_function) AS functions
 FROM user
 	inner join department ON

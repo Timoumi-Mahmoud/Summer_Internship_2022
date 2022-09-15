@@ -39,9 +39,15 @@
                     <td th:text="${i.name}">Avatar</td>
                     <td th:text="${i.descriptionOfTheRole}" style="white-space: pre-wrap;"><p></p> </td>
                     <td >
+                        <!--
+                        <th:block th:each="f: ${i.RolesFunction}"   >
+                            <span th:text="${f.nameFunction}"></span><br>
+                        </th:block>
 
 
-                        <th:block th:each="f: ${i.RolesFunction}">
+                        -->
+
+                        <th:block th:each="f: ${i.RolesFunction}"   th:unless="${f.parent ==null }">
                             <span th:text="${f.nameFunction}"></span><br>
                         </th:block>
 
