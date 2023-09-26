@@ -1,5 +1,4 @@
 ### Internship 2022/6/7- 2022/9/10
-##update jenkins ...
 You can check the Internship report here: 
 During my internship, which took place from June 7, 2022, to September 10, 2022, I worked on a small module titled "Manage Users and Interfaces Based on Roles." This module was developed using Spring Boot for the backend and a combination of HTML, CSS, Bootstrap, JavaScript, and Thymeleaf for the frontend.
 
