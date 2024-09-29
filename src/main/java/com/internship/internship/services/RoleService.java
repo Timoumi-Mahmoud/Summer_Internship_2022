@@ -14,26 +14,19 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
-
 @Service
 public class RoleService {
     @Autowired
     RoleRepository roleRepository;
-
     @Autowired
     private UserRepository userRepository;
-
     public List<Role> findAll(){
         return roleRepository.findAll();
     }
-
-
-
     public Page<Role> findPage(int pageNumber){
         Pageable pageable = PageRequest.of(pageNumber - 1,5);
         return roleRepository.findAll(pageable);
     }
-
 
     public void delete(int id){
         roleRepository.deleteById(id);
@@ -47,12 +40,9 @@ public class RoleService {
         System.out.println(" the old one::::"+ oldRole);
         oldRole.setId(role.getId());
         oldRole.setName(role.getName());
-      //  oldRole.setNameRole(role.getNameRole());
-
         roleRepository.save(role);
         return role;
     }
-
 
     public void assignUserRole(Integer userId, Integer roleId) {
         User user = userRepository.findById(userId).orElse(null);

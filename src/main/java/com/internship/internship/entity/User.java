@@ -1,6 +1,5 @@
 package com.internship.internship.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.internship.internship.entity.Role;
@@ -19,7 +18,7 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User extends Auditable<String> {
-   @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private int idUser;
@@ -34,35 +33,29 @@ public class User extends Auditable<String> {
     private  String firstName;
     @NotEmpty(message = "last name cannot be empty")
     private  String lastName;
-
     @Pattern(regexp = "male|female", flags = Pattern.Flag.CASE_INSENSITIVE)
     @NotBlank(message = "please provide a gender ")
     private  String sex;
-
-
     private Date birthDate;
-
     private  Date hireDate;
     @Column(name = "reset_password_token")
     private String resetPasswordToken;
 
-   @NotBlank(message = "mobileNumber is required")
-   @Size(min = 8, max = 12)
+    @NotBlank(message = "mobileNumber is required")
+    @Size(min = 8, max = 12)
     private  String tel;
 
     @NotEmpty(message = "address cannot be empty")
     private  String address;
 
     @ManyToMany(targetEntity = Role.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH} ,
-        fetch = FetchType.EAGER )
+            fetch = FetchType.EAGER )
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "id_user"),
             inverseJoinColumns = @JoinColumn(name = "id_role")
     )
     private Set<Role> roles = new HashSet<>();
-
-
     @ManyToOne( fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "id_department", nullable = true)
     private Department department;
@@ -71,9 +64,6 @@ public class User extends Auditable<String> {
         this.password = password;
         this.roles = roles;
     }
-
-
-
     public String getResetPasswordToken() {
         return resetPasswordToken;
     }
@@ -93,7 +83,6 @@ public class User extends Auditable<String> {
 
     public User() {
     }
-
     public User(String email, String password, String firstName, String lastName, String sex, String tel, String address, Department department) {
         this.email = email;
         this.password = password;
@@ -105,119 +94,78 @@ public class User extends Auditable<String> {
         this.address = address;
         this.department = department;
     }
-
     public int getIdUser() {
         return idUser;
     }
-
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
-
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-
-
     public Set<Role> getRoles() {
         return roles;
     }
-
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
     public String getFirstName() {
         return firstName;
     }
     public void setFirstName(String First_name) {
         this.firstName= First_name;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     public String getSex() {
         return sex;
     }
-
     public void setSex(String sex) {
         this.sex = sex;
     }
-
     public Date getBirthDate() {
         return birthDate;
     }
-
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
-
     public Date getHireDate() {
         return hireDate;
     }
-
     public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
-
     public String getTel() {
         return tel;
     }
-
     public void setTel(String tel) {
         this.tel = tel;
     }
-
     public String getAddress() {
         return address;
     }
-
     public void setAddress(String address) {
         this.address = address;
     }
-
     public Department getDepartment() {
         return department;
     }
-
     public void setDepartment(Department department) {
         this.department = department;
     }
-
-/*
-    public List<String> getRoleList(){
-        if(this.roles.length()>0){
-            return Arrays.asList(this.roles.split(","));
-        }
-        return new ArrayList<>();
-    }
-*/
-
-
-
-
-
-
     @Override
     public String toString() {
         return "User{" +
@@ -235,10 +183,5 @@ public class User extends Auditable<String> {
 
                 '}';
     }
-
-
-
-
-
 
 }

@@ -15,8 +15,6 @@ import java.util.Map;
 @EnableJpaRepositories
 public interface UserRepository extends JpaRepository<User, Integer> {
     User findByEmail(String email);
-
-
     @Query(
             value = "select * from user where first_name like %:keyword% or email like %:keyword% ",
             nativeQuery = true)
@@ -24,17 +22,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("SELECT user FROM User user LEFT JOIN user.roles role WHERE role.id = ?1")
     List<User> findUserByRole(int role);
-
-
-
-
     @Query( value = "SELECT email,password \n" +
             "FROM user u \n" +
             "WHERE u.email = 'admin@admin.com'" , nativeQuery = true)
     List<User> f(String ss);
-
-
-
 @Query(value = "SELECT user.id_user,\n" +
         "\t first_name, last_name,\n" +
         "\temail,\n" +
@@ -58,13 +49,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
         "\t functions_roles.id_function = function.id_function\n" +
         "GROUP BY user.id_user", nativeQuery = true)
 List<Map<String, Object>> allUserDetails();
-
-
-
-
-
-
-
 public User findByResetPasswordToken(String token);
 
 

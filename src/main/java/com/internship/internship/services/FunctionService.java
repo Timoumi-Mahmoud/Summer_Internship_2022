@@ -8,13 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class FunctionService {
-
-
     @Autowired
     private FunctionRepository functionRepository;
-
-
-
     public List<Function> findAll(){return functionRepository.findAll();}
     public void delete(int id){
         functionRepository.deleteById(id);
@@ -27,11 +22,7 @@ public class FunctionService {
         Function oldFunction= functionRepository.findById(id).get();
         oldFunction.setIdFunction(function.getIdFunction());
         oldFunction.setNameFunction(function.getNameFunction());
-
         functionRepository.save(function);
         return function;
     }
-
-
-
 }

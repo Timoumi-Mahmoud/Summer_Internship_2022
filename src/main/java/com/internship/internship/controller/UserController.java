@@ -1,10 +1,8 @@
 package com.internship.internship.controller;
 
-
 import com.internship.internship.entity.Department;
 import com.internship.internship.entity.Role;
 import com.internship.internship.entity.User;
-import com.internship.internship.repository.FunctionRepository;
 import com.internship.internship.repository.RoleRepository;
 import com.internship.internship.services.DepartmentService;
 import com.internship.internship.services.FunctionService;
@@ -17,16 +15,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
-import org.springframework.ui.Model;
-import org.springframework.util.ResourceUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -36,36 +30,25 @@ import java.util.Map;
 @RequestMapping(value = "/User")
 @RestController
 public class UserController {
-  @Autowired
-  private UserService userService;
+    @Autowired
+    private UserService userService;
 
-  @Autowired
-  private  RoleService roleService;
-  @Autowired
-  private DepartmentService departmentService;
-  @Autowired
-  private RoleRepository roleRepository;
-  @Autowired
-  private FunctionService functionService;
-
-/*
-public UserController(UserService UserService){  same as autowired
-}*/
-
+    @Autowired
+    private  RoleService roleService;
+    @Autowired
+    private DepartmentService departmentService;
+    @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
+    private FunctionService functionService;
     @RequestMapping(value = "/list/{id}")
     public User findById(@PathVariable int id) {
         return userService.findBy(id);
     }
-
-
-
     @GetMapping("delete/{id}")
     public RedirectView  remove( @PathVariable int id){
         userService.delete(id);
         return new RedirectView("/User/userList");    }
-
-////////////////////////////////////////////////////
-
     @GetMapping( path={"/userList","/search"})
     public ModelAndView getAllPages(String keyword){
         Map<String, List<User>> model = new HashMap<String, List<User>>();
@@ -116,8 +99,6 @@ public UserController(UserService UserService){  same as autowired
 
             mav.addObject("departs", departmentService.findAll());
             mav.addObject("listRoles", roleService.findAll());
-       //     mav.addObject("functionId", functionService.findBy(id));
-          //  return new ModelAndView("/user/registration");
             return mav;
         }
         userService.save(user);
@@ -132,8 +113,6 @@ public UserController(UserService UserService){  same as autowired
         return new ModelAndView(redirectView);
     }
 
-
-    /////////////////////////////////////////////////////////////////////////
     @GetMapping("/edit/{id}")
     public ModelAndView editUser(@PathVariable("id") int id) {
         User user = userService.findBy(id);
@@ -156,39 +135,15 @@ public UserController(UserService UserService){  same as autowired
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/User/userList");
         return new ModelAndView(redirectView);
     }
-    /////////////////////////////////////////////////////////////////////////
     @GetMapping("/login")
     public ModelAndView  loginPage() {
         ModelAndView mav = new ModelAndView("user/login");
         return mav;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //////////////////////////////////////////////////////////////////////////////////
-
 
     @GetMapping("/e/{id}")
     public ModelAndView showFormForUpdate(@PathVariable("id") int id) {
@@ -208,15 +163,6 @@ public UserController(UserService UserService){  same as autowired
         redirectView.setUrl("/Role/listRole");
         return new ModelAndView(redirectView);
     }
-
-//////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
     @GetMapping("/report/{format}")
     public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
         return userService.exportReport(format);
@@ -225,20 +171,13 @@ public UserController(UserService UserService){  same as autowired
     ApplicationContext context;
     @GetMapping(path = "/pdf")
     @ResponseBody
-//    public void getPdf(@PathVariable String jrxml, HttpServletResponse response) throws Exception {
     public void getPdf(HttpServletResponse response) throws Exception {
-        //Get JRXML template from resources folder
-//        Resource resource = context.getResource("classpath:reports/" + jrxml + ".jrxml");
         Resource resource = context.getResource("classpath:userDetails.jrxml");
-
         //Compile to jasperReport
         InputStream inputStream = resource.getInputStream();
         JasperReport report = JasperCompileManager.compileReport(inputStream);
-        //Parameters Set
         Map<String, Object> params = new HashMap<>();
-
         List<Map<String, Object>> users = (List<Map<String, Object>>) userService.getAllUsers();
-
         //Data source Set
         JRDataSource dataSource = new JRBeanCollectionDataSource(users);
         params.put("datasource", dataSource);
@@ -250,70 +189,5 @@ public UserController(UserService UserService){  same as autowired
         //Export PDF Stream
         JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

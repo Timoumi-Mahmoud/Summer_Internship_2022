@@ -4,137 +4,108 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="fragments/adminTemplate.html">
 <head  th:insert="fragments/adminTemplate.html :: headfragment">
-
 </head>
 <body>
 <th:block th:insert="fragments/adminTemplate.html ::nav">
-
     <div layout:fragment="content">
-        <!-- page content -->
-
-<div class="container-lg">
-    <div class="table-responsive">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-8"><h2>Roles <b>Details</b></h2></div>
-
-
-                </div>
-            </div>
-            <a  style="margin-right:10px"class="add float-right" title="Add" data-toggle="tooltip"  a th:href="@{/Role/addRole}" ><i class="material-icons fa-4x">&#xE03B;</i></a>
-
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Role name</th>
-                    <th>Description</th>
-                    <th>Function related to this role </th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <tr th:each="i : ${role}">
-                    <td th:text="${i.name}">Avatar</td>
-                    <td th:text="${i.descriptionOfTheRole}" style="white-space: pre-wrap;"><p></p> </td>
-                    <td >
-                        <!--
-                        <th:block th:each="f: ${i.RolesFunction}"   >
-                            <span th:text="${f.nameFunction}"></span><br>
-                        </th:block>
-
-
-                        -->
-
-                        <th:block th:each="f: ${i.RolesFunction}"   th:unless="${f.parent ==null }">
-                            <span th:text="${f.nameFunction}"></span><br>
-                        </th:block>
-
-
-
-
-
-                    </td>
-                    <td>
-                        <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.id})}"  ><i class="material-icons ">&#xE254;</i></a>
-                        <a class="   " a href=""  th:data-href="@{/Role/delete/{id}(id=${i.id})}"  data-toggle="modal" data-target="#myModal" title="Delete"  ><i class="material-icons ">&#xE872;</i></a>
-                    </td>
-                    <div class="container">
-                        <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Delete    &#9888;
-                                        </h4>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                        <p class="my-0 font-weight-bold">Are you sure you want to delete  role &nbsp;  <span th:text="${i.name}"></span>    ?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <a class="btn btn-danger btn-ok">Delete</a>
+        <div class="container-lg">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-8"><h2>Roles <b>Details</b></h2></div>
+                        </div>
+                    </div>
+                    <a  style="margin-right:10px"class="add float-right" title="Add" data-toggle="tooltip"  a th:href="@{/Role/addRole}" ><i class="material-icons fa-4x">&#xE03B;</i></a>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Role name</th>
+                            <th>Description</th>
+                            <th>Function related to this role </th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="i : ${role}">
+                            <td th:text="${i.name}">Avatar</td>
+                            <td th:text="${i.descriptionOfTheRole}" style="white-space: pre-wrap;"><p></p> </td>
+                            <td >
+                                <th:block th:each="f: ${i.RolesFunction}"   th:unless="${f.parent ==null }">
+                                    <span th:text="${f.nameFunction}"></span><br>
+                                </th:block>
+                            </td>
+                            <td>
+                                <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.id})}"  ><i class="material-icons ">&#xE254;</i></a>
+                                <a class="   " a href=""  th:data-href="@{/Role/delete/{id}(id=${i.id})}"  data-toggle="modal" data-target="#myModal" title="Delete"  ><i class="material-icons ">&#xE872;</i></a>
+                            </td>
+                            <div class="container">
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Delete    &#9888;
+                                                </h4>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p class="my-0 font-weight-bold">Are you sure you want to delete  role &nbsp;  <span th:text="${i.name}"></span>    ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <a class="btn btn-danger btn-ok">Delete</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Delete Modal JS -->
-                    <script>
-                        $('#myModal').on('show.bs.modal', function(e) {
-                            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-                        });
-                    </script>
+                            <!-- Delete Modal JS -->
+                            <script>
+                                $('#myModal').on('show.bs.modal', function(e) {
+                                    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+                                });
+                            </script>
 
-                </tr>
-                </tbody>
-            </table>
+                        </tr>
+                        </tbody>
+                    </table>
 
-            <!-- pagination  -->
-            <footer class="panel-footer">
-                <nav aria-label="Page navigation example">
-                    Total roles [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
-                    <ul class="pagination">
-                        <li class="page-item">
-                            &nbsp;    <a  th:if="${currentPage > 1}" th:href="@{/Role/listRole/page/1}"><i class="fa fa-step-backward"></i></a>
-                            <span th:unless="${currentPage > 1}"><i class="fa fa-step-backward"></i></span>
-                        </li>
+                    <!-- pagination  -->
+                    <footer class="panel-footer">
+                        <nav aria-label="Page navigation example">
+                            Total roles [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    &nbsp;    <a  th:if="${currentPage > 1}" th:href="@{/Role/listRole/page/1}"><i class="fa fa-step-backward"></i></a>
+                                    <span th:unless="${currentPage > 1}"><i class="fa fa-step-backward"></i></span>
+                                </li>
 
-                        <li class="page-item">
-                            &nbsp;    <a th:if="${currentPage > 1}" th:href="@{'/Role/listRole/page/' + ${currentPage - 1}}"><i class="fa fa-backward"></i> </a>
-                            <span th:unless="${currentPage > 1}"><i class="fa fa-backward"></i>   </span>
-                        </li>
-
-                        <li class="page-item">
-
-                                &nbsp;     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                <li class="page-item">
+                                    &nbsp;    <a th:if="${currentPage > 1}" th:href="@{'/Role/listRole/page/' + ${currentPage - 1}}"><i class="fa fa-backward"></i> </a>
+                                    <span th:unless="${currentPage > 1}"><i class="fa fa-backward"></i>   </span>
+                                </li>
+                                <li class="page-item">
+                                    &nbsp;     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
                                 <a th:if="${i != currentPage}" th:href="@{'/Role/listRole/page/' + ${i}}">[[${i}]]</a>
                                 <span th:unless="${i != currentPage}">[[${i}]]</span>
                                 </span>
-                        </li>
-                        <li class="page-item">
-                            &nbsp; <a th:if="${currentPage < totalPages}" th:href="@{'/Role/listRole/page/' + ${currentPage + 1}}"> <i class="fa fa-forward"></i></a>
-                            <span th:unless="${currentPage < totalPages}"> <i class="fa fa-forward"></i></span>
-                        </li>
-
-                        <li class="page-item">
-                            &nbsp;   <a th:if="${currentPage < totalPages}" th:href="@{'/Role/listRole/page/' + ${totalPages}}"><i class="fa fa-step-forward"></i></a>
-                            <span th:unless="${currentPage < totalPages}"><i class="fa fa-step-forward"></i></span>
-                        </li>
-                    </ul>
-                </nav>
-            </footer>
-            <!-- pagination  -->
+                                </li>
+                                <li class="page-item">
+                                    &nbsp; <a th:if="${currentPage < totalPages}" th:href="@{'/Role/listRole/page/' + ${currentPage + 1}}"> <i class="fa fa-forward"></i></a>
+                                    <span th:unless="${currentPage < totalPages}"> <i class="fa fa-forward"></i></span>
+                                </li>
+                                <li class="page-item">
+                                    &nbsp;   <a th:if="${currentPage < totalPages}" th:href="@{'/Role/listRole/page/' + ${totalPages}}"><i class="fa fa-step-forward"></i></a>
+                                    <span th:unless="${currentPage < totalPages}"><i class="fa fa-step-forward"></i></span>
+                                </li>
+                            </ul>
+                        </nav>
+                    </footer>
+                    <!-- pagination  -->
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
-        <!--end page content --->
-
-
     </div>
 </th:block>
 <div th:insert="fragments/adminTemplate.html::js"></div>
-
 </body>

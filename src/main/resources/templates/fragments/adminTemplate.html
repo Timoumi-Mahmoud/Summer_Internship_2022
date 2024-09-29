@@ -2,30 +2,22 @@
 <html lang="en"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http:www.thymeleaf.org"        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-
 <head  th:fragment="headfragment">
-
     <title>Sidebar 01</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-
-    <!--  -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!--  Bootstrap cdn -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-     <!--   --->
+    <!--   --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
-    <!--   -->
-
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -54,9 +46,9 @@
                             <li>
                                 <a th:href="@{/User/addUser}">Add new User</a>
                             </li>
-                          <!--  <li>
-                                <a href="#">Home 3</a>
-                            </li>-->
+                            <!--  <li>
+                                  <a href="#">Home 3</a>
+                              </li>-->
                         </ul>
                     </li>
 
@@ -69,9 +61,9 @@
                             <li>
                                 <a th:href="@{/Role/addRole}">add new role</a>
                             </li>
-                          <!--  <li>
-                                <a href="#">users list in a role</a>
-                            </li>-->
+                            <!--  <li>
+                                  <a href="#">users list in a role</a>
+                              </li>-->
                         </ul>
                     </li>
 
@@ -84,11 +76,7 @@
                             <li>
                                 <a th:href="@{/Function/addFunction}">Add new</a>
                             </li>
-                          <!--  <li>
-                                <a href="#">Page 3</a>
-                            </li>-->
                         </ul>
-
                     </li>
                     <li>
                         <a href="#departmentSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Department</a>
@@ -96,24 +84,14 @@
                             <li>
                                 <a th:href="@{/Department/list}">List of department</a>
                             </li>
-
-                        <!--    <li>
-                                <a href="#">Page 3</a>
-                            </li>-->
                         </ul>
                     </li>
 
                 </ul>
                 <div style="background-color: white"><hr></div>
                 <br>
-
-
-
-
                 <ul class="list-unstyled components mb-5"      >
-
                     <li class="active"   >
-
                         <a href="#h1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Parent One</a>
                         <ul class="collapse list-unstyled" id="h1" >
                             <li>
@@ -172,34 +150,9 @@
                             </li>
                         </ul>
                     </li>
-
                 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div style="background-color: white"><hr></div>
                 <br><br><br>
-
-
-
-
-
-
-
-
-
                 <div class="footer">
                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Internship project <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Stage.com</a>
@@ -208,7 +161,6 @@
 
             </div>
         </nav>
-
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5">
 
@@ -225,45 +177,21 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                        <!--   <li class="nav-item active">
-                                <a class="nav-link" th:href="@{/admin}">admin page</a>
-                            </li>
                             <li class="nav-item">
-                                <a class="nav-link" th:href="@{/manager}">manager page</a>
+                                <div> <form sec:authorize="isAuthenticated()" class="form-inline my-2my-lg-0"form-method="post"th:action="@{/logout}">
+                                    <button class="btn btn-outline-danger my-2my-sm-0btn-sm"type="submit"><i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; &nbsp;Logout</button>
+                                </form>    </div>
                             </li>
-                            <li class="nav-item">
-                            </li>-->
-                          <li class="nav-item">
-                                    <div> <form sec:authorize="isAuthenticated()" class="form-inline my-2my-lg-0"form-method="post"th:action="@{/logout}">
-                                        <button class="btn btn-outline-danger my-2my-sm-0btn-sm"type="submit"><i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; &nbsp;Logout</button>
-                                    </form>    </div>
-                                </li>
-
-
-
-
-
-
-
-
-                                </li>
-                            </ul>
-
-
-
-
+                            </li>
+                        </ul>
                         </ul>
                     </div>
                 </div>
             </nav>
             <div layout:fragment="content">
-                <h1>Hello world</h1>
-                aaaaaa
+
             </div>
-
-
         </div>
-
     </div></th:block>
 <div th:fragment="js">
     <script th:src="@{/js/jquery.min.js}"></script>

@@ -11,11 +11,6 @@ import java.util.List;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
-
-
-
-
-
     @Query(
             value = "SELECT u.id_department," +
                     " COUNT(u.id_department) as total, u.first_name as name ,u.last_name as lname, d.department_name as Dname" +
@@ -24,8 +19,6 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
                     " GROUP BY id_department HAVING id_department= ?1",
             nativeQuery = true)
     List<String > ListOfEmployesInADepartment(int idDepartment);
-
-
     @Query(
             value = "select u.* from department d join user u " +
                     "on u.id_department=d.id_department where d.id_department",

@@ -12,7 +12,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public interface FunctionRepository extends JpaRepository<Function,  Integer>  {
-
 //using this query in filter of list of urls of the current connected user
     @Query(  value ="select * from function f   JOIN functions_roles fr on f.id_function= fr.id_function"+
             "  JOIN roles r on fr.id_role = r.id_role " +
@@ -22,15 +21,9 @@ public interface FunctionRepository extends JpaRepository<Function,  Integer>  {
              )
     List<Function> urlsFinder( @Param("username") String  username);
 
-
-
-
-
-
     @Modifying
     @Transactional
     @Query(value ="delete from function where id_function = ?1"     ,nativeQuery=true)
     void deleteByParentId(Integer id);
-
 
 }

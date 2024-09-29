@@ -12,5 +12,3 @@ public interface RoleRepository extends JpaRepository<Role, Integer> {
             nativeQuery = true)
     String RoleofUser(int idUser);
 }
-
-

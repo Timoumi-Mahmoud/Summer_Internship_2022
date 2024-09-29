@@ -12,7 +12,6 @@ import java.util.Set;
 @Table(name = "department")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","users"})
 public class Department extends Auditable<String> {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_department")
@@ -35,9 +34,9 @@ public class Department extends Auditable<String> {
     private List<User> users;*/
 
 
-      @OneToMany(mappedBy = "department", cascade = CascadeType.REMOVE)
-      @OnDelete(action = OnDeleteAction.CASCADE)
-      private Set<User> Users;
+    @OneToMany(mappedBy = "department", cascade = CascadeType.REMOVE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<User> Users;
 
     public Department() {
     }
@@ -106,4 +105,3 @@ public class Department extends Auditable<String> {
                 '}';
     }
 }
-

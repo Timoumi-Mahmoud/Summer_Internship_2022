@@ -19,37 +19,21 @@ import java.util.*;
 @RestController
 @RequestMapping(value="/Role")
 public class RoleController {
-
 @Autowired
 private FunctionService functionService;
-
     @Autowired
     private RoleService roleService;
-
     @Autowired
     private RoleRepository roleRepository;
-
     @GetMapping("delete/{id}")
     public RedirectView  remove( @PathVariable int id){
         roleService.delete(id);
         return new RedirectView("/Role/listRole");
     }
-/*  Normal Desplay
-    @GetMapping("/listRole")
-    public ModelAndView  RoleList()  {
-        ModelAndView mav = new ModelAndView("role/list");
-        mav.addObject("role",roleService.findAll() );
-        return mav;
-    }
-
- */
-
-    /////////////////////////////////////////////////////////////////////
     @GetMapping("/listRole")
     public ModelAndView getAllPages(Model model){
         return getOnePage( 1);
     }
-
 
     @GetMapping("/listRole/page/{pageNumber}")
     public ModelAndView getOnePage( @PathVariable("pageNumber") int currentPage){
@@ -66,8 +50,6 @@ private FunctionService functionService;
 
         return mav;
     }
-//////////////////////////////////////////////////////////////////////////////////
-
     @GetMapping("/addRole")
     public ModelAndView addForm() {
         ModelAndView mav = new ModelAndView("role/add");
@@ -97,10 +79,6 @@ private FunctionService functionService;
         return new ModelAndView(redirectView);
     }
 
-
-//////////////////////////////////////////////////////////////////////////////////
-
-
     @GetMapping("/edit/{id}")
     public ModelAndView showFormForUpdate(@PathVariable("id") int id) {
         Role role = roleService.findBy(id);
@@ -126,6 +104,5 @@ private FunctionService functionService;
         return new ModelAndView(redirectView);
     }
 
-//////////////////////////////////////////////////////////////////////////////////
 
 }

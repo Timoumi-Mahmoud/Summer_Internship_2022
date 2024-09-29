@@ -23,28 +23,15 @@ private User user;
 public MyUserDetails(User user){
     this.user=user;
 }
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<Role> roles = user.getRoles();
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getName()));
-         //   System.out.println("result iss \n");
-
-           // System.out.println(role.getName());
-            //System.out.println("--------------------");
         }
-
         return authorities;
     }
-
-
-
-
-
-
 
     @Override
     public String getPassword() {
@@ -82,17 +69,8 @@ public MyUserDetails(User user){
 
 
     public Set<Role> getRoles(){
-
-
-
-
-
                 return  this.user.getRoles();
-
 }
-
-
-
     @Override
     public String toString() {
         return "MyUserDetails{" +

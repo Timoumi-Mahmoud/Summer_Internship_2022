@@ -23,37 +23,26 @@ import java.io.UnsupportedEncodingException;
 public class ForgotPasswordController {
     @Autowired
     private JavaMailSender mailSender;
-
     @Autowired
     private UserService userService;
-
     @GetMapping("/forgot_password")
     public ModelAndView showForgotPasswordForm() {
         ModelAndView mav = new ModelAndView("user/forget_password/forget_password_form");
         mav.addObject("pagetitle", "forgetpassword");
         return mav;
-
     }
-
 
     @PostMapping("/forgot_password")
     public ModelAndView processForgotPassword(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("user/forget_password/forget_password_form");
-       String email =request.getParameter("email");
-       String token= RandomString.make(255);
-     //   System.out.println("Email: " + email +"\n");
-      //  System.out.println("token is : " + token +"\n");
-
+        String email =request.getParameter("email");
+        String token= RandomString.make(255);
 
         try {
             userService.updateResetPasswordToken(token,email);
             //generate reset password link based on token
             String resetPassworkLink = Utility.getSiteURL(request)+ "http://localhost:8081/"+"reset_password?token="+ token ;
 
-            System.out.printf("\n ---------" +
-                    "the reset passowrd lin is::::" +
-                    resetPassworkLink);
-            //send email to the user
             sendEmail(email , resetPassworkLink);
             mav.addObject("message","Email have sent succussflutly, please check your email  ");
         } catch (UserNotFoundException e) {
@@ -173,26 +162,14 @@ public class ForgotPasswordController {
         mailSender.send(message);
     }
 
-
     @GetMapping("/reset_password")
     public ModelAndView showResetPasswordForm(@Param(value = "token") String token) {
         ModelAndView mav = new ModelAndView("user/forget_password/reset_password_form");
         User user = userService.getByResetPasswordToken(token);
         mav.addObject("token", token);
-
-     /*   if (user == null) {
-            ModelAndView mavMessage = new ModelAndView("fragments/message.html");
-
-            mavMessage.addObject("title", "Reset your password");
-            mavMessage.addObject("message", "Invalid Token");
-
-            return mavMessage;
-        }*/
-
         mav.addObject("token", token);
         mav.addObject("pagetitle", "Reset your password ");
-
-       return  mav;
+        return  mav;
     }
 
     @PostMapping("/reset_password")
@@ -206,10 +183,8 @@ public class ForgotPasswordController {
 
         if (user == null) {
             ModelAndView mavMessage = new ModelAndView("user/forget_password/message.html");
-
             mavMessage.addObject("title", "Reset your password");
             mavMessage.addObject("message", "Invalid Token");
-
             return mavMessage;
 
         } else {

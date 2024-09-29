@@ -8,17 +8,10 @@
 </head>
 <body>
 <th:block th:insert="fragments/adminTemplate.html ::nav">
-
     <div layout:fragment="content">
-        <!-- page content -->
-
-
-
         <button style="margin-right:50px"    type="button" class="btn btn-primary add float-right" data-toggle="modal" data-target="#addModal" data-whatever="@mdo"><i class="material-icons fa-2x">&#xE03B;</i></button>
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <form  th:action="@{/Department/addDepartment}" th:object="${department}"  method="post" class="needs-validation" novalidate>
-
-
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -27,7 +20,6 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="departmentName" class="col-form-label">Name of Department:</label>
@@ -35,7 +27,6 @@
                                 <div class="invalid-feedback">
                                     Please provide the name of department.
                                 </div>
-
                             </div>
                             <div class="form-group">
                                 <label for="responsibleEmail" class="col-form-label">Email of responsible:</label>
@@ -43,7 +34,6 @@
                                 <div class="invalid-feedback">
                                     Please provide a valid email address.
                                 </div>
-
                             </div>
                             <div class="form-group">
                                 <label for="responsiblePhone" class="col-form-label">Phone of responsible:</label>
@@ -52,8 +42,6 @@
                                     phone number field cannot be empty.
                                 </div>
                             </div>
-
-
                         </div>
                         <br><br>
                         <div class="modal-footer">
@@ -64,16 +52,6 @@
                 </div>
             </form>
         </div>
-
-
-
-
-
-
-
-
-
-
         <div class="container-lg">
             <div class="table-responsive">
                 <div class="table-wrapper">
@@ -88,29 +66,18 @@
                             <th>Name</th>
                             <th>Email of the responsible</th>
                             <th>Phone </th>
-
                             <th>Actions</th>
-
-
                         </tr>
                         </thead>
                         <tbody>
-
                         <tr th:each="i : ${departs}">
                             <td th:text="${i.departmentName}">Avatar</td>
                             <td th:text="${i.responsibleEmail}">Email of the responsable </td>
                             <td th:text="${i.responsiblePhone}">Phone number </td>
-
-
                             <td>
-
                                 <a class="edit " title="Edit" data-toggle="tooltip"  a th:href="@{/Department/edit/{id}(id=${i.idDepartment})}"  ><i class="material-icons">&#xE254;</i></a>
-
                                 <a class="   " a href=""  th:data-href="@{/Department/delete/{id}(id=${i.idDepartment})}"  data-toggle="modal" data-target="#myModal" title="Delete"  ><i class="material-icons ">&#xE872;</i></a>
-
                             </td >
-
-
                             </td>
                             <!-- Delete Modal -->
                             <div class="container">
@@ -159,24 +126,11 @@
                         })();
 
                     </script>
-
-
-
-
-
-
-
-                    <!-- Delete Modal JS -->
                     <script>
                         $('#myModal').on('show.bs.modal', function(e) {
                             $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
                         });
                     </script>
-
-
-
-
-
                     <footer class="panel-footer">
                         <nav aria-label="Page navigation example">
                             Total Items [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
@@ -210,35 +164,11 @@
                             </ul>
                         </nav>
                     </footer>
-
-
-
                 </div>
             </div>
         </div>
 
-
-
     </div>
-
-
-
-
-    <!--end page content --->
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!---      --------------------------->
 
 
     <!-- Jquery js -->
@@ -252,11 +182,6 @@
 
     <!-- jQuery Validation JS -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-
-
-
-
-
     </div>
 </th:block>
 <div th:insert="fragments/adminTemplate.html ::js"></div>

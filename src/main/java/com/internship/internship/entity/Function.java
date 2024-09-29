@@ -9,7 +9,6 @@ import java.util.Set;
 
 @Entity
 //@JsonIgnoreProperties({"hibernateLazyInitializer","handler", "parent"})
-
 public class Function  extends Auditable<String> {
     @Id
     @Column(name = "id_function")
@@ -18,8 +17,6 @@ public class Function  extends Auditable<String> {
 
     private String nameFunction;
     private String url;
-
-
     @ManyToMany(targetEntity = Role.class, mappedBy = "RolesFunction",cascade = {CascadeType.PERSIST, CascadeType.DETACH,/*/CascadeType.MERGE,*/CascadeType.REFRESH} , fetch = FetchType.EAGER)
     private Set<Role> RolesF ;
     @PreRemove
@@ -108,18 +105,6 @@ public class Function  extends Auditable<String> {
     public void setRolesF(Set<Role> rolesF) {
         RolesF = rolesF;
     }
-
-/*
-    @Override
-    public String toString() {
-        return "Function{" +
-                "idFunction=" + idFunction +
-                ", nameFunction='" + nameFunction + '\'' +
-                ", url='" + url + '\'' +
-                ", parent=" + parent +
-                '}';
-    }*/
-
     @Override
     public String toString() {
         return "Function{" +

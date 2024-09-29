@@ -6,71 +6,20 @@
 </head>
 <body>
 <th:block th:insert="fragments/adminTemplate.html  ::nav">
-
     <div layout:fragment="content">
         <!-- page content -->
-<div class="container-lg">
-    <div class="table-responsive">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-8"><h2>Function <b>Details</b></h2></div>
-
-
+        <div class="container-lg">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-8"><h2>Function <b>Details</b></h2></div>
+                        </div>
+                    </div>
+                    <a  style="margin-right:10px"class="add float-right" title="Add" data-toggle="tooltip"  a th:href="@{/Function/addFunction}" ><i class="material-icons fa-4x">&#xE03B;</i></a>
                 </div>
             </div>
-            <a  style="margin-right:10px"class="add float-right" title="Add" data-toggle="tooltip"  a th:href="@{/Function/addFunction}" ><i class="material-icons fa-4x">&#xE03B;</i></a>
-            <!--
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Function Name</th>
-                                <th>Url</th>
-                                <th>parent </th>
-                                <th>child</th>
-                                <th>act</th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            <tr th:each="i : ${function}">
-                               <td th:text="${i.nameFunction}"></td>
-                                <td th:text="${i.url}">Avatar</td>
-                                <td >
-                                    <div class="form-group row">
-                                        <div class="col-8">
-                                <th:block th:each="f: ${i.parent}">
-                                    <span th:text="${f.nameFunction}"></span>
-                                </th:block>
-
-                                        </div></div>
-
-                                </td>
-                              <td th:text="${i.nameFunction}">Avatar</td>
-                                <td >
-                                    <div class="form-group row">
-                                        <div class="col-8">
-                                            <th:block th:each="f: ${i.children}">
-                                                <span th:text="${f.nameFunction}"></span>
-                                            </th:block>
-
-                                        </div></div>
-
-                                </td>
-
-
-                                <td>
-                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                    <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
-                                    <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table> -->
         </div>
-    </div>
-</div>
         <!--end page content --->
         <div class="tree well " style="margin-left: 10%; margin-right: 10%; position: center;"  >
             <ul th:each="i : ${function}"   >
@@ -79,95 +28,35 @@
                     <span th:text="${i.nameFunction}"   ><i class="icon-folder-open"></i> Parent</span><!-- <a href="">Goes somewhere</a> --> &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a class="edit" title="Edit" data-toggle="tooltip"  a th:href="@{edit/{id}(id=${i.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
                     <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{delete/{id}(id=${i.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
-
-
-
-
-
                     <ul  class="expand" >
                         <li th:each="f: ${i.children}" class="expand"  style="display:none">
                             <span   span th:text="${f.nameFunction}"><i class="icon-minus-sign"></i> </span><!-- <a href="">Goes somewhere</a> -->&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           <a class="edit " title="Edit" data-toggle="tooltip"  a th:href="@{/Function/edit/{id}(id=${f.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
+                            <a class="edit " title="Edit" data-toggle="tooltip"  a th:href="@{/Function/edit/{id}(id=${f.idFunction})}"  ><i class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip" a th:href="@{/Function/delete/{id}(id=${f.idFunction})}"    ><i class="material-icons">&#xE872;</i></a>
-
-                            <!--<ul>
-                                <li>
-                                    <span><i class="icon-leaf"></i> Grand Child</span> <a href="">Goes somewhere</a>
-                                </li>
-                            </ul>-->
-                        </li><!--
-                        <li>
-                            <span><i class="icon-minus-sign"></i> Child</span> <a href="">Goes somewhere</a>
-                            <ul>
-                                <li>
-                                    <span><i class="icon-leaf"></i> Grand Child</span> <a href="">Goes somewhere</a>
-                                </li>
-                                <li>
-                                    <span><i class="icon-minus-sign"></i> Grand Child</span> <a href="">Goes somewhere</a>
-                                    <ul>
-                                        <li>
-                                            <span><i class="icon-minus-sign"></i> Great Grand Child</span> <a href="">Goes somewhere</a>
-                                            <ul>
-                                                <li>
-                                                    <span><i class="icon-leaf"></i> Great great Grand Child</span> <a href="">Goes somewhere</a>
-                                                </li>
-                                                <li>
-                                                    <span><i class="icon-leaf"></i> Great great Grand Child</span> <a href="">Goes somewhere</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <span><i class="icon-leaf"></i> Great Grand Child</span> <a href="">Goes somewhere</a>
-                                        </li>
-                                        <li>
-                                            <span><i class="icon-leaf"></i> Great Grand Child</span> <a href="">Goes somewhere</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <span><i class="icon-leaf"></i> Grand Child</span> <a href="">Goes somewhere</a>
-                                </li>
-                            </ul>
-                        </li>-->
-                    </ul>
-                </li>
-             <!--  <li>
-                    <span><i class="icon-folder-open"></i> Parent2</span> <a href="">Goes somewhere</a>
-                    <ul>
-                        <li>
-                            <span><i class="icon-leaf"></i> Child</span> <a href="">Goes somewhere</a>
                         </li>
                     </ul>
-                </li>-->
+                </li>
             </ul>
         </div>
-
-
         <script>
             $('.expand').click(function() {
                 $('ul', $(this).parent()).eq(0).toggle();
             });
         </script>
-
-
-
-
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script><script>$(function () {
-    $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
-    $('.tree li.parent_li > span').on('click', function (e) {
-        var children = $(this).parent('li.parent_li').find(' > ul > li');
-        if (children.is(":visible")) {
-            children.hide('fast');
-            $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
-        } else {
-            children.show('fast');
-            $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
-        }
-        e.stopPropagation();
-    });
-});</script>
-
-
+        $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+        $('.tree li.parent_li > span').on('click', function (e) {
+            var children = $(this).parent('li.parent_li').find(' > ul > li');
+            if (children.is(":visible")) {
+                children.hide('fast');
+                $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+            } else {
+                children.show('fast');
+                $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+            }
+            e.stopPropagation();
+        });
+    });</script>
 
     </div>
 </th:block>

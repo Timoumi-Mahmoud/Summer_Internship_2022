@@ -2,107 +2,89 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="fragments/adminTemplate.html">
 <head  th:insert="fragments/adminTemplate.html:: headfragment">
-
 </head>
 <body>
 <th:block th:insert="test.html ::nav">
-
     <div layout:fragment="content">
-        <!-- page content -->
+        <h3> Edit user information ::</h3>
+        <a th:href="@{/User/userList}" >Back to users List</a>
+        <div style="margin-left: 10%; font-family: monospace; color:darksalmon;" >
+            <div class="row">
+                <div class="col-sm-12">
+                    <table border="0" style="margin_top:5px; font-family:monospace; font-size:20px" class="title "  >
+                        <tr >
+                            <td >
+                                <div th:switch="${u.sex}">
+                                    <span th:case="'Female'"> Madame </span>
+                                    <span th:case="'Male'">Monsieur</span>
+                                    <span th:case="*">User is some other thing</span>
+                                </div></td>
+                            <td >:</td>
+                            <td th:utext="${u.firstName} +' '+ ${u.lastName} ">:</td>
+                        </tr>
 
+                        </tr>
 
-<h3> Edit user information ::</h3>
+                        <td><mark>Phone</mark></td>
+                        <td>:</td>
+                        <td th:utext="${u.tel}">:</td>
+                        </tr>
+                        <tr>
+                            <td><mark>Email</mark></td>
+                            <td >:</td>
+                            <td th:utext="${u.email}">:</td>
+                        </tr>
+                        <tr>
+                            <td><mark>Address</mark></td>
+                            <td>:</td>
+                            <td th:utext="${u.address}">:</td>
+                        </tr>
+                        <tr>
+                            <td> <mark> Department</mark> </td>
+                            <td>:</td>
+                            <td th:utext="${u.department.departmentName}">:</td>
+                        </tr>
+                        <br>
 
-<a th:href="@{/User/userList}" >Back to users List</a>
+                        <tr>
+                            <td><mark>birth date</mark></td>
+                            <td>:</td>
+                            <td th:utext="${u.birthDate}">...</td>
+                        </tr>
+                        <tr>
+                            <td><mark>hiring  date</mark></td>
+                            <td>:</td>
+                            <td th:utext="${u.hireDate}">...</td>
+                        </tr>
 
-<div style="margin-left: 10%; font-family: monospace; color:darksalmon;" >
+                        <br>
+                        <br>
+                        <tr>
+                            <td><mark>Created </mark></td>
+                            <td>:</td>
+                            <td>
+                                at
+                                <small><span  th:utext="${u.getCreatedDate()}"></span></small>
+                                by <small><span th:utext="${u.createdBy}"></span></small>
 
-    <div class="row">
-        <div class="col-sm-12">
+                            </td>
 
-            <table border="0" style="margin_top:5px; font-family:monospace; font-size:20px" class="title "  >
-
-                <tr >
-
-                    <td >
-                        <div th:switch="${u.sex}">
-                            <span th:case="'Female'"> Madame </span>
-                            <span th:case="'Male'">Monsieur</span>
-                            <span th:case="*">User is some other thing</span>
-
-
-                        </div></td>
-        <td >:</td>
-                    <td th:utext="${u.firstName} +' '+ ${u.lastName} ">:</td>
-                </tr>
-
-                </tr>
-
-                <td><mark>Phone</mark></td>
-                <td>:</td>
-                <td th:utext="${u.tel}">:</td>
-                </tr>
-                <tr>
-                    <td><mark>Email</mark></td>
-                    <td >:</td>
-                    <td th:utext="${u.email}">:</td>
-                </tr>
-                <tr>
-                    <td><mark>Address</mark></td>
-                    <td>:</td>
-                    <td th:utext="${u.address}">:</td>
-                </tr>
-                <tr>
-                    <td> <mark> Department</mark> </td>
-                    <td>:</td>
-                    <td th:utext="${u.department.departmentName}">:</td>
-                </tr>
-                <br>
-
-                <tr>
-                    <td><mark>birth date</mark></td>
-                    <td>:</td>
-                    <td th:utext="${u.birthDate}">...</td>
-                </tr>
-        <tr>
-            <td><mark>hiring  date</mark></td>
-            <td>:</td>
-            <td th:utext="${u.hireDate}">...</td>
-        </tr>
-
-        <br>
-        <br>
-        <tr>
-            <td><mark>Created </mark></td>
-            <td>:</td>
-            <td>
-                at
-                <small><span  th:utext="${u.getCreatedDate()}"></span></small>
-                by <small><span th:utext="${u.createdBy}"></span></small>
-
-            </td>
-
-        <tr>
-            <td><mark>last modification</mark></td>
-            <td>:</td>
-            <td>
-        at
-                <small><span th:utext="${u.getLastModifiedDate()}"></span></small>
-                by <small><span th:utext="${u.getLastModifiedBy()}"></span></small>
-
-            </td>
-
-        </tr>
-
-
-
-            </table>
-        </div>
-</div>
+                        <tr>
+                            <td><mark>last modification</mark></td>
+                            <td>:</td>
+                            <td>
+                                at
+                                <small><span th:utext="${u.getLastModifiedDate()}"></span></small>
+                                by <small><span th:utext="${u.getLastModifiedBy()}"></span></small>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
             <br>
 
             <form    th:action="@{/User/edit/{id}(id=${user.idUser})}"  th:object="${user}"
-                  method="post" >
+                     method="post" >
                 <div class = "form-group row  ">
                     <div class="col-sm-8">
                         <span class="text-danger" > </span>
@@ -238,58 +220,38 @@
                     <button type="submit " class="btn btn-primary btn" data-toggle="modal"  href="#RoleModal"      style="font-size: 20px;">Update</button>
                 </div>
 
-        </form>
-    <div class="container">
-        <div class="row">
-            <div class="modal fade" id="RoleModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
-                        </div>
+            </form>
+            <div class="container">
+                <div class="row">
+                    <div class="modal fade" id="RoleModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+                                </div>
 
-                        <div class="modal-body">
+                                <div class="modal-body">
 
-                            <div class="thank-you-pop">
-                                <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
-                                <h1>Thank You!</h1>
-                                <p>user informations has been update it  with success</p>
-                                <!-- <h3 class="cupon-pop">Your Id: <span>12345</span></h3> -->
+                                    <div class="thank-you-pop">
+                                        <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
+                                        <h1>Thank You!</h1>
+                                        <p>user informations has been update it  with success</p>
+                                        <!-- <h3 class="cupon-pop">Your Id: <span>12345</span></h3> -->
+
+                                    </div>
+
+                                </div>
 
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
-
-
-
-
-
-    <!--end page content --->
-        </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <!--Model Popup starts-->
-
-
-
     </div>
-
-
     <script>
         function validateForm() {
             alert("user add it with success ");
@@ -300,29 +262,3 @@
 <div th:insert="fragments/adminTemplate.html ::js"></div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

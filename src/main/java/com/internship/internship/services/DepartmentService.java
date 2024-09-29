@@ -1,6 +1,5 @@
 package com.internship.internship.services;
 
-
 import com.internship.internship.entity.Department;
 import com.internship.internship.entity.Role;
 import com.internship.internship.repository.DepartmentRepository;
@@ -16,12 +15,8 @@ public class DepartmentService {
 
     @Autowired
     private DepartmentRepository departmentRepository;
-
     public List<Department> findAll(){
-
-
         return departmentRepository.findAll();}
-
     public Page<Department> findPage(int pageNumber){
         Pageable pageable = PageRequest.of(pageNumber - 1,5);
         return departmentRepository.findAll(pageable);
@@ -40,16 +35,7 @@ public class DepartmentService {
         oldDept.setIdDepartment(department.getIdDepartment());
         oldDept.setDepartmentName(department.getDepartmentName());
         oldDept.setResponsibleEmail(department.getResponsibleEmail());
-        //oldDept.setUsers(department.getUsers());
-
-        System.out.println("the new users is::::"+department.getUsers());
-        System.out.println("the new to user"+ department);
         departmentRepository.save(department);
         return department;
     }
-
-
-
-
-
 }

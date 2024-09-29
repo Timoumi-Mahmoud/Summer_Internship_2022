@@ -3,18 +3,15 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="fragments/adminTemplate.html"  >
 <head  th:insert="fragments/adminTemplate.html :: headfragment "> <!-- the headFragment call-->
-
 </head>
 <body>
 <th:block th:insert="fragments/adminTemplate.html::nav"><!-- the sidebar call-->
 
     <div layout:fragment="content">
-        <!-- page content -->
         here we can put what we want this is the dynamic part of our template.
-        <!-- end page content -->
     </div>
 </th:block>
-<div th:insert="fragments/adminTemplate.html ::js"></div><!-- the js script call-->
+<div th:insert="fragments/adminTemplate.html ::js"></div>
 </body>
 </html>
 

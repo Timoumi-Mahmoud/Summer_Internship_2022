@@ -1,6 +1,5 @@
 package com.internship.internship.controller;
 
-
 import com.internship.internship.entity.Department;
 import com.internship.internship.entity.Function;
 import com.internship.internship.entity.Role;
@@ -23,16 +22,12 @@ import java.util.Set;
 @RestController
 @RequestMapping(value="/Function")
 public class FunctionController {
-
     @Autowired
     private FunctionService functionService;
-
     @Autowired
     private FunctionRepository functionRepository;
-
     @Autowired
     private RoleService roleService;
-
     @GetMapping("delete/{id}")
     public RedirectView remove(@PathVariable int id){
         System.out.println("\n -------------------------\n");
@@ -44,10 +39,6 @@ public class FunctionController {
         }else {
             functionRepository.deleteByParentId(id);
         }
-
-        // functionRepository.deleteByParentId(id);
-
-
         return new RedirectView("/Function/list");
     }
 
@@ -55,13 +46,12 @@ public class FunctionController {
     public ModelAndView RoleList()  {
         ModelAndView mav = new ModelAndView("function/list");
         mav.addObject("function",  functionService.findAll());
-     //  mav.addObject("ff",functionService.findBy(3).getNameFunction()     );
+        //  mav.addObject("ff",functionService.findBy(3).getNameFunction()     );
 
 
         return mav;
     }
 
-    ////////////////////////
     @GetMapping("/addFunction")
     public ModelAndView addForm() {
         ModelAndView mav = new ModelAndView("function/add");
@@ -87,7 +77,6 @@ public class FunctionController {
         redirectView.setUrl("/Function/list");
         return new ModelAndView(redirectView);
     }
-    //update
     @GetMapping("/edit/{id}")
     public ModelAndView showFormForUpdate(@PathVariable("id") int id) {
         Function function = functionService.findBy(id);
@@ -106,10 +95,6 @@ public class FunctionController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
-
-        System.out.println("the result is "+function);
         ModelAndView mav = new ModelAndView("function/update");
         RedirectView redirectView = new RedirectView();
         redirectView.setUrl("/Function/list");
@@ -117,5 +102,3 @@ public class FunctionController {
     }
 
 }
-
-

@@ -26,52 +26,35 @@ import java.util.Map;
 
 @Service
 public class UserService {
-
     @Autowired                               //call of the user Repository class
     private UserRepository userRepository;
-
-
-
-
     public List<User> findAll() {
         return userRepository.findAll();
     }
-//used in the pagination
+    //used in the pagination
     public Page<User> findPage(int pageNumber){
         Pageable pageable = PageRequest.of(pageNumber - 1,5);
         return userRepository.findAll(pageable);
     }
-
-
     public List<User> search(String value) {
         return userRepository.search(value);
     }
-
     public void delete(int idUser) {
         userRepository.deleteById(idUser);
     }
-
     public User findBy(int idUser) {
         return userRepository.findById(idUser).get();
     }
-
     public User save(User user) {
-
-        System.out.println("\n ---------+"+ userRepository.allUserDetails()+"\n-------------------");
         /////Decrypt password in the registration process with BCrypt
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
-
         return userRepository.save(user);
     }
-
-
-
     public User update(User user, int idUser) {
         User oldUser = userRepository.findById(idUser).get();
         System.out.println(" the old one::::" + oldUser);
-        //oldUser.setIdUser(user.getIdUser());
         oldUser.setFirstName(user.getFirstName());
         oldUser.setLastName(user.getLastName());
         oldUser.setHireDate(user.getHireDate());
@@ -83,41 +66,38 @@ public class UserService {
         oldUser.setRoles(user.getRoles());
         oldUser.setEmail(user.getEmail());
         oldUser.setDepartment(user.getDepartment());
-        //System.out.println("the new firstname is::::" + user.getFirstName());
-       //System.out.println("the new to user" + user);
         userRepository.save(user);
         return user;
     }
 
 
-/////Work with Jasper report to generate PDF and Html file
-public String exportReport(String format) throws FileNotFoundException {
+    /////Work with Jasper report to generate PDF and Html file
+    public String exportReport(String format) throws FileNotFoundException {
 
         String path="C://jasper//";
-    //File file = ResourceUtils.getFile("classpath:UserReport.jrxml");
-    File file = ResourceUtils.getFile("classpath:userDetails.jrxml");
+        File file = ResourceUtils.getFile("classpath:userDetails.jrxml");
 
-    try {
-        List<Map<String, Object>>userList=userRepository.allUserDetails();
-        System.out.println("\n"+userList+"\n");
-        JasperReport jasper= JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource ds =new JRBeanCollectionDataSource(getAllUsers());
-        Map<String, Object> paramters=new HashMap<String , Object>();
-        paramters.put(" empty", "paramters");
+        try {
+            List<Map<String, Object>>userList=userRepository.allUserDetails();
+            System.out.println("\n"+userList+"\n");
+            JasperReport jasper= JasperCompileManager.compileReport(file.getAbsolutePath());
+            JRBeanCollectionDataSource ds =new JRBeanCollectionDataSource(getAllUsers());
+            Map<String, Object> paramters=new HashMap<String , Object>();
+            paramters.put(" empty", "paramters");
 
-        JasperPrint jasperPrint= JasperFillManager.fillReport(jasper,paramters,ds);
-        if(format.equalsIgnoreCase("html")){
-            JasperExportManager.exportReportToHtmlFile(jasperPrint,path+"//myReport.html");
-        } if(format.equalsIgnoreCase("pdf")){
-            JasperExportManager.exportReportToPdfFile(jasperPrint,path +"//myReport.pdf");
+            JasperPrint jasperPrint= JasperFillManager.fillReport(jasper,paramters,ds);
+            if(format.equalsIgnoreCase("html")){
+                JasperExportManager.exportReportToHtmlFile(jasperPrint,path+"//myReport.html");
+            } if(format.equalsIgnoreCase("pdf")){
+                JasperExportManager.exportReportToPdfFile(jasperPrint,path +"//myReport.pdf");
 
+            }
+
+        } catch (JRException e) {
+            throw new RuntimeException(e);
         }
-
-    } catch (JRException e) {
-        throw new RuntimeException(e);
+        return "path: "+path;
     }
-    return "path: "+path;
-}
 
     public List<Map<String, Object>>getAllUsers(){
         List<Map<String, Object>> users= new ArrayList<>();
@@ -126,19 +106,13 @@ public String exportReport(String format) throws FileNotFoundException {
         return users;
     }
 
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public void updateResetPasswordToken(String token, String email) throws UserNotFoundException {
         User customer = userRepository.findByEmail(email);
         if (customer != null) {
             customer.setResetPasswordToken(token);
             userRepository.save(customer);
         } else {
-        throw new UserNotFoundException("Could not find any customer with the email " + email);
+            throw new UserNotFoundException("Could not find any customer with the email " + email);
         }
     }
 
@@ -155,22 +129,4 @@ public String exportReport(String format) throws FileNotFoundException {
         userRepository.save(customer);
     }
 
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
